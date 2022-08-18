@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MDBNavbar, MDBContainer, MDBNavbarBrand } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import LoginBox from './login/NavBarLoginBox';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import { ThemeContext } from '../../context/ThemeContext';
 
 const NavBar = () => {
   const {t} = useTranslation();
+  const { theme } = useContext(ThemeContext)
   
   return (
-    <MDBNavbar>
-      <MDBContainer fluid>
-        <MDBNavbarBrand as={'button'} href='/'>Basodel</MDBNavbarBrand>
-      </MDBContainer>
-    </MDBNavbar>
-    // <Navbar bg='dark' variant='dark' expand='lg'>
-    //   <Container fluid={true} className='mx-3'>
-    //     <Navbar.Brand as={Link} to='/'>Basodel</Navbar.Brand>
-    //     <Navbar.Toggle aria-controls='primary-navbar'/>
-    //     <Navbar.Collapse id='primary-navbar'>
-    //       <Nav className='me-auto'>
-    //         <Nav.Link as={NavLink} to='/'>{t('navbar.home')}</Nav.Link>
-    //         <Nav.Link as={NavLink} to='/about'>{t('navbar.about')}</Nav.Link>
-    //       </Nav>
-    //       <Nav className='gap-3 pt-5 pt-lg-0'>
-    //         <LoginBox />
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Container>
-    // </Navbar>
+    <Navbar variant={theme.variant} bg={theme.bg} expand='lg' className={`${theme.shadow}`}>
+      <Container fluid={true} className='mx-3'>
+        <Navbar.Brand as={Link} to='/'>Basodel</Navbar.Brand>
+        <Navbar.Toggle aria-controls='main-navbar'/>
+        <Navbar.Collapse id='maib-navbar'>
+          <Nav className='me-auto'>
+            <Nav.Link as={NavLink} to='/'>{t('generic.home')}</Nav.Link>
+            <Nav.Link as={NavLink} to='/about'>{t('generic.about')}</Nav.Link>
+          </Nav>
+          <Nav className='gap-3 pt-5 pt-lg-0'>
+            <LoginBox />
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

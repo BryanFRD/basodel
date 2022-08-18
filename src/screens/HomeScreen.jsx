@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Container from 'react-bootstrap/Container'
+import { ThemeContext } from '../context/ThemeContext';
 
 const HomeScreen = () => {
+  const { theme } = useContext(ThemeContext);
+  
   return (
-    <div>
-      Accueil
-    </div>
+    <Container fluid>
+      
+    </Container>
   );
 };
 

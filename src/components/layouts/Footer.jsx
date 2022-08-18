@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
+import Container from 'react-bootstrap/esm/Container';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const { theme } = useContext(ThemeContext); 
+  
   return (
-    <div className='bg-dark text-center text-light'>
-      {/* <Container className='p-4 pb-0'>
-        <section>
-          <Button></Button>
-          <Button></Button>
-          <Button></Button>
-        </section>
-      </Container> */}
-    </div>
+    <Container fluid className={`p-3 text-center fw-light ${theme.bgClass} ${theme.text}`}>
+      <div>© 2022 Copyright:&nbsp;
+        <a href='https://bryan-ferrando.fr'
+        target='_blank'
+        rel='noreferrer'
+        className={`fw-normal ${theme.link}`}>
+          Bryan-Ferrando.fr
+        </a>
+      </div>
+    </Container>
   );
 };
 

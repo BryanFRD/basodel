@@ -1,0 +1,11 @@
+{
+  "name": "light",
+  "variant": "light",
+  "menuVariant": "light",
+  "btnVariant": "dark",
+  "bg": "light",
+  "bgClass": "bg-light",
+  "text": "text-dark",
+  "link": "link-dark",
+  "shadow": "shadow-dark"
+}

@@ -16,9 +16,8 @@ i18n
     },
     
     detection: {
-      order: ['cookie', 'localStorage', 'navigator', 'htmlTag'],
-      caches: ['localStorage'],
-      cookieMinutes: 7 * 24 * 60
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      caches: ['localStorage']
     },
     
     backend: {

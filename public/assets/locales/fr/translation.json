@@ -1,3 +1,12 @@
 {
-  
+  "generic": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "login": "Se connecter",
+    "signup": "S'inscrire",
+    "logout": "Se déconnecter",
+    "language": "Langue",
+    "dark_theme": "Thème Sombre",
+    "back": "Retour"
+  }
 }

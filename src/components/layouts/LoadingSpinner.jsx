@@ -1,11 +1,11 @@
-import { MDBSpinner } from "mdb-react-ui-kit";
+import Spinner from "react-bootstrap/Spinner";
 
 const LoadingSpinner = (props) => {
-  let {size = "2rem", color="#123456", className = ""} = props;
+  let defaultProps = {animation: "grow"};
+  Object.assign(defaultProps, props);
+  
   return (
-      <MDBSpinner size={size} color={color} className={className}>
-        <span className="visually-hidden">Loading...</span>
-      </MDBSpinner>
+      <Spinner {...defaultProps} />
   );
 }
 export default LoadingSpinner;
