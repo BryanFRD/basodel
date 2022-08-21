@@ -9,7 +9,7 @@ const SideBarOption = ({icon, name, to, isShown, onClick, className}) => {
     onClick={onClick}>
       {
         <div className={`d-flex justify-content-end align-items-center gap-3 w-100`}>
-          <span className={!isShown && 'd-none'}>{name}</span>
+          <span className={!isShown ? 'd-none' : ''}>{name}</span>
           <Icon icon={icon} fontSize='2.5em' className='pe-none'/>
         </div>
       }

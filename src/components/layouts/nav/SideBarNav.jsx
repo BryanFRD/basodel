@@ -4,25 +4,32 @@ import { ThemeContext } from '../../../context/ThemeContext';
 import { UserContext } from '../../../context/UserContext';
 import SideBarOption from './SideBarOption';
 import { useTranslation } from 'react-i18next';
+import useBreakpoints from '../../../js/useBreakpoints';
 
 const SideBarNav = ({mainRef, footerRef}) => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { t } = useTranslation();
+  const { breakpoints } = useBreakpoints();
+  
   const sideBarNav = useRef();
   
   const [navWidth, setNavWidth] = useState('0%');
   const [isShown, setIsShown] = useState(false);
   
-  useEffect(() => {
-    sideBarNav.current.style.width = `calc(75px + ${navWidth})`
-    mainRef.current.style.marginRight = `calc(75px + ${navWidth})`;
-    footerRef.current.style.marginRight = `calc(75px + ${navWidth})`;
-  }, [mainRef, footerRef, navWidth]);
+  useEffect(() => {    
+    const lg = breakpoints.lg;
+    
+    sideBarNav.current.style.width = lg ? `calc(75px + ${navWidth})` : '0px';
+    mainRef.current.style.marginRight = lg ? `calc(75px + ${navWidth})` : '0px';
+    footerRef.current.style.marginRight = lg ? `calc(75px + ${navWidth})` : '0px';
+  }, [mainRef, footerRef, navWidth, breakpoints]);
+  
+  
   
   const handleToggle = () => {
     setIsShown(!isShown);
-    setNavWidth(!isShown ? '6%' : '0%');
+    setNavWidth(!isShown ? '5%' : '0%');
   }
   
   return (
