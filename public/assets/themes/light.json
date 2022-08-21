@@ -1,5 +1,5 @@
 {
-  "name": "light",
+  "name": "theme.light",
   "variant": "light",
   "menuVariant": "light",
   "btnVariant": "dark",
@@ -7,5 +7,6 @@
   "bgClass": "bg-light",
   "text": "text-dark",
   "link": "link-dark",
-  "shadow": "shadow-dark"
+  "shadow": "shadow-dark",
+  "bgHover": "bg-hover-dark"
 }

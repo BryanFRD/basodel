@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/esm/Container';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext); 
+  const { theme } = useContext(ThemeContext);
   
   return (
     <Container fluid className={`p-3 text-center fw-light ${theme.bgClass} ${theme.text}`}>

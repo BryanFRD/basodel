@@ -59,10 +59,12 @@ const NavBarLoginBox = () => {
             <NavDropdown.Divider />
           </>}
           
-          <NavDropdown.Item className='d-flex justify-content-between' onClick={toggleLanguageSelect}>
-            {t('generic.language')}
-            <Icon icon='material-symbols:chevron-right-rounded' className='align-self-center me-3'/>
-            </NavDropdown.Item>
+          <NavDropdown.Item 
+            className='d-flex justify-content-between align-items-center'
+            onClick={toggleLanguageSelect}>
+              {t('generic.language')}
+              <Icon icon='material-symbols:chevron-right-rounded' className='me-3'/>
+          </NavDropdown.Item>
           <NavDropdown.Item
           className='d-flex justify-content-between gap-5 text-nowrap'
           onClick={() => changeThemeTo(theme.name === 'light' ? 'dark' : 'light')}>
@@ -82,16 +84,24 @@ const NavBarLoginBox = () => {
         </>
         :
         <>
-          <NavDropdown.Item onClick={toggleLanguageSelect}>
-            <Icon icon='material-symbols:chevron-left-rounded' className='align-self-center'/>
+          <NavDropdown.Item onClick={toggleLanguageSelect} className='d-flex gap-2 align-items-center'>
+            <Icon icon='material-symbols:chevron-left-rounded'/>
             {t('generic.back')}
           </NavDropdown.Item>
           <NavDropdown.Divider />
           {Object.entries(languages).map(([key, value]) => {
-            return (<NavDropdown.Item key={key + '-key'} lang={key} className={i18n.language === key ? 'bg-secondary' : ''} onClick={(e) => {
-              i18n.changeLanguage(e.target.lang);
-              setIsChangingLanguage(false);
-            }}>{value}</NavDropdown.Item>)
+            return (
+            <NavDropdown.Item 
+              key={key + '-key'}
+              lang={key}
+              className='d-flex justify-content-between gap-3 text-nowrap align-items-center'
+              onClick={(e) => {
+                i18n.changeLanguage(e.target.lang);
+                setIsChangingLanguage(false);
+              }}>
+              {value}
+              {i18n.language === key && <Icon icon='material-symbols:done' className='text-success fs-5'/>}
+            </NavDropdown.Item>)
           })}
         </>
       }

@@ -7,7 +7,7 @@ const HomeScreen = () => {
   
   return (
     <Container fluid>
-      
+      Home Screen
     </Container>
   );
 };

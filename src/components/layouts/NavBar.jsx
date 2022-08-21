@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
 import LoginBox from './login/NavBarLoginBox';
@@ -16,7 +16,7 @@ const NavBar = () => {
       <Container fluid={true} className='mx-3'>
         <Navbar.Brand as={Link} to='/'>Basodel</Navbar.Brand>
         <Navbar.Toggle aria-controls='main-navbar'/>
-        <Navbar.Collapse id='maib-navbar'>
+        <Navbar.Collapse id='main-navbar'>
           <Nav className='me-auto'>
             <Nav.Link as={NavLink} to='/'>{t('generic.home')}</Nav.Link>
             <Nav.Link as={NavLink} to='/about'>{t('generic.about')}</Nav.Link>

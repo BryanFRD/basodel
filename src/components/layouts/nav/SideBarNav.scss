@@ -1,0 +1,30 @@
+#sideBarNav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  height: 100vh;
+  min-width: 70px;
+  text-overflow: none;
+  
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .sidebaroption{
+    overflow-wrap: anywhere;
+    font-size: 0.75em;
+    min-width: 100%;
+    
+    svg {
+      margin-right: calc((70px - 30px) / 2);
+    }
+  }
+  
+}

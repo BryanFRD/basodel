@@ -1,34 +1,42 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-
-const themes = {light: {}, dark: {}};
+import React, { useEffect, useState } from 'react';
 
 export const ThemeContext = React.createContext();
 
 const ThemeContextProvider = (props) => {
+  const [themes, setThemes] = useState({});
+  const [theme, setTheme] = useState({});
+  
   if(!localStorage.hasOwnProperty('usedTheme'))
-    localStorage.setItem('usedTheme', 'light');
-  
-  const usedTheme = themes[localStorage.getItem('usedTheme')] ?? themes['light'];
-  
-  const [theme, setTheme] = useState(usedTheme);
+    localStorage.setItem('usedTheme', 'dark');
   
   const changeThemeTo = (themeName) => {
     if(!themes[themeName] || themeName === theme.name)
       return;
-    
+      
     setTheme(themes[themeName]);
     localStorage.setItem('usedTheme', themeName);
   }
+    
+  useEffect(() => {
+    axios.get('/assets/themes/themes.json').then((res) => {
+      for(const t in res.data){
+        axios.get(`/assets/themes/${t}.json`).then(({data}) => {
+          setThemes(prevValue => {
+            prevValue[t] = data
+            return prevValue;
+          });
+        }).then(() => {
+          const thm = themes[localStorage.getItem('usedTheme') ?? 'dark'];
+          
+          if(thm)
+            setTheme(thm)
+        });
+      }
+    });
+  }, [themes])
   
   return (<ThemeContext.Provider value={{theme, changeThemeTo}}>{props.children}</ThemeContext.Provider>)
-}
-
-export const initThemes = () => {
-  console.log('Test')
-  for(const t in themes){
-    axios.get(`/assets/themes/${t}.json`).then(({data}) => themes[t] = data);
-  }
 }
 
 export default ThemeContextProvider;

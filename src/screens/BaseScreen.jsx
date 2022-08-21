@@ -1,21 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from '../components/layouts/NavBar';
 import Footer from '../components/layouts/Footer';
 import { ThemeContext } from '../context/ThemeContext';
+import SideBarNav from '../components/layouts/nav/SideBarNav';
+import Container from 'react-bootstrap/esm/Container';
 
 const BaseScreen = () => {
   const { theme } = useContext(ThemeContext);
+  const mainRef = useRef(), footerRef = useRef();
   
   return (
     <>
       <header>
-        <NavBar />
+        {/* <NavBar /> */}
+        <SideBarNav mainRef={mainRef} footerRef={footerRef} />
       </header>
-      <main className={`${theme.bgClass} ${theme.text}`}>
-        <Outlet />
+      <main ref={mainRef} className={`${theme.bgClass} ${theme.text}`}>
+        <Container fluid>
+          <Outlet />
+        </Container>
       </main>
-      <footer>
+      <footer ref={footerRef}>
         <Footer />
       </footer>
     </>
