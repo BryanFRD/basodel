@@ -5,11 +5,19 @@ export const UserContext = React.createContext();
 const UserContextProvider = (props) => {
   const [user, setUser] = useState(false);
   
-  const handleConnection = () => {
-    setUser(!user);
+  const handleRegister = () => {
+    setUser(true);
   }
   
-  return (<UserContext.Provider value={{user, handleConnection}}>{props.children}</UserContext.Provider>);
+  const handleLogin = () => {
+    setUser(true);
+  }
+  
+  const handleLogout = () => {
+    setUser(false);
+  }
+  
+  return (<UserContext.Provider value={{user, handleRegister, handleLogin, handleLogout}}>{props.children}</UserContext.Provider>);
 }
 
 export default UserContextProvider;

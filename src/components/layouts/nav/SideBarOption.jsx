@@ -13,7 +13,7 @@ const SideBarOption = ({icon, name, to, isShown, onClick, className}) => {
           <Icon icon={icon} fontSize='2.5em' className='pe-none'/>
         </div>
       }
-      <span className={isShown && 'opacity-0'}>{name}</span>
+      <span className={isShown ? 'opacity-0' : ''}>{name}</span>
     </Link>
   );
 };

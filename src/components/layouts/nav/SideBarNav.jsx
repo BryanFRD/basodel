@@ -17,7 +17,7 @@ const SideBarNav = ({mainRef, footerRef}) => {
   const [navWidth, setNavWidth] = useState('0%');
   const [isShown, setIsShown] = useState(false);
   
-  useEffect(() => {    
+  useEffect(() => {
     const lg = breakpoints.lg;
     
     sideBarNav.current.style.width = lg ? `calc(75px + ${navWidth})` : '0px';
@@ -26,8 +26,8 @@ const SideBarNav = ({mainRef, footerRef}) => {
   }, [mainRef, footerRef, navWidth, breakpoints]);
   
   const handleToggleNav = () => {
-    setIsShown(!isShown);
     setNavWidth(!isShown ? '5%' : '0%');
+    setIsShown(!isShown);
   }
   
   return (
