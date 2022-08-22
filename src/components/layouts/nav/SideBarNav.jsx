@@ -25,9 +25,7 @@ const SideBarNav = ({mainRef, footerRef}) => {
     footerRef.current.style.marginRight = lg ? `calc(75px + ${navWidth})` : '0px';
   }, [mainRef, footerRef, navWidth, breakpoints]);
   
-  
-  
-  const handleToggle = () => {
+  const handleToggleNav = () => {
     setIsShown(!isShown);
     setNavWidth(!isShown ? '5%' : '0%');
   }
@@ -36,7 +34,7 @@ const SideBarNav = ({mainRef, footerRef}) => {
     <div id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
       <div className='nav-menu'>
         <SideBarOption icon={isShown ? 'ion:close-sharp' : 'charm:menu-hamburger'}
-          onClick={handleToggle}
+          onClick={handleToggleNav}
           className={`my-1 mb-3 ${theme.link}`}/>
         <SideBarOption icon='material-symbols:home-outline-rounded'
           to='/'

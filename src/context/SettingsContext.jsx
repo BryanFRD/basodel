@@ -10,8 +10,4 @@ const SettingsContextProvider = (props) => {
   return (<SettingsContext.Provider value={{settings}}>{props.children}</SettingsContext.Provider>)
 }
 
-export const initSettings = () => {
-  //TODO initSettings
-}
-
 export default SettingsContextProvider;

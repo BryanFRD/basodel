@@ -23,7 +23,7 @@ const ThemeContextProvider = (props) => {
       for(const t in res.data){
         axios.get(`/assets/themes/${t}.json`).then(({data}) => {
           setThemes(prevValue => {
-            prevValue[t] = data
+            prevValue[t] = data;
             return prevValue;
           });
         }).then(() => {
