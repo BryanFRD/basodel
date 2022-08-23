@@ -13,7 +13,7 @@ const Footer = () => {
         target='_blank'
         rel='noreferrer'
         className={`fw-normal ${theme.link}`}>
-          Bryan-Ferrando.fr
+          bryan-ferrando.fr
         </a>
       </div>
     </Container>

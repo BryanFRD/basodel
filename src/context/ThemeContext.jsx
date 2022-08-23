@@ -17,7 +17,7 @@ const ThemeContextProvider = (props) => {
     setTheme(themes[themeName]);
     localStorage.setItem('usedTheme', themeName);   
   }
-    
+  
   useEffect(() => {
     axios.get('/assets/themes/themes.json').then((res) => {
       for(const t in res.data){

@@ -33,21 +33,33 @@ const SideBarNav = ({mainRef, footerRef}) => {
   
   return (
     <Navbar id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
-      <div className='nav-menu'>
-        <SideBarOption icon={isShown ? 'ion:close-sharp' : 'charm:menu-hamburger'}
-          onClick={handleToggleNav}
-          className={`my-1 mb-3 ${theme.link}`}/>
-        <SideBarOption icon='material-symbols:home-outline-rounded'
-          to='/'
-          isShown={isShown}
-          className={`${theme.link} ${theme.bgHover} text-decoration-none`}
-          name={t('generic.home')}/>
-        <SideBarOption
-          icon='ph:chat-circle-dots'
-          isShown={isShown}
-          onClick={(e) => {console.log(e)}}
-          className={`${theme.link} ${theme.bgHover} text-decoration-none`}
-          name={t('generic.chat')}/>
+      <div className='secondary-nav-menu' ></div>
+      <div className='nav-menu h-100'>
+        <div className='w-100'>
+          <SideBarOption icon={isShown ? 'ion:close-sharp' : 'charm:menu-hamburger'}
+            onClick={handleToggleNav}
+            className={`my-1 mb-3 ${theme.link}`}/>
+          <SideBarOption
+            icon='material-symbols:home-outline-rounded'
+            to='/'
+            isShown={isShown}
+            className={`${theme.link} ${theme.bgHover} text-decoration-none`}
+            name={t('generic.home')}/>
+          <SideBarOption
+            icon='ph:chat-circle-dots'
+            isShown={isShown}
+            onClick={(e) => {console.log(e)}}
+            className={`${theme.link} ${theme.bgHover} text-decoration-none`}
+            name={t('generic.chat')}/>
+        </div>
+        <div className='w-100'>
+          <SideBarOption
+            icon={'material-symbols:settings-outline'}
+            isShown={isShown}
+            onClick={() => console.log('dsqdqsd')}
+            className={`${theme.link} ${theme.bgHover} text-decoration-none`}
+            name={t('generic.settings')}/>
+        </div>
         {user &&
         <>
           {/*TODO UserNavMenu*/}

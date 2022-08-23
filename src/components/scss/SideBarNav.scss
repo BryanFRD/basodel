@@ -1,19 +1,14 @@
 #sideBarNav {
   position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   right: 0;
   height: 100vh;
-  min-width: 70px;
+  min-width: 75px;
   text-overflow: none;
   
   .nav-menu {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     width: 100%;
   }
   
@@ -23,8 +18,7 @@
     min-width: 100%;
     
     svg {
-      margin-right: calc((70px - 30px) / 2);
-    }
+      margin-right: calc((75px - 30px) / 2);
+    } 
   }
-  
 }
