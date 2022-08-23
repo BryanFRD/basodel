@@ -6,6 +6,7 @@ import SideBarOption from './SideBarOption';
 import { useTranslation } from 'react-i18next';
 import useBreakpoints from '../../../js/useBreakpoints';
 import { Navbar } from 'react-bootstrap';
+import SideBarOptionAccount from './SideBarOptionAccount';
 
 const SideBarNav = ({mainRef, footerRef}) => {
   const { theme } = useContext(ThemeContext);
@@ -32,7 +33,7 @@ const SideBarNav = ({mainRef, footerRef}) => {
   }
   
   return (
-    <Navbar id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
+    <Navbar id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block py-0 ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
       <div className='secondary-nav-menu' ></div>
       <div className='nav-menu h-100'>
         <div className='w-100'>
@@ -54,11 +55,15 @@ const SideBarNav = ({mainRef, footerRef}) => {
         </div>
         <div className='w-100'>
           <SideBarOption
-            icon={'material-symbols:settings-outline'}
+            icon='material-symbols:settings-outline'
             isShown={isShown}
             onClick={() => console.log('dsqdqsd')}
             className={`${theme.link} ${theme.bgHover} text-decoration-none`}
             name={t('generic.settings')}/>
+            <hr />  
+            <SideBarOptionAccount
+              icon='mdi:account-outline'
+              isShown={isShown}/>
         </div>
         {user &&
         <>
