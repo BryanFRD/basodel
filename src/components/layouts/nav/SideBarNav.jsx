@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import './SideBarNav.scss';
+import '../../styles/SideBarNav.scss';
 import { ThemeContext } from '../../../context/ThemeContext';
 import { UserContext } from '../../../context/UserContext';
 import SideBarOption from './SideBarOption';
 import { useTranslation } from 'react-i18next';
 import useBreakpoints from '../../../js/useBreakpoints';
+import { Navbar } from 'react-bootstrap';
 
 const SideBarNav = ({mainRef, footerRef}) => {
   const { theme } = useContext(ThemeContext);
@@ -31,7 +32,7 @@ const SideBarNav = ({mainRef, footerRef}) => {
   }
   
   return (
-    <div id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
+    <Navbar id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
       <div className='nav-menu'>
         <SideBarOption icon={isShown ? 'ion:close-sharp' : 'charm:menu-hamburger'}
           onClick={handleToggleNav}
@@ -56,7 +57,7 @@ const SideBarNav = ({mainRef, footerRef}) => {
         {/* TODO SecondaryNavMenu */}
         
       </div>
-    </div>
+    </Navbar>
   );
 };
 
