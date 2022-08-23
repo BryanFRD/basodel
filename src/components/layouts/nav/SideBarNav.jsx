@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import '../../styles/SideBarNav.scss';
+import '../../scss/SideBarNav.scss';
 import { ThemeContext } from '../../../context/ThemeContext';
 import { UserContext } from '../../../context/UserContext';
 import SideBarOption from './SideBarOption';

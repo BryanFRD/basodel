@@ -11,46 +11,11 @@ const ThemeContextProvider = (props) => {
     localStorage.setItem('usedTheme', 'dark');
   
   const changeThemeTo = (themeName) => {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    if(themes[themeName] && themeName !== theme.name){
-      setTheme(themes[themeName]);
-      localStorage.setItem('usedTheme', themeName);
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     if(!themes[themeName] || themeName === theme.name)
       return;
       
     setTheme(themes[themeName]);
-    localStorage.setItem('usedTheme', themeName);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    localStorage.setItem('usedTheme', themeName);   
   }
     
   useEffect(() => {

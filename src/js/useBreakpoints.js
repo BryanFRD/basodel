@@ -22,6 +22,9 @@ const useBreakpoints = () => {
   const resize = () => {
     const bp = getBreakpoints(window.innerWidth);
     
+    if(ObjectHelper.isEqual(breakpoints, bp))
+      return;
+      
     setBreakpoints(bp);
   }
   
