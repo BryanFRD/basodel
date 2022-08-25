@@ -1,16 +1,31 @@
-import React, { useContext, useRef } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/layouts/Footer';
-import { ThemeContext } from '../context/ThemeContext';
-import SideBarNav from '../components/layouts/nav/SideBarNav';
+import MainNavbar from '../components/layouts/navbar/MainNavbar';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 
 const BaseScreen = () => {
-  const { theme } = useContext(ThemeContext);
-  const mainRef = useRef(), footerRef = useRef();
-  
   return (
     <>
-      <header>
+      <Row className='g-0'>
+        <Col className='order-lg-1' lg='auto'>
+          <header>
+            <MainNavbar />
+          </header>
+        </Col>
+        <Col>
+          <div id='mainDiv'>
+            <main>
+              <Outlet />
+            </main>
+            <footer>
+              <Footer/>
+            </footer>
+          </div>
+        </Col>
+      </Row>
+      {/* <header>
         <SideBarNav mainRef={mainRef} footerRef={footerRef} />
       </header>
       <main ref={mainRef} className={`${theme.bgClass} ${theme.text}`}>
@@ -18,7 +33,7 @@ const BaseScreen = () => {
       </main>
       <footer ref={footerRef}>
         <Footer />
-      </footer>
+      </footer> */}
     </>
   );
 };

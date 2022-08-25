@@ -1,0 +1,30 @@
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+#mainNavBar {
+  max-width: 200px;
+  min-width: 100%;
+  @media screen and (min-width: 992px) {
+      & {
+        height: 100vh;
+        
+        .account-link {
+          min-height: 100px;
+          max-height: 100px;
+        }
+        
+        .navbar-item span {
+          max-width: 120px;
+          overflow-wrap: anywhere;
+        }
+        
+        .navbar-collapse {
+          height: 100%;
+        }
+      }
+  }
+}
+
