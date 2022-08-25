@@ -16,25 +16,26 @@ const SideBarNav = ({mainRef, footerRef}) => {
   
   const sideBarNav = useRef();
   
-  const [navWidth, setNavWidth] = useState('0%');
+  const [navWidth, setNavWidth] = useState({primary: '0px', secondary: '0px'});
   const [isShown, setIsShown] = useState(false);
   
   useEffect(() => {
     const lg = breakpoints.lg;
     
-    sideBarNav.current.style.width = lg ? `calc(75px + ${navWidth})` : '0px';
-    mainRef.current.style.marginRight = lg ? `calc(75px + ${navWidth})` : '0px';
-    footerRef.current.style.marginRight = lg ? `calc(75px + ${navWidth})` : '0px';
+    const { primary, secondary } = navWidth;
+    
+    sideBarNav.current.style.width = lg ? `calc(75px + ${primary} + ${secondary})` : '0px';
+    mainRef.current.style.marginRight = lg ? `calc(75px + ${primary} + ${secondary})` : '0px';
+    footerRef.current.style.marginRight = lg ? `calc(75px + ${primary} + ${secondary})` : '0px';
   }, [mainRef, footerRef, navWidth, breakpoints]);
   
   const handleToggleNav = () => {
-    setNavWidth(!isShown ? '5%' : '0%');
+    setNavWidth(prevValue => { return {primary: (!isShown ? '125px' : '0%'), secondary: prevValue.secondary}});
     setIsShown(!isShown);
   }
   
   return (
     <Navbar id='sideBarNav' ref={sideBarNav} className={`d-none d-lg-block py-0 ${theme.bgClass} ${theme.text} ${theme.shadow}`}>
-      <div className='secondary-nav-menu' ></div>
       <div className='nav-menu h-100'>
         <div className='w-100'>
           <SideBarOption icon={isShown ? 'ion:close-sharp' : 'charm:menu-hamburger'}
@@ -60,18 +61,11 @@ const SideBarNav = ({mainRef, footerRef}) => {
             onClick={() => console.log('dsqdqsd')}
             className={`${theme.link} ${theme.bgHover} text-decoration-none`}
             name={t('generic.settings')}/>
-            <hr />  
+            <hr />
             <SideBarOptionAccount
               icon='mdi:account-outline'
               isShown={isShown}/>
         </div>
-        {user &&
-        <>
-          {/*TODO UserNavMenu*/}
-        </>}
-        {/* TODO MainNavMenu */}
-        
-        {/* TODO SecondaryNavMenu */}
         
       </div>
     </Navbar>

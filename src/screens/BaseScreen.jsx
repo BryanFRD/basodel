@@ -2,7 +2,6 @@ import React, { useContext, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/layouts/Footer';
 import { ThemeContext } from '../context/ThemeContext';
-import Container from 'react-bootstrap/esm/Container';
 import SideBarNav from '../components/layouts/nav/SideBarNav';
 
 const BaseScreen = () => {
@@ -15,9 +14,7 @@ const BaseScreen = () => {
         <SideBarNav mainRef={mainRef} footerRef={footerRef} />
       </header>
       <main ref={mainRef} className={`${theme.bgClass} ${theme.text}`}>
-        <Container fluid>
-          <Outlet />
-        </Container>
+        <Outlet />
       </main>
       <footer ref={footerRef}>
         <Footer />

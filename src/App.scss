@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 100vw;
   
   main {
     flex-grow: 1;
@@ -37,6 +38,84 @@ body {
 
 .bg-hover-dark:hover {
   background-color: rgba($color: #212529, $alpha: 0.1);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.modal-light {
+  .modal-content {
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+  
+  .nav-item {
+    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #f8f9fa;
+  }
+  
+  .modal-body .nav-fill {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1rem;
+      left: -1rem;
+      bottom: -1px;
+      border-bottom: 1px solid #dee2e6;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1rem;
+      right: -1rem;
+      bottom: -1px;
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+  
+  .nav-link.active {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+  }
+}
+
+.modal-dark {
+  .modal-content {
+    background-color: #212529;
+    color: #f8f9fa;
+  }
+  
+  .nav-item {
+    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #212529;
+  }
+  
+  .modal-body .nav-fill {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1rem;
+      left: -1rem;
+      bottom: -1px;
+      border-bottom: 1px solid #dee2e6;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 1rem;
+      right: -1rem;
+      bottom: -1px;
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+  
+  .nav-link.active {
+    background-color: #212529 !important;
+    color: #f8f9fa !important;
+  }
 }
 
 @import '~bootstrap/scss/bootstrap';

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import CustomLink from '../../generic/CustomLink';
 
-const SideBarOption = ({icon, name, to, isShown, onClick, className}) => {
+const SideBarOption = ({icon, name, to, isShown, onClick, className, asNavLink}) => {
   return (
-    <Link to={to ?? ''}
+    <CustomLink to={to}
     className={`sidebaroption d-flex flex-column justify-content-center align-items-center py-3 ${className}`}
     onClick={onClick}>
       {
@@ -13,7 +13,7 @@ const SideBarOption = ({icon, name, to, isShown, onClick, className}) => {
           <Icon icon={icon} fontSize='2.5em' className='pe-none'/>
         </div>
       }
-    </Link>
+    </CustomLink>
   );
 };
 

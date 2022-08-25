@@ -8,5 +8,6 @@
   "text": "text-light",
   "link": "link-light",
   "shadow": "shadow-light",
-  "bgHover": "bg-hover-light"
+  "bgHover": "bg-hover-light",
+  "modal": "modal-dark"
 }

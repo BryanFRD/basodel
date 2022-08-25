@@ -1,0 +1,6 @@
+.custom-link {
+  transition: color 0.25s;
+  &:hover {
+    color: #6c757d;
+  }
+}

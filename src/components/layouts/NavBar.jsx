@@ -9,7 +9,7 @@ import { ThemeContext } from '../../context/ThemeContext';
 
 const NavBar = () => {
   const {t} = useTranslation();
-  const { theme } = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   
   return (
     <Navbar variant={theme.variant} bg={theme.bg} expand='lg' className={`${theme.shadow}`}>
