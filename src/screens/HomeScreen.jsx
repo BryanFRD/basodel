@@ -6,9 +6,8 @@ const HomeScreen = () => {
   const { theme } = useContext(ThemeContext);
   
   return (
-    <Container fluid>
+    <Container fluid className={`${theme.bgClass} ${theme.text}`}>
       Home Screen
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </Container>
   );
 };
