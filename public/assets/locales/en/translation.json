@@ -10,5 +10,8 @@
     "back": "Back",
     "chat": "Chat",
     "settings": "Settings"
+  },
+  "error": {
+    "must-be-logged": "You must be logged in!"
   }
 }

@@ -5,9 +5,12 @@
   "btnVariant": "dark",
   "bg": "light",
   "bgClass": "bg-light",
+  "bgLgClass": "bg-lg-light",
   "text": "text-dark",
   "link": "link-dark",
   "shadow": "shadow-dark",
+  "mainNavbarShadow": "mainNavbarShadow-dark",
   "bgHover": "bg-hover-dark",
-  "modal": "modal-light"
+  "modal": "modal-light",
+  "btnOutline": "btn-outline-dark"
 }

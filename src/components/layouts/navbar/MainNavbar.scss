@@ -1,36 +1,63 @@
 header {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  width: 100%;
+  
+  @media screen and (min-width: 992px) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
 }
 
 #mainNavBar {
-  max-width: 200px;
+  max-width: 250px;
   min-width: 100%;
+  
+  .collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+  }
   
   svg {
     min-width: 32px;
     min-height: 32px;
   }
   
+  &.mainNavbarShadow-light {
+    @media screen and (min-width: 992px) {
+      -webkit-box-shadow: 0px 0px 2px 0px #e9ecef80;
+      -moz-box-shadow: 0px 0px 2px 0px #e9ecef80;
+      box-shadow: 0px 0px 2px 0px #e9ecef80;
+    }
+  }
+  &.mainNavbarShadow-dark {
+    @media screen and (min-width: 992px) {
+      -webkit-box-shadow: 0px 0px 2px 0px #343a4080;
+      -moz-box-shadow: 0px 0px 2px 0px #343a4080;
+      box-shadow: 0px 0px 2px 0px #343a4080;
+    }
+  }
+  
   @media screen and (min-width: 992px) {
-      & {
-        height: 100vh;
+    & {
+      height: 100vh;
         
-        .account-link {
-          min-height: 100px;
-          max-height: 100px;
-        }
-        
-        .navbar-item span {
-          max-width: 120px;
-          overflow-wrap: anywhere;
-        }
-        
-        .navbar-collapse {
-          height: 100%;
-        }
+      .account-link {
+        min-height: 100px;
+        max-height: 100px;
       }
+        
+      .navbar-item span {
+        overflow-wrap: anywhere;
+      }
+        
+      .navbar-collapse {
+        height: 100%;
+      }
+    }
   }
 }
 

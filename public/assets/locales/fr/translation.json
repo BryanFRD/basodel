@@ -10,5 +10,8 @@
     "back": "Retour",
     "chat": "Chat",
     "settings": "Paramètres"
+  },
+  "error": {
+    "must-be-logged": "Vous devez être connecté !"
   }
 }
