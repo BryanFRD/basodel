@@ -9,9 +9,14 @@
     "dark_theme": "Thème Sombre",
     "back": "Retour",
     "chat": "Chat",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "comming-soon": "Comming Soon"
   },
   "error": {
     "must-be-logged": "Vous devez être connecté !"
+  },
+  "settings": {
+    "interface": "Interface",
+    "game": "Jeu"
   }
 }

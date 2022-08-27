@@ -16,13 +16,13 @@ const MainNavbar = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { t } = useTranslation();
-  const [ isExpanded, setIsExpand ] = useState(false);
+  const [ isExpanded, setIsExpanded ] = useState(false);
   const [ showModal, setShowModal ] = useState(false);
   const [ collapsed, setCollapsed ] = useState(false);
   const [ secondNav, setSecondNav ] = useState(false);
   
   const onClickExpand = () => {
-    setIsExpand(prevValue => !prevValue);
+    setIsExpanded(prevValue => !prevValue);
   }
   
   const handleShowModal = (tabName) => {
@@ -41,7 +41,8 @@ const MainNavbar = () => {
       if(prevNav === secondNavName)
         return false;
       
-      setIsExpand(false);
+      setIsExpanded(false);
+      setCollapsed(false);
         
       return secondNavName;
     });
@@ -54,7 +55,7 @@ const MainNavbar = () => {
       {secondNav ? <SecondNavbar secondNav={secondNav} changeSecondNav={changeSecondNav}/> : <></>}
       </Col>
       <Col lg='auto'>
-      <Navbar id='mainNavBar' variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}
+      <Navbar id='mainNavBar' expanded={collapsed} variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}
       className={`user-select-none ${collapsed ? `${theme.bgClass} ${theme.shadow}` : ''} ${theme.bgLgClass} ${theme.mainNavbarShadow}`}>
         <Navbar.Toggle className={`ms-auto me-3 ms-lg-0 ${theme.bgClass} opacity-50`} onClick={handleToggleCollapse}/>
         <Navbar.Collapse className={`px-3 px-lg-0 mx-lg-0 pb-2 pb-lg-0 ${theme.bgClass}`}>

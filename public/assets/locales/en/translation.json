@@ -9,9 +9,14 @@
     "dark_theme": "Dark Theme",
     "back": "Back",
     "chat": "Chat",
-    "settings": "Settings"
+    "settings": "Settings",
+    "comming-soon": "Comming Soon"
   },
   "error": {
     "must-be-logged": "You must be logged in!"
+  },
+  "settings": {
+    "interface": "Interface",
+    "game": "Game"
   }
 }
