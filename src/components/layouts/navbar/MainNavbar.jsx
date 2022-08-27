@@ -26,9 +26,6 @@ const MainNavbar = () => {
   }
   
   const handleShowModal = (tabName) => {
-    if(tabName !== false || tabName !== 'login' || tabName !== 'signup')
-      tabName = 'login';
-      
     setShowModal(tabName);
   }
   
@@ -93,8 +90,7 @@ const MainNavbar = () => {
                   <RiSettings4Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`account-link d-flex gap-3 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.text}`}
-                onClick={() => handleShowModal('login')}>
+                className={`account-link d-flex gap-3 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.text}`}>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>
                     {user ?
                       <div>
@@ -116,7 +112,7 @@ const MainNavbar = () => {
                       </div>
                     }
                   </span>
-                  <RiAccountCircleLine className='d-none d-lg-inline fs-2'/>
+                  <RiAccountCircleLine className='d-none d-lg-inline fs-2 h-100' onClick={() => handleShowModal('login')}/>
               </NavbarLink>
             </div>
           </div>
