@@ -20,7 +20,7 @@ const BaseScreen = () => {
               <Outlet />
             </main>
             <footer>
-              <Footer/>
+              <Footer className='d-none'/>
             </footer>
           </div>
         </Col>

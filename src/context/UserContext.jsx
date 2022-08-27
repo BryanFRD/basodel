@@ -29,7 +29,11 @@ const UserContextProvider = (props) => {
     return true;
   }
   
-  return (<UserContext.Provider value={{user, handleSignup, handleLogin, handleLogout}}>{props.children}</UserContext.Provider>);
+  const forgotPassword = async (param) => {
+    console.log('param:', param);
+  }
+  
+  return (<UserContext.Provider value={{user, handleSignup, handleLogin, handleLogout, forgotPassword}}>{props.children}</UserContext.Provider>);
 }
 
 export default UserContextProvider;

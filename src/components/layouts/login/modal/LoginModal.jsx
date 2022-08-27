@@ -4,8 +4,8 @@ import { ThemeContext } from '../../../../context/ThemeContext';
 import { useTranslation } from 'react-i18next';
 import Tabs from 'react-bootstrap/esm/Tabs';
 import Tab from 'react-bootstrap/esm/Tab';
-import SignUpModalTab from './SignUpModalTab';
-import LogInModalTab from './LogInModalTab';
+import SignUpModalTab from './tab/SignUpModalTab';
+import LogInModalTab from './tab/LogInModalTab';
 import { RiCloseFill } from 'react-icons/ri';
 import GenericLink from '../../../generic/link/GenericLink';
 

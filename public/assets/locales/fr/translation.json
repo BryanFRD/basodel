@@ -31,11 +31,15 @@
     "rememberMe": "Se souvenir de moi",
     "forgotPassword": "Mot de passe oublié ?",
     "loginButton": "Connexion",
-    "signupButton": "Inscription"
+    "signupButton": "Inscription",
+    "resetPassword": "Réinitialiser"
   },
   "placeholder": {
     "username": "exemple",
     "email": "exemple@domaine.com",
     "password": "mot de passe"
+  },
+  "information": {
+    "resetPassword": "Un email de confirmation vous sera envoyé !"
   }
 }
