@@ -47,7 +47,7 @@ const LogInModalTab = ({setShow}) => {
           </GenericLink>
           <div className='text-center pt-3 fs-5 pt-5'>{t('information.resetPassword')}</div>
           <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleForgotPassword}>
-            <Form.Group className='w-75 pb-4'>
+            <Form.Group className='w-100 pb-4'>
               <Form.Label>{t('login.emailLabel')}</Form.Label>
               <Form.Control placeholder={t('placeholder.email')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
             </Form.Group>
@@ -65,7 +65,7 @@ const LogInModalTab = ({setShow}) => {
             <Form.Label>{t('login.passwordLabel')}</Form.Label>
             <Form.Control type='password' placeholder={t('placeholder.password')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
           </Form.Group>
-          <Form.Group className=' w-100 d-flex flex-column flex-lg-row gap-5 justify-content-lg-between pb-3'>
+          <Form.Group className=' w-100 d-flex flex-column flex-lg-row gap-5 py-3 justify-content-lg-between pb-3'>
             <Form.Check label={t('login.rememberMe')}></Form.Check>
             <GenericLink className={'text-decoration-underline'} onClick={() => toggleForgotPassword(true)}>{t('login.forgotPassword')}</GenericLink>
           </Form.Group>

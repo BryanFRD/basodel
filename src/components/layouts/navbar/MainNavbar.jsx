@@ -126,6 +126,7 @@ const MainNavbar = () => {
                       </div>
                     }
                   </span>
+                  {/* TODO Changer la redirection du onClick showModal || /account */}
                   <RiAccountCircleLine className='d-none d-lg-inline fs-2 h-100' onClick={() => handleShowModal('login')}/>
               </NavbarLink>
             </div>
