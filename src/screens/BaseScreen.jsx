@@ -10,7 +10,7 @@ const BaseScreen = () => {
   const { theme } = useContext(ThemeContext);
   return (
     <>
-      <Row className={`g-0 ${theme.bgClass}`}>
+      <Row className={`g-0 ${theme.bgClass} ${theme.text}`}>
         <Col className='order-lg-1' lg='auto'>
           <header>
             <MainNavbar />

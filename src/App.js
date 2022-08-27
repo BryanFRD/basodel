@@ -9,6 +9,7 @@ import NotFoundScreen from './screens/NotFoundScreen';
 
 const HomeScreen = React.lazy(() => import('./screens/HomeScreen'));
 const ShopScreen = React.lazy(() => import('./screens/ShopScreen'));
+const AccountScreen = React.lazy(() => import('./screens/AccountScreen'));
 
 function App() {
   return (
@@ -27,6 +28,12 @@ function App() {
               <ShopScreen />
             </Suspense>
           } />
+          
+          <Route path='/account' element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <AccountScreen />
+            </Suspense>
+          }/>
           
           <Route path='*' element={
             <Suspense fallback={<LoadingSpinner />}>

@@ -16,5 +16,6 @@
   "btnOutline": "btn-outline-light",
   "submitFormVariant": "success",
   "textError": "text-danger",
-  "textSuccess": "text-success"
+  "textSuccess": "text-success",
+  "textWarning": "text-warning"
 }

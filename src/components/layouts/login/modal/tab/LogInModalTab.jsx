@@ -45,7 +45,7 @@ const LogInModalTab = ({setShow}) => {
               <RiArrowLeftSLine className='fs-3'/>
               <span className='fs-5'>{t('generic.back')}</span>
           </GenericLink>
-          <div className='text-center pt-3 fs-5 pt-5'>{t('information.resetPassword')}</div>
+          <div className={`text-center pt-3 fs-5 pt-5`}>{t('information.resetPassword')}</div>
           <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleForgotPassword}>
             <Form.Group className='w-100 pb-4'>
               <Form.Label>{t('login.emailLabel')}</Form.Label>
