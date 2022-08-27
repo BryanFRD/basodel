@@ -8,8 +8,9 @@ const ShopScreen = () => {
   const { t } = useTranslation();
   
   return (
-    <Container fluid className={`d-flex justify-content-center align-items-center ${theme.bgClass} ${theme.text}`}>
-      {t('generic.shop')}
+    <Container fluid className={`d-flex flex-column gap-5 justify-content-center align-items-center ${theme.bgClass} ${theme.text}`}>
+      <span>{t('generic.shop')}</span>
+      <span>{t('generic.comingSoon')}</span>
     </Container>
   );
 };

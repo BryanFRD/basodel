@@ -6,15 +6,12 @@ import { ThemeContext } from '../context/ThemeContext';
 import { UserContext } from '../context/UserContext';
 import GenericLink from '../components/generic/link/GenericLink';
 import LoginModal from '../components/layouts/login/modal/LoginModal';
-import useBreakpoints from '../js/useBreakpoints';
 
 const HomeScreen = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { t } = useTranslation();
   const [ showModal, setShowModal ] = useState(false);
-  
-  const { breapoints } = useBreakpoints();
   
   const handleShowModal = (tabName) => {
     if(tabName !== false || tabName !== 'login' || tabName !== 'signup')

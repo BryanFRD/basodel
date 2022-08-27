@@ -4,6 +4,7 @@ import { ObjectHelper } from '../helpers/ObjectHelper.helper';
 /*
   TODO Il a du mal à detecter au bon moment, 922 bootstrap != 992 ici (pas la même taille en html et css ???)
   L'event se fait surement AVANT que la taille soit modifiée
+  Il y a un problème dans la detection des breakpoints, revoir afin d'éviter de changer le state si rien ne change
 */
 
 const useBreakpoints = () => {
@@ -22,12 +23,8 @@ const useBreakpoints = () => {
   const resize = () => {
     const bp = getBreakpoints(window.innerWidth);
     
-    console.log('called risize')
-    
     if(ObjectHelper.isEqual(breakpoints, bp))
       return;
-    
-    console.log('resized')
       
     setBreakpoints(bp);
   }
@@ -38,6 +35,7 @@ const useBreakpoints = () => {
     return () => {
       window.removeEventListener('resize', resize);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   return { breakpoints };
