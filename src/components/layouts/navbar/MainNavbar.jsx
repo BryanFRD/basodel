@@ -3,7 +3,14 @@ import './MainNavbar.scss';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../context/ThemeContext';
-import { RiHome2Line, RiChat3Line, RiSettings4Line, RiArrowLeftSLine, RiArrowRightSLine, RiAccountCircleLine } from 'react-icons/ri'
+import { 
+  RiHome2Line, 
+  RiShoppingBasket2Line, 
+  RiChat3Line, 
+  RiSettings4Line, 
+  RiArrowLeftSLine, 
+  RiArrowRightSLine, 
+  RiAccountCircleLine } from 'react-icons/ri'
 import NavbarLink from './NavbarLink';
 import LoginModal from '../login/modal/LoginModal';
 import { UserContext } from '../../../context/UserContext';
@@ -75,6 +82,12 @@ const MainNavbar = () => {
                 to='/'>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.home')}</span>
                   <RiHome2Line className='d-none d-lg-inline fs-2'/>
+              </NavbarLink>
+              <NavbarLink
+                className={`d-flex gap-3 w-100 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.bgHover} ${theme.text}`}
+                to='/shop'>
+                  <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.shop')}</span>
+                  <RiShoppingBasket2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
                 className={`d-flex gap-3 w-100 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.bgHover} ${theme.text}`}

@@ -7,7 +7,7 @@ import LoadingSpinner from './components/layouts/LoadingSpinner';
 import NotFoundScreen from './screens/NotFoundScreen';
 
 const HomeScreen = React.lazy(() => import('./screens/HomeScreen'));
-const AboutScreen = React.lazy(() => import('./screens/AboutScreen'));
+const ShopScreen = React.lazy(() => import('./screens/ShopScreen'));
 
 function App() {
   return (
@@ -20,9 +20,9 @@ function App() {
             </Suspense>
           } />
           
-          <Route path='/about' element={
+          <Route path='/shop' element={
             <Suspense fallback={<LoadingSpinner />}>
-              <AboutScreen />
+              <ShopScreen />
             </Suspense>
           } />
           

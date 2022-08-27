@@ -1,19 +1,20 @@
 {
   "generic": {
     "home": "Home",
-    "about": "About",
+    "shop": "Shop",
     "login": "Log In",
     "signup": "Sign Up",
     "logout": "Log Out",
     "language": "Language",
-    "dark_theme": "Dark Theme",
+    "darkMode": "Dark Theme",
     "back": "Back",
     "chat": "Chat",
     "settings": "Settings",
-    "comming-soon": "Comming Soon"
+    "comingSoon": "Coming Soon"
   },
   "error": {
-    "must-be-logged": "You must be logged in!"
+    "mustBeLogged": "You must be logged in!",
+    "404": "Page not found!"
   },
   "settings": {
     "interface": "Interface",

@@ -1,5 +1,6 @@
 {
-  "name": "theme.light",
+  "name": "light",
+  "tName": "theme.light",
   "variant": "light",
   "menuVariant": "light",
   "btnVariant": "dark",

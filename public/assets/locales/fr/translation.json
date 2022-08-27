@@ -1,19 +1,20 @@
 {
   "generic": {
     "home": "Accueil",
-    "about": "À Propos",
+    "shop": "Boutique",
     "login": "Se connecter",
     "signup": "S'inscrire",
     "logout": "Se déconnecter",
     "language": "Langue",
-    "dark_theme": "Thème Sombre",
+    "darkMode": "Thème Sombre",
     "back": "Retour",
     "chat": "Chat",
     "settings": "Paramètres",
-    "comming-soon": "Comming Soon"
+    "comingSoon": "Arrive bientôt"
   },
   "error": {
-    "must-be-logged": "Vous devez être connecté !"
+    "mustBeLogged": "Vous devez être connecté !",
+    "404": "Page non trouvée !"
   },
   "settings": {
     "interface": "Interface",

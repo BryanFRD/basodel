@@ -6,12 +6,15 @@ import { ThemeContext } from '../context/ThemeContext';
 import { UserContext } from '../context/UserContext';
 import GenericLink from '../components/generic/link/GenericLink';
 import LoginModal from '../components/layouts/login/modal/LoginModal';
+import useBreakpoints from '../js/useBreakpoints';
 
 const HomeScreen = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { t } = useTranslation();
   const [ showModal, setShowModal ] = useState(false);
+  
+  const { breapoints } = useBreakpoints();
   
   const handleShowModal = (tabName) => {
     if(tabName !== false || tabName !== 'login' || tabName !== 'signup')
@@ -28,7 +31,7 @@ const HomeScreen = () => {
           <GameWindow />
           :
           <Container fluid className='d-flex w-100 flex-column gap-5 align-center justify-content-center align-items-center'>
-            {t('error.must-be-logged')}
+            {t('error.mustBeLogged')}
             <div className='d-flex flex-column flex-lg-row gap-5'>
               <GenericLink
                 className={`btn ${theme.btnOutline} text-nowrap`}
