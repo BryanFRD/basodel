@@ -7,7 +7,7 @@ const SettingsContextProvider = (props) => {
   
   //TODO Settings
   
-  return (<SettingsContext.Provider value={{settings}}>{props.children}</SettingsContext.Provider>)
+  return (<SettingsContext.Provider value={{settings, setSettings}}>{props.children}</SettingsContext.Provider>)
 }
 
 export default SettingsContextProvider;

@@ -70,7 +70,7 @@ body {
     --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #f8f9fa;
     
     button {
-      color: #f8f9fa;
+      color: #212529 !important;
     }
   }
   
@@ -109,6 +109,10 @@ body {
   
   .nav-item {
     --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #212529;
+    
+    button {
+      color: #f8f9fa !important;
+    }
   }
   
   .modal-body .nav-fill {

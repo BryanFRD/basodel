@@ -14,10 +14,28 @@
   },
   "error": {
     "mustBeLogged": "Vous devez être connecté !",
-    "404": "Page non trouvée !"
+    "404": "Page non trouvée !",
+    "login": "Erreur lors de la connexion !",
+    "signup": "Erreur lors de l'inscription !"
   },
   "settings": {
     "interface": "Interface",
     "game": "Jeu"
+  },
+  "login": {
+    "usernameOrEmailLabel": "Pseudo ou email",
+    "usernameLabel": "Pseudo",
+    "emailLabel": "Email",
+    "passwordLabel": "Mot de passe",
+    "confirmPasswordLabel": "Confirmez votre mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié ?",
+    "loginButton": "Connexion",
+    "signupButton": "Inscription"
+  },
+  "placeholder": {
+    "username": "exemple",
+    "email": "exemple@domaine.com",
+    "password": "mot de passe"
   }
 }

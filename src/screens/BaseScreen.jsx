@@ -25,15 +25,6 @@ const BaseScreen = () => {
           </div>
         </Col>
       </Row>
-      {/* <header>
-        <SideBarNav mainRef={mainRef} footerRef={footerRef} />
-      </header>
-      <main ref={mainRef} className={`${theme.bgClass} ${theme.text}`}>
-        <Outlet />
-      </main>
-      <footer ref={footerRef}>
-        <Footer />
-      </footer> */}
     </>
   );
 };

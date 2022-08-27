@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { ThemeContext } from '../../../../../context/ThemeContext';
 
 const SecondNavbarChat = () => {
-  const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   
   return (

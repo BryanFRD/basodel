@@ -14,10 +14,28 @@
   },
   "error": {
     "mustBeLogged": "You must be logged in!",
-    "404": "Page not found!"
+    "404": "Page not found!",
+    "login": "Login error!",
+    "signup": "Signup error!"
   },
   "settings": {
     "interface": "Interface",
     "game": "Game"
+  },
+  "login": {
+    "usernameOrEmailLabel": "Username or email",
+    "usernameLabel": "Username",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your parssword ?",
+    "loginButton": "Log In",
+    "signupButton": "Sign Up"
+  },
+  "placeholder": {
+    "username": "example",
+    "email": "example@domain.com",
+    "password": "password"
   }
 }

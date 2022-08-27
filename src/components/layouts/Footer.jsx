@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 import Container from 'react-bootstrap/esm/Container';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { theme } = useContext(ThemeContext);

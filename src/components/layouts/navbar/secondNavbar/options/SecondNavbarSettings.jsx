@@ -16,7 +16,7 @@ const SecondNavbarSettings = () => {
   
   const handleChangeTheme = () => {
     setChangeTheme(prevValue => !prevValue);
-    changeThemeTo(!changeTheme ? 'dark' : 'light')
+    changeThemeTo(!changeTheme ? 'dark' : 'light');
   }
   
   const handleLangChange = ({currentTarget}) => {

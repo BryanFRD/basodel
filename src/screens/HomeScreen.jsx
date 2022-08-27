@@ -14,9 +14,6 @@ const HomeScreen = () => {
   const [ showModal, setShowModal ] = useState(false);
   
   const handleShowModal = (tabName) => {
-    if(tabName !== false || tabName !== 'login' || tabName !== 'signup')
-      tabName = 'login';
-      
     setShowModal(tabName);
   }
   

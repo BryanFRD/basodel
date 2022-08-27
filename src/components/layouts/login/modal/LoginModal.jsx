@@ -19,12 +19,12 @@ const LoginModal = ({show, setShow}) => {
         <GenericLink className='ms-auto fs-3 px-3 py-1' onClick={() => setShow(false)}><RiCloseFill /></GenericLink>
       </Modal.Header>
       <Modal.Body>
-        <Tabs defaultActiveKey={show} justify fill className='flex-row'>
+        <Tabs defaultActiveKey={show} justify fill className={`flex-row text.link`}>
           <Tab eventKey='login' title={t('generic.login')}>
-            <LogInModalTab/>
+            <LogInModalTab setShow={setShow}/>
           </Tab>
           <Tab eventKey='signup' title={t('generic.signup')}>
-            <SignUpModalTab/>
+            <SignUpModalTab setShow={setShow}/>
           </Tab>
         </Tabs>
       </Modal.Body>

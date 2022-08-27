@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import './MainNavbar.scss';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import { useTranslation } from 'react-i18next';

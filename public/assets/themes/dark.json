@@ -13,5 +13,8 @@
   "mainNavbarShadow": "mainNavbarShadow-light",
   "bgHover": "bg-hover-light",
   "modal": "modal-dark",
-  "btnOutline": "btn-outline-light"
+  "btnOutline": "btn-outline-light",
+  "submitFormVariant": "success",
+  "textError": "text-danger",
+  "textSuccess": "text-success"
 }
