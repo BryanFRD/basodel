@@ -19,3 +19,13 @@ export class UserAccount extends BaseModel {
   }
   
 }
+
+/** 
+ * 
+ * userCredential -> useAccount : 1,1x0,1 
+ * 
+ * purchase -> userAccount : 1,1x0,n
+ * 
+ * gameHistory -> userAccount : 1,nx0,n
+ * 
+*/
