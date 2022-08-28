@@ -1,6 +1,8 @@
 export class BaseModel {
   
   id = -1;
+  createdDate = -1;
+  lastModifiedDate = -1;
   isDeleted = false;
   
   assign = (props) => {
@@ -8,6 +10,10 @@ export class BaseModel {
       if(!this.hasOwnProperty(key)){
         delete props[key];
         continue
+      }
+      
+      if(key.endsWith('Date')){
+        props[key] = new Date(props[key]);
       }
     }
     
