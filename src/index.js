@@ -4,6 +4,8 @@ import App from './App';
 import ThemeContextProvider from './context/ThemeContext';
 import UserContextProvider from './context/UserContext';
 
+//TODO Avertissement quand on change la page et que le jeu est dans un certain 'state'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

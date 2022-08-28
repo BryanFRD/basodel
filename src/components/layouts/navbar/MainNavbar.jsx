@@ -109,7 +109,9 @@ const MainNavbar = () => {
                     {user ?
                       <div>
                         {/* TODO Montrer les infos de l'utilisateur */}
-                        Bernard
+                        <GenericLink to='/account' className={theme.link}>
+                          Bernard
+                        </GenericLink>
                       </div>
                       :
                       <div className='d-flex flex-column gap-4 gap-lg-1'>
