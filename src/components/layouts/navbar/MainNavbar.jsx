@@ -69,28 +69,28 @@ const MainNavbar = () => {
           <div className='h-100 d-flex flex-column gap-3 gap-lg-0 justify-content-lg-between align-right'>
             <div className='d-flex gap-3 flex-column align-items-lg-end'>
               <NavbarLink
-                className={`d-none d-lg-block py-3 px-3 ${theme.text}`}
+                className={`d-none d-lg-block py-3 fs-2 text-end`}
                 onClick={onClickExpand}>
                 {isExpanded ?
-                  <RiArrowRightSLine className='fs-2'/>
+                  <RiArrowRightSLine/>
                   :
-                  <RiArrowLeftSLine className='fs-2'/>
+                  <RiArrowLeftSLine/>
                 }
               </NavbarLink>
               <NavbarLink
-                className={`d-flex gap-3 w-100 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.bgHover} ${theme.text}`}
+                className={`${theme.bgHover}`}
                 to='/'>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.home')}</span>
                   <RiHome2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`d-flex gap-3 w-100 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.bgHover} ${theme.text}`}
+                className={`${theme.bgHover}`}
                 to='/shop'>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.shop')}</span>
                   <RiShoppingBasket2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`d-flex gap-3 w-100 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.bgHover} ${theme.text}`}
+                className={`${theme.bgHover}`}
                 onClick={() => changeSecondNav('chat')}>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.chat')}</span>
                   <RiChat3Line className='d-none d-lg-inline fs-2'/>
@@ -98,13 +98,13 @@ const MainNavbar = () => {
             </div>
             <div className='d-flex gap-3 flex-column align-items-lg-end'>
               <NavbarLink
-                className={`d-flex gap-3 w-100 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.bgHover} ${theme.text}`}
+                className={`${theme.bgHover}`}
                 onClick={() => changeSecondNav('settings')}>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.settings')}</span>
                   <RiSettings4Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`account-link d-flex gap-3 px-3 justify-content-lg-center align-items-lg-center py-2 ${theme.text}`}>
+                className={`account-link`}>
                   <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>
                     {user ?
                       <div>
