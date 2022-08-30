@@ -23,47 +23,43 @@ const MainNavbar = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { t } = useTranslation();
-  const [ isExpanded, setIsExpanded ] = useState(false);
-  const [ showModal, setShowModal ] = useState(false);
-  const [ collapsed, setCollapsed ] = useState(false);
-  const [ secondNav, setSecondNav ] = useState('chat');
+  const [ navbarState, setNavbarState ] = useState({isExpanded: false, showModal: false, collapsed: false, secondNav: false});
   
   const onClickExpand = () => {
-    setIsExpanded(prevValue => !prevValue);
+    setNavbarState(prevValue => ({...prevValue, isExpanded: !prevValue.isExpanded}));
   }
   
   const handleShowModal = (tabName) => {
-    setShowModal(tabName);
+    setNavbarState(prevValue => ({...prevValue, showModal: tabName}));
   }
   
   const handleToggleCollapse = (e) => {
-    if(typeof e === 'boolean')
+    if(typeof e !== 'boolean')
       return;
       
-    setCollapsed(e.currentTarget.className.includes('collapsed'));
+    setNavbarState(prevValue => ({...prevValue, collapsed: e}));
   }
   
   const changeSecondNav = (secondNavName) => {
-    setSecondNav(prevNav => {
-      if(prevNav === secondNavName)
-        return false;
-      
-      setIsExpanded(false);
-      setCollapsed(false);
-        
-      return secondNavName;
-    });
+    setNavbarState(prevValue => (
+      {
+        ...prevValue,
+        secondNav: (prevValue.secondNav === secondNavName ? false : secondNavName),
+        isExpanded: false,
+        collapsed: false
+      }
+      ));
   }
   
   return (
     <Row className='g-0'>
-      <LoginModal show={showModal} setShow={setShowModal} />
+      <LoginModal show={navbarState.showModal} setShow={setNavbarState} />
       <Col>
-      {secondNav && <SecondNavbar secondNav={secondNav} changeSecondNav={changeSecondNav}/>}
+      {navbarState.secondNav && <SecondNavbar secondNav={navbarState.secondNav} changeSecondNav={changeSecondNav}/>}
       </Col>
       <Col lg='auto'>
-      <Navbar id='mainNavBar' expanded={collapsed} variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}
-      className={`user-select-none ${collapsed && `${theme.bgClass} ${theme.shadow}`} ${theme.bgLgClass} ${theme.mainNavbarShadow}`}>
+      <Navbar id='mainNavBar' expanded={navbarState.collapsed} variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}
+      className={`user-select-none ${navbarState.collapsed && `${theme.bgClass} ${theme.shadow}`} ${theme.bgLgClass} ${theme.mainNavbarShadow}`}>
         <Navbar.Toggle className={`ms-auto me-3 ms-lg-0 ${theme.bgClass} opacity-50`} onClick={handleToggleCollapse}/>
         <Navbar.Collapse className={`px-3 px-lg-0 mx-lg-0 pb-2 pb-lg-0 ${theme.bgClass}`}>
           <div className='h-100 d-flex flex-column gap-3 gap-lg-0 justify-content-lg-between align-right'>
@@ -71,7 +67,7 @@ const MainNavbar = () => {
               <NavbarLink
                 className={`d-none d-lg-block py-3 fs-2 text-end`}
                 onClick={onClickExpand}>
-                {isExpanded ?
+                {navbarState.isExpanded ?
                   <RiArrowRightSLine/>
                   :
                   <RiArrowLeftSLine/>
@@ -79,55 +75,58 @@ const MainNavbar = () => {
               </NavbarLink>
               <NavbarLink
                 className={`${theme.bgHover}`}
-                to='/'>
-                  <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.home')}</span>
+                to='/'
+                navbarState={navbarState}
+                title={t('generic.home')}>
                   <RiHome2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
                 className={`${theme.bgHover}`}
-                to='/shop'>
-                  <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.shop')}</span>
+                to='/shop'
+                navbarState={navbarState}
+                title={t('generic.shop')}>
                   <RiShoppingBasket2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
                 className={`${theme.bgHover}`}
-                onClick={() => changeSecondNav('chat')}>
-                  <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.chat')}</span>
+                onClick={() => changeSecondNav('chat')}
+                navbarState={navbarState}
+                title={t('generic.chat')}>
                   <RiChat3Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
             </div>
             <div className='d-flex gap-3 flex-column align-items-lg-end'>
               <NavbarLink
                 className={`${theme.bgHover}`}
-                onClick={() => changeSecondNav('settings')}>
-                  <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>{t('generic.settings')}</span>
+                onClick={() => changeSecondNav('settings')}
+                navbarState={navbarState}
+                title={t('generic.settings')}>
                   <RiSettings4Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`account-link`}>
-                  <span className={isExpanded ? 'd-lg-inline w-100 text-lg-end' : 'd-lg-none'}>
-                    {user ?
-                      <div>
-                        {/* TODO Montrer les infos de l'utilisateur */}
-                        <GenericLink to='/account' className={theme.link}>
-                          Bernard
-                        </GenericLink>
-                      </div>
-                      :
-                      <div className='d-flex flex-column gap-4 gap-lg-1'>
-                        <GenericLink
-                          className={`${theme.bgHover} text-nowrap px-lg-2 py-1 d-lg-inline text-lg-end`}
-                          onClick={() => handleShowModal('login')}>
-                            {t('generic.login')}
-                        </GenericLink>
-                        <GenericLink
-                          className={`${theme.bgHover} text-nowrap px-lg-2 py-1 d-lg-inline text-lg-end`}
-                          onClick={() => handleShowModal('signup')}>
-                            {t('generic.signup')}
-                        </GenericLink>
-                      </div>
-                    }
-                  </span>
+                className={`account-link`}
+                navbarState={navbarState}
+                title={user ?
+                  <div>
+                    {/* TODO Montrer les infos de l'utilisateur */}
+                    <GenericLink to='/account' className={theme.link}>
+                      Bernard
+                    </GenericLink>
+                  </div>
+                  :
+                  <div className='d-flex flex-column gap-4 gap-lg-1'>
+                    <GenericLink
+                      className={`${theme.bgHover} text-nowrap px-lg-2 py-1 d-lg-inline text-lg-end`}
+                      onClick={() => handleShowModal('login')}>
+                        {t('generic.login')}
+                    </GenericLink>
+                    <GenericLink
+                      className={`${theme.bgHover} text-nowrap px-lg-2 py-1 d-lg-inline text-lg-end`}
+                      onClick={() => handleShowModal('signup')}>
+                        {t('generic.signup')}
+                    </GenericLink>
+                  </div>
+                }>
                   <GenericLink 
                     to={user && '/account'}
                     className={`d-none d-lg-inline h-100 ${theme.link}`}

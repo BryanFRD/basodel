@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ThemeContext } from '../../../../../context/ThemeContext';
-import useLanguages from '../../../../../js/useLanguages';
+import { ThemeContext } from '../../../../../../context/ThemeContext';
+import useLanguages from '../../../../../../js/useLanguages';
 
 const SecondNavbarSettings = () => {
   const { theme, changeThemeTo } = useContext(ThemeContext);
