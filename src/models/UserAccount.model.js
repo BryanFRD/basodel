@@ -18,14 +18,9 @@ export class UserAccount extends BaseModel {
     return Math.floor((this.xp * (this.xp + 1)) / 2);
   }
   
+  getGameHistories() {
+    //TODO
+    return [];
+  }
+  
 }
-
-/** 
- * 
- * userCredential -> useAccount : 1,1x0,1 
- * 
- * purchase -> userAccount : 1,1x0,n
- * 
- * gameHistory -> userAccount : 1,nx0,n
- * 
-*/

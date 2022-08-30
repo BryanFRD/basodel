@@ -59,11 +59,11 @@ const MainNavbar = () => {
     <Row className='g-0'>
       <LoginModal show={showModal} setShow={setShowModal} />
       <Col>
-      {secondNav ? <SecondNavbar secondNav={secondNav} changeSecondNav={changeSecondNav}/> : <></>}
+      {secondNav && <SecondNavbar secondNav={secondNav} changeSecondNav={changeSecondNav}/>}
       </Col>
       <Col lg='auto'>
       <Navbar id='mainNavBar' expanded={collapsed} variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}
-      className={`user-select-none ${collapsed ? `${theme.bgClass} ${theme.shadow}` : ''} ${theme.bgLgClass} ${theme.mainNavbarShadow}`}>
+      className={`user-select-none ${collapsed && `${theme.bgClass} ${theme.shadow}`} ${theme.bgLgClass} ${theme.mainNavbarShadow}`}>
         <Navbar.Toggle className={`ms-auto me-3 ms-lg-0 ${theme.bgClass} opacity-50`} onClick={handleToggleCollapse}/>
         <Navbar.Collapse className={`px-3 px-lg-0 mx-lg-0 pb-2 pb-lg-0 ${theme.bgClass}`}>
           <div className='h-100 d-flex flex-column gap-3 gap-lg-0 justify-content-lg-between align-right'>
@@ -129,11 +129,11 @@ const MainNavbar = () => {
                     }
                   </span>
                   <GenericLink 
-                    to={user ? '/account' : ''}
+                    to={user && '/account'}
                     className={`d-none d-lg-inline h-100 ${theme.link}`}
                     onClick={() => {
                       if(!user)
-                      handleShowModal('login');
+                        handleShowModal('login');
                     }}>
                       <RiAccountCircleLine className='d-none d-lg-inline fs-2 h-100'/>
                   </GenericLink>
