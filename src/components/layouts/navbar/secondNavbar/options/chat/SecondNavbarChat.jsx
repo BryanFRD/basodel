@@ -16,11 +16,13 @@ const SecondNavbarChat = () => {
   /*************************************************************/
   
   return (
-    <div className={`secondnavbar-chat d-flex flex-column align-items-center user-select-none`}>
-      <h4 className='mx-4 text-center'>
-        {t('generic.chat')}
-      </h4>
-      <hr className='w-100 mt-2'/>
+    <div className={`secondnavbar-chat h-75 d-flex flex-column align-items-center justify-content-between user-select-none`}>
+      <div className='d-flex flex-column w-100'>
+        <h4 className='mx-4 text-center'>
+          {t('generic.chat')}
+        </h4>
+        <hr className='w-100 mt-2'/>
+      </div>
       <div className={`chat-box w-100 d-flex flex-column`}>
         <ChatContent messages={messages}/>
         <ChatInput setMessages={setMessages}/>

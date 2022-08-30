@@ -1,7 +1,8 @@
-.secondnavbar-chat { 
+.secondnavbar-chat {
+  
+  
   .chat-content {
-    max-height: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
   
   @media screen and (min-width: 992px) {
