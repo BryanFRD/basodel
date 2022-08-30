@@ -23,7 +23,7 @@ const MainNavbar = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { t } = useTranslation();
-  const [ navbarState, setNavbarState ] = useState({isExpanded: false, showModal: false, collapsed: false, secondNav: false});
+  const [ navbarState, setNavbarState ] = useState({isExpanded: false, showModal: false, collapsed: false, secondNav: 'chat'});
   
   const onClickExpand = () => {
     setNavbarState(prevValue => ({...prevValue, isExpanded: !prevValue.isExpanded}));

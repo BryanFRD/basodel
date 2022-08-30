@@ -18,7 +18,7 @@ const SecondNavbar = ({secondNav, changeSecondNav}) => {
   }
   
   return (
-    <div id='secondNavbar' className={`h-100 vh-100 mh-100 w-100 py-3 py-lg-2 ${theme.shadow} ${theme.bgClass} ${theme.text}`}>
+    <div id='secondNavbar' className={`h-100 vh-100 mh-100 w-100 d-flex flex-column py-3 py-lg-2 ${theme.shadow} ${theme.bgClass} ${theme.text}`}>
       <RiCloseLine className='ms-auto d-block m-3 m-lg-0 ms-lg-auto mx-3 mx-lg-3 fs-2 cursor-pointer' onClick={handleClose}/>
       {secondNavOptions[secondNav]}
     </div>

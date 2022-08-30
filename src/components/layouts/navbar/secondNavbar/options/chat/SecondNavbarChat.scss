@@ -1,15 +1,23 @@
+#secondNavbar * {
+  background-color: #ff000020 !important;
+  max-height: 100%;
+}
+
 .secondnavbar-chat {
-  
-  
-  .chat-content {
-    overflow: hidden;
+  flex-grow: 1;
+  .chat-box {
+    flex-grow: 1;
+    .chat-content {
+      flex-grow: 1;
+      overflow-y: auto;
+    }
   }
-  
+
   @media screen and (min-width: 992px) {
     max-width: 400px;
     width: 400px;
   }
-  
+
   .chat-message {
     max-width: 55%;
     width: fit-content;
