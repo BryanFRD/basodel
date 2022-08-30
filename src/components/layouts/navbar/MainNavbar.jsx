@@ -26,7 +26,7 @@ const MainNavbar = () => {
   const [ isExpanded, setIsExpanded ] = useState(false);
   const [ showModal, setShowModal ] = useState(false);
   const [ collapsed, setCollapsed ] = useState(false);
-  const [ secondNav, setSecondNav ] = useState(false);
+  const [ secondNav, setSecondNav ] = useState('chat');
   
   const onClickExpand = () => {
     setIsExpanded(prevValue => !prevValue);
