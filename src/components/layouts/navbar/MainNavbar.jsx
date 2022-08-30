@@ -74,21 +74,21 @@ const MainNavbar = () => {
                 }
               </NavbarLink>
               <NavbarLink
-                className={`${theme.bgHover}`}
+                hover
                 to='/'
                 navbarState={navbarState}
                 title={t('generic.home')}>
                   <RiHome2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`${theme.bgHover}`}
+                hover
                 to='/shop'
                 navbarState={navbarState}
                 title={t('generic.shop')}>
                   <RiShoppingBasket2Line className='d-none d-lg-inline fs-2'/>
               </NavbarLink>
               <NavbarLink
-                className={`${theme.bgHover}`}
+                hover
                 onClick={() => changeSecondNav('chat')}
                 navbarState={navbarState}
                 title={t('generic.chat')}>
@@ -97,7 +97,7 @@ const MainNavbar = () => {
             </div>
             <div className='d-flex gap-3 flex-column align-items-lg-end'>
               <NavbarLink
-                className={`${theme.bgHover}`}
+                hover
                 onClick={() => changeSecondNav('settings')}
                 navbarState={navbarState}
                 title={t('generic.settings')}>
