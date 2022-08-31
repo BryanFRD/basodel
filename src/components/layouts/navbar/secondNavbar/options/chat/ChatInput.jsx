@@ -12,7 +12,12 @@ const ChatInput = ({setMessages}) => {
     if(!messageContent?.trim())
       return;
     
-    setMessages(prevValue => [...prevValue, {sender: Math.random() < 0.5, content: messageContent.trim()}]);
+    setMessages(prevValue => [...prevValue, {
+      id: Math.random().toString(16).slice(2),
+      sender: Math.random() < 0.5,
+      content: messageContent.trim()
+    }]);
+    
     setMessageContent('');
   }
   
@@ -29,7 +34,7 @@ const ChatInput = ({setMessages}) => {
   
   return (
     <div className='d-flex flex-column gap-3'>
-      <hr />
+      <hr className='mt-0'/>
       <Form className={`chat-input d-flex align-items-center gap-3 px-3 ${theme.text}`} onSubmit={handleSubmitMessage}>
         <Form.Control
         as='textarea'

@@ -1,10 +1,18 @@
 .secondnavbar-chat {
   .chat-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     overflow-y: auto;
-    $height-calc: calc(100vh - 18rem);
-    min-height: calc($height-calc);
-    height: calc($height-calc);
-    max-height: calc($height-calc);
+    
+    $height-calc: calc(100vh - 15.5rem);
+    min-height: $height-calc;
+    height: $height-calc;
+    max-height: $height-calc;
+    
+    :first-child {
+      margin-top: auto;
+    }
   }
   
   @media screen and (min-width: 992px) {
@@ -12,25 +20,33 @@
     width: 400px;
   }
   
-  .chat-message {
-    max-width: 65%;
-    width: fit-content;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 10px;
-    word-break: break-all;
-    color: #f8f9fa;
-    
+  .chat-message-container {
     &.message-sender {
-      align-self: end;
-      background-color: #0d6efd !important;
-      text-align: end;
+      .chat-message {
+        margin-left: auto;
+        background-color: #0d6efd !important;
+        text-align: end;
+      }
     }
     
     &.message-receiver {
-      background-color: #6c757d !important;
+      .chat-message {
+        background-color: #6c757d !important;
+      }
+    }
+    
+    .chat-message {
+      max-width: 65%;
+      width: fit-content;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 10px;
+      word-break: break-all;
+      color: #f8f9fa;
+      
     }
   }
+  
 }
 
 .chat-input {

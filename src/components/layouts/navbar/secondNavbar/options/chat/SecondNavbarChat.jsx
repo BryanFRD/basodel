@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './SecondNavbarChat.scss';
 import { useTranslation } from 'react-i18next';
-import { ThemeContext } from '../../../../../../context/ThemeContext';
 import ChatInput from './ChatInput';
 import ChatContent from './ChatContent';
 
@@ -20,7 +19,7 @@ const SecondNavbarChat = () => {
         <h4 className='mx-4 text-center'>
           {t('generic.chat')}
         </h4>
-        <hr className='w-100 mt-2'/>
+        <hr className='w-100 mt-2 mb-0'/>
       </div>
       <div className={`chat-box w-100 d-flex flex-column`}>
         <ChatContent messages={messages}/>

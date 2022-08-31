@@ -18,5 +18,6 @@
   "textError": "text-danger",
   "textSuccess": "text-success",
   "textWarning": "text-warning",
-  "sendButtonChat": "text-primary"
+  "sendButtonChat": "text-primary",
+  "customScrollbar": "custom-scrollbar-light"
 }
