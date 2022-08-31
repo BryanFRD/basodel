@@ -3,7 +3,7 @@ import ChatMessage from './ChatMessage';
 
 const ChatContent = ({messages}) => {
   return (
-    <div className='chat-content d-flex flex-column justify-content-end px-2'>
+    <div className='chat-content d-flex flex-column justify-content-end px-2 custom-scrollbar'>
       {messages.map((message, index) => <>
         <ChatMessage key={`messageIndex-${index}`} message={message} />
       </>)}

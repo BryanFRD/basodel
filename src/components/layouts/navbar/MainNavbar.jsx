@@ -36,7 +36,7 @@ const MainNavbar = () => {
   const handleToggleCollapse = (e) => {
     if(typeof e !== 'boolean')
       return;
-      
+    
     setNavbarState(prevValue => ({...prevValue, collapsed: e}));
   }
   

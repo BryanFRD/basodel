@@ -1,21 +1,19 @@
 .secondnavbar-chat {
   .chat-content {
     overflow-y: auto;
-    min-height: calc(100vh - 18rem);
-    max-height: calc(100vh - 18rem);
+    $height-calc: calc(100vh - 18rem);
+    min-height: calc($height-calc);
+    height: calc($height-calc);
+    max-height: calc($height-calc);
   }
   
   @media screen and (min-width: 992px) {
     max-width: 400px;
     width: 400px;
-    .chat-content {
-      min-height: calc(100vh - 16rem);
-      max-height: calc(100vh - 16rem);
-    }
   }
   
   .chat-message {
-    max-width: 55%;
+    max-width: 65%;
     width: fit-content;
     padding: 10px 20px;
     margin: 5px;
