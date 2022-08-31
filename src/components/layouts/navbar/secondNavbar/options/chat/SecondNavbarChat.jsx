@@ -7,7 +7,6 @@ import ChatContent from './ChatContent';
 
 const SecondNavbarChat = () => {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext);
   
   /*************************************************************/
   

@@ -1,23 +1,19 @@
-#secondNavbar * {
-  background-color: #ff000020 !important;
-  max-height: 100%;
-}
-
 .secondnavbar-chat {
-  flex-grow: 1;
-  .chat-box {
-    flex-grow: 1;
-    .chat-content {
-      flex-grow: 1;
-      overflow-y: auto;
-    }
+  .chat-content {
+    overflow-y: auto;
+    min-height: calc(100vh - 18rem);
+    max-height: calc(100vh - 18rem);
   }
-
+  
   @media screen and (min-width: 992px) {
     max-width: 400px;
     width: 400px;
+    .chat-content {
+      min-height: calc(100vh - 16rem);
+      max-height: calc(100vh - 16rem);
+    }
   }
-
+  
   .chat-message {
     max-width: 55%;
     width: fit-content;
@@ -26,11 +22,13 @@
     border-radius: 10px;
     word-break: break-all;
     color: #f8f9fa;
+    
     &.message-sender {
       align-self: end;
       background-color: #0d6efd !important;
       text-align: end;
     }
+    
     &.message-receiver {
       background-color: #6c757d !important;
     }
