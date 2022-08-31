@@ -19,5 +19,5 @@
   "textSuccess": "text-success",
   "textWarning": "text-warning",
   "sendButtonChat": "text-primary",
-  "customScrollbar": "custom-scrollbar-dark"
+  "customScrollbar": "custom-scrollbar-light"
 }

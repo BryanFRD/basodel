@@ -39,7 +39,7 @@ const ChatInput = ({setMessages}) => {
         <Form.Control
         as='textarea'
         name='messageInput'
-        className={`${theme.bgClass} ${theme.text}`}
+        className={`${theme.bgClass} ${theme.text} ${theme.customScrollbar}`}
         value={messageContent}
         onChange={handleOnChangeMessage}
         onKeyDown={handleSubmitInput}></Form.Control>
