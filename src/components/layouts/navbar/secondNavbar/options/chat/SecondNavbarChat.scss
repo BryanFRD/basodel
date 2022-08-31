@@ -4,7 +4,6 @@
     flex-direction: column;
     flex: 1;
     overflow-y: auto;
-    scroll-behavior: smooth;
     
     $height-calc: calc(100vh - 15.5rem);
     min-height: $height-calc;
