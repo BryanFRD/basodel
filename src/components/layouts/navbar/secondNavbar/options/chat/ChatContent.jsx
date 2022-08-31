@@ -8,7 +8,7 @@ const ChatContent = ({messages}) => {
   const [ autoScroll, setAutoScroll ] = useState(true);
   
   const handleScrollEvent = ({target}) => {
-    setAutoScroll(target.scrollTop === chatContentRef.current.scrollHeight);
+    setAutoScroll(target.scrollTop === (target.scrollHeight - target.clientHeight));
   }
   
   useEffect(() => {
@@ -17,9 +17,9 @@ const ChatContent = ({messages}) => {
   
   useEffect(() => {
     if(autoScroll){
-      
+      chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
   
   return (
