@@ -21,10 +21,11 @@ const ChatMessage = ({message}) => {
         <Dropdown>
           <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>Bernard</Dropdown.Toggle>
           <Dropdown.Menu variant={theme.variant}>
+            <Dropdown.ItemText>Bernard</Dropdown.ItemText>
+            <Dropdown.Divider />
             <Dropdown.Item className={theme.textDanger} onClick={handleBlockUser}>
               {t('chat.blockUser')}
             </Dropdown.Item>
-            <Dropdown.Divider />
             <Dropdown.Item className={theme.textDanger} onClick={handleReportUser}>
               {t('chat.reportUser')}
             </Dropdown.Item>
