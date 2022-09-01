@@ -42,7 +42,8 @@ const ChatInput = ({setMessages}) => {
         className={`${theme.bgClass} ${theme.text} ${theme.customScrollbar}`}
         value={messageContent}
         onChange={handleOnChangeMessage}
-        onKeyDown={handleSubmitInput}></Form.Control>
+        onKeyDown={handleSubmitInput}
+        maxLength={255}></Form.Control>
         <Button className={`${theme.bgClass} border-0 ${theme.sendButtonChat}`} onClick={handleSubmitMessage}><RiSendPlane2Fill /></Button>
       </Form>
     </div>

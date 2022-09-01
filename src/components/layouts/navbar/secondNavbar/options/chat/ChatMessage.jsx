@@ -7,7 +7,7 @@ const ChatMessage = ({message}) => {
   return (
     <div className={`chat-message-container ${theme.chat} ${message.sender ? 'message-sender' : 'message-receiver'}`}>
       <div className={`chat-message d-flex flex-column`}>
-        <span className={`chat-username`}>Bernard</span>
+        <span className={`chat-username mb-2`}>Bernard</span>
         <span>{message.content}</span>
       </div>
     </div>
