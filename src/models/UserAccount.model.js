@@ -7,6 +7,7 @@ export class UserAccount extends BaseModel {
   xp = 0;
   silver = 0;
   gold = 0;
+  blockedUsed = [];
   
   constructor(props){
     super();

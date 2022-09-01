@@ -1,15 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { Overlay, Popover } from 'react-bootstrap';
+import React, { useContext, useRef, useState } from 'react';
+import { Dropdown } from 'react-bootstrap';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import GenerikLink from '../../../../../generic/link/GenericLink';
 
 const ChatMessage = ({message}) => {  
   const { theme } = useContext(ThemeContext);
-  const [ showOverlay, setShowOverlay ] = useState(false);
-  
-  const handleShowPopover = () => {
-    setShowOverlay(prevValue => !prevValue);
-  }
   
   const handleBlockUser = () => {
     console.log('Blocking: ' + message);
@@ -18,15 +13,17 @@ const ChatMessage = ({message}) => {
   return (
     <div className={`chat-message-container ${theme.chat} ${message.sender ? 'message-sender' : 'message-receiver'}`}>
       <div className={`chat-message d-flex flex-column`}>
-        <GenerikLink className={`chat-username mb-2`} onClick={handleShowPopover}>Bernard</GenerikLink>
-        <Overlay
-          show={showOverlay}
-          placement='bottom'>
-          <Popover>
-            <Popover.Header as='h3'>Bernard-Henri</Popover.Header>
-          </Popover>
-        </Overlay>
-        <span>{message.content + "Coucou c'est moi !"}</span>
+        <Dropdown>
+          <Dropdown.Toggle variant={theme.variant} className={`chat-username mb-2`}>Bernard</Dropdown.Toggle>
+          <Dropdown.Menu variant={theme.variant}>
+            <Dropdown.Item className={theme.textDanger}>
+              Block user
+            </Dropdown.Item>
+            
+          </Dropdown.Menu>
+        </Dropdown>
+        {/* <GenerikLink className={`chat-username mb-2`}>Bernard</GenerikLink> */}
+        <span>{message.content}</span>
       </div>
     </div>
   );

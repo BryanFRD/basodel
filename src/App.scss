@@ -180,9 +180,6 @@ body {
       color: #212529;
       .chat-username {
         color: #495057;
-        &::after {
-          background-color: #495057;
-        }
       }
     }
     
@@ -191,9 +188,6 @@ body {
       color: #f8f9fa;
       .chat-username {
         color: #dee2e6;
-        &::after {
-          background-color: #dee2e6;
-        }
       }
     }
   }
@@ -204,9 +198,6 @@ body {
       color: #212529;
       .chat-username {
         color: #495057;
-        &::after {
-          background-color: #495057;
-        }
       }
     }
     
@@ -215,9 +206,6 @@ body {
       color: #dee2e6;
       .chat-username {
         color: #343a40;
-        &::after {
-          background-color: #343a40;
-        }
       }
     }
   }
