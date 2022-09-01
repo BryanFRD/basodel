@@ -176,21 +176,23 @@ body {
 .chat {
   &-light {
     &.message-receiver .chat-message {
-      background-color: #343a40aa;
+      background-color: #cdd4da;
+      color: #212529;
       .chat-username {
-        color: #adb5bd;
+        color: #495057;
         &::after {
-          background-color: #adb5bd;
+          background-color: #495057;
         }
       }
     }
     
     &.message-sender .chat-message {
-      background-color: #0d9efdaa;
+      background-color: #0d9efd;
+      color: #f8f9fa;
       .chat-username {
-        color: #495057;
+        color: #dee2e6;
         &::after {
-          background-color: #495057;
+          background-color: #dee2e6;
         }
       }
     }
@@ -198,7 +200,8 @@ body {
   
   &-dark {
     &.message-receiver .chat-message {
-      background-color: #e9ecefaa;
+      background-color: #e9ecef;
+      color: #212529;
       .chat-username {
         color: #495057;
         &::after {
@@ -208,11 +211,12 @@ body {
     }
     
     &.message-sender .chat-message {
-      background-color: #0d9efdaa;
+      background-color: #0d9efd;
+      color: #f8f9fa;
       .chat-username {
-        color: #adb5bd;
+        color: #343a40;
         &::after {
-          background-color: #adb5bd;
+          background-color: #343a40;
         }
       }
     }
