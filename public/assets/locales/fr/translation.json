@@ -41,5 +41,9 @@
   },
   "information": {
     "resetPassword": "Un email de confirmation vous sera envoyé !"
+  },
+  "chat": {
+    "blockUser": "Bloquer",
+    "reportUser": "Signaler"
   }
 }

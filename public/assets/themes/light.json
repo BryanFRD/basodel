@@ -17,6 +17,7 @@
   "submitFormVariant": "success",
   "textSecondary": "text-secondary",
   "textError": "text-danger",
+  "textDanger": "text-danger",
   "textSuccess": "text-success",
   "textWarning": "text-warning",
   "sendButtonChat": "text-primary",

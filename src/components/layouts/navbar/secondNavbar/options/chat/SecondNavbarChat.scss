@@ -22,8 +22,11 @@
   
   .chat-message-container {
     &.message-sender {
-      .chat-message, .chat-username {
+      .chat-message {
         margin-left: auto;
+      }
+      .dropdown {
+        text-align: end;
       }
     }
     
@@ -37,17 +40,30 @@
     }
     
     .chat-username {
+      position: relative;
       background: none;
       border: none;
-      &:hover {
-        text-decoration: underline;
+      outline: none;
+      box-shadow: none;
+      &::before {
+        content: '';
+        position: absolute;
+        height: 2px;
+        border-radius: 5px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        transition: all 0.25s;
+      }
+      &:hover::before {
+        width: 90%;
+        left: 5%;
       }
       &::after {
         content: none;
       }
     }
   }
-  
 }
 
 .chat-input {
