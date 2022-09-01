@@ -173,4 +173,50 @@ body {
   }
 }
 
+.chat {
+  &-light {
+    &.message-receiver .chat-message {
+      background-color: #343a40aa;
+      .chat-username {
+        color: #adb5bd;
+        &::after {
+          background-color: #adb5bd;
+        }
+      }
+    }
+    
+    &.message-sender .chat-message {
+      background-color: #0d9efdaa;
+      .chat-username {
+        color: #495057;
+        &::after {
+          background-color: #495057;
+        }
+      }
+    }
+  }
+  
+  &-dark {
+    &.message-receiver .chat-message {
+      background-color: #e9ecefaa;
+      .chat-username {
+        color: #495057;
+        &::after {
+          background-color: #495057;
+        }
+      }
+    }
+    
+    &.message-sender .chat-message {
+      background-color: #0d9efdaa;
+      .chat-username {
+        color: #adb5bd;
+        &::after {
+          background-color: #adb5bd;
+        }
+      }
+    }
+  }
+}
+
 @import '~bootstrap/scss/bootstrap';

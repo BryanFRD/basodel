@@ -15,9 +15,11 @@
   "modal": "modal-light",
   "btnOutline": "btn-outline-dark",
   "submitFormVariant": "success",
+  "textSecondary": "text-secondary",
   "textError": "text-danger",
   "textSuccess": "text-success",
   "textWarning": "text-warning",
   "sendButtonChat": "text-primary",
-  "customScrollbar": "custom-scrollbar-light"
+  "customScrollbar": "custom-scrollbar-light",
+  "chat": "chat-light"
 }
