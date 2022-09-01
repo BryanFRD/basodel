@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
+import GenerikLink from '../../../../../generic/link/GenericLink';
 
 const ChatMessage = ({message}) => {  
   const { theme } = useContext(ThemeContext);
@@ -7,7 +8,7 @@ const ChatMessage = ({message}) => {
   return (
     <div className={`chat-message-container ${theme.chat} ${message.sender ? 'message-sender' : 'message-receiver'}`}>
       <div className={`chat-message d-flex flex-column`}>
-        <span className={`chat-username mb-2`}>Bernard</span>
+        <GenerikLink className={`chat-username mb-2`}>Bernard</GenerikLink>
         <span>{message.content}</span>
       </div>
     </div>
