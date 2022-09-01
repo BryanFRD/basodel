@@ -200,7 +200,7 @@ body {
   
   &-dark {
     &.message-receiver .chat-message {
-      background-color: #e9ecef;
+      background-color: #dee2e6;
       color: #212529;
       .chat-username {
         color: #495057;
@@ -212,7 +212,7 @@ body {
     
     &.message-sender .chat-message {
       background-color: #0d9efd;
-      color: #f8f9fa;
+      color: #dee2e6;
       .chat-username {
         color: #343a40;
         &::after {
