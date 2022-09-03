@@ -3,7 +3,6 @@ import { BaseModel } from "./BaseModel.model";
 export class UserAccount extends BaseModel {
   
   username = '';
-  email = '';
   xp = 0;
   silver = 0;
   gold = 0;

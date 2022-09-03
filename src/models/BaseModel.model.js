@@ -2,7 +2,7 @@ export class BaseModel {
   
   id = -1;
   createdDate = -1;
-  lastModifiedDate = -1;
+  lastUpdatedDate = -1;
   isDeleted = false;
   
   assign = (props) => {
