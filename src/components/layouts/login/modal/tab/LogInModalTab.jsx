@@ -49,7 +49,7 @@ const LogInModalTab = ({setShow}) => {
           <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleForgotPassword}>
             <Form.Group className='w-100 pb-4'>
               <Form.Label>{t('login.emailLabel')}</Form.Label>
-              <Form.Control placeholder={t('placeholder.email')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+              <Form.Control placeholder={t('placeholder.email')} name='email' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
             </Form.Group>
             <Button variant={theme.submitFormVariant} type='submit' className='px-4 py-2'>{t('login.resetPassword')}</Button>
           </Form>
