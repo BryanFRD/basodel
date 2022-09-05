@@ -33,7 +33,8 @@
     "forgotPassword": "Forgot your parssword ?",
     "loginButton": "Log In",
     "signupButton": "Sign Up",
-    "resetPassword": "Reset"
+    "resetPassword": "Reset",
+    "acceptCGU": "Accept CGU"
   },
   "placeholder": {
     "username": "example",

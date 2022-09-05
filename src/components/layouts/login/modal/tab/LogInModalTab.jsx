@@ -16,7 +16,9 @@ const LogInModalTab = ({setShow}) => {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const error = await handleLogin(event);
+    
+    const jsonData = Object.fromEntries(new FormData(event.currentTarget));
+    const error = await handleLogin(jsonData);
     
     setHasError(error);
     
@@ -59,14 +61,16 @@ const LogInModalTab = ({setShow}) => {
           {hasError && <h5 className={`${theme.textError} text-center`}>{t('error.login')}</h5>}
           <Form.Group className='w-100 pb-4'>
             <Form.Label>{t('login.usernameOrEmailLabel')}</Form.Label>
-            <Form.Control placeholder={t('placeholder.email')} name='usernameOrEmail' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+            <Form.Control placeholder={t('placeholder.email')} name='usernameOrEmail' className={`${theme.bgClass} ${theme.text}`} required>
+            </Form.Control>
           </Form.Group>
           <Form.Group className='w-100'>
             <Form.Label>{t('login.passwordLabel')}</Form.Label>
-            <Form.Control type='password' placeholder={t('placeholder.password')} name='password' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+            <Form.Control type='password' placeholder={t('placeholder.password')} name='password' className={`${theme.bgClass} ${theme.text}`} required>
+            </Form.Control>
           </Form.Group>
           <Form.Group className=' w-100 d-flex flex-column flex-lg-row gap-5 py-3 justify-content-lg-between pb-3'>
-            <Form.Check label={t('login.rememberMe')}></Form.Check>
+            <Form.Check label={t('login.rememberMe')} name='remember'></Form.Check>
             <GenericLink className={'text-decoration-underline'} onClick={() => toggleForgotPassword(true)}>{t('login.forgotPassword')}</GenericLink>
           </Form.Group>
           <Button variant={theme.submitFormVariant} type='submit' className='px-4 py-2'>{t('login.loginButton')}</Button>

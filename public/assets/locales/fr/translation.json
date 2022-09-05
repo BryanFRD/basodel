@@ -33,7 +33,8 @@
     "forgotPassword": "Mot de passe oublié ?",
     "loginButton": "Connexion",
     "signupButton": "Inscription",
-    "resetPassword": "Réinitialiser"
+    "resetPassword": "Réinitialiser",
+    "acceptCGU": "Accepter les CGU"
   },
   "placeholder": {
     "username": "exemple",

@@ -1,9 +1,11 @@
 import Phaser from "phaser";
 
-class DefaultScene extends Phaser.Scene {
+class BaseScene extends Phaser.Scene {
   
   constructor() {
     super('DefaultScene');
+    
+    this.gameRoot = document.querySelector('#gameRoot');
   }
   
   preload = () => {
@@ -27,9 +29,11 @@ class DefaultScene extends Phaser.Scene {
   }
   
   update = () => {
+    console.log(this.game);
+    console.log(document.querySelector('#gameRoot').offsetWidth, document.querySelector('#gameRoot').offsetHeight);
     console.log('DefaultScene: update');
   }
   
 }
 
-export default DefaultScene;
+export default BaseScene;
