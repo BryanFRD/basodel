@@ -21,7 +21,7 @@ class DefaultScene extends Phaser.Scene {
       blendMode: 'ADD'
     });
     
-    const text = this.add.text(100, 100, 'Le jeu ici');
+    const text = this.add.text(400, 300, 'Le jeu ici');
     
     emitter.startFollow(text);
   }
