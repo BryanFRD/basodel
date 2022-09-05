@@ -23,8 +23,9 @@
     "game": "Jeu"
   },
   "login": {
-    "usernameOrEmailLabel": "Pseudo ou email",
-    "usernameLabel": "Pseudo",
+    "usernameOrEmailLabel": "Identifiant ou email",
+    "usernameLabel": "Identifiant",
+    "displaynameLabel": "Nom d'utilisateur",
     "emailLabel": "Email",
     "passwordLabel": "Mot de passe",
     "confirmPasswordLabel": "Confirmez votre mot de passe",
@@ -32,10 +33,12 @@
     "forgotPassword": "Mot de passe oublié ?",
     "loginButton": "Connexion",
     "signupButton": "Inscription",
-    "resetPassword": "Réinitialiser"
+    "resetPassword": "Réinitialiser",
+    "acceptCGU": "Accepter les CGU"
   },
   "placeholder": {
     "username": "exemple",
+    "displayname": "Exemple",
     "email": "exemple@domaine.com",
     "password": "mot de passe"
   },

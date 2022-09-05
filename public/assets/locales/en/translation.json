@@ -25,6 +25,7 @@
   "login": {
     "usernameOrEmailLabel": "Username or email",
     "usernameLabel": "Username",
+    "displaynameLabel": "Display name",
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "confirmPasswordLabel": "Confirm your password",
@@ -32,10 +33,12 @@
     "forgotPassword": "Forgot your parssword ?",
     "loginButton": "Log In",
     "signupButton": "Sign Up",
-    "resetPassword": "Reset"
+    "resetPassword": "Reset",
+    "acceptCGU": "Accept CGU"
   },
   "placeholder": {
     "username": "example",
+    "displayname": "Example",
     "email": "example@domain.com",
     "password": "password"
   },

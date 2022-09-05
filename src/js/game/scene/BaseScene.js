@@ -1,9 +1,11 @@
 import Phaser from "phaser";
 
-class DefaultScene extends Phaser.Scene {
+class BaseScene extends Phaser.Scene {
   
   constructor() {
     super('DefaultScene');
+    
+    this.gameRoot = document.querySelector('#gameRoot');
   }
   
   preload = () => {
@@ -21,15 +23,17 @@ class DefaultScene extends Phaser.Scene {
       blendMode: 'ADD'
     });
     
-    const text = this.add.text(100, 100, 'Le jeu ici');
+    const text = this.add.text(400, 300, 'Le jeu ici');
     
     emitter.startFollow(text);
   }
   
   update = () => {
+    console.log(this.game);
+    console.log(document.querySelector('#gameRoot').offsetWidth, document.querySelector('#gameRoot').offsetHeight);
     console.log('DefaultScene: update');
   }
   
 }
 
-export default DefaultScene;
+export default BaseScene;
