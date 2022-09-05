@@ -25,6 +25,7 @@
   "login": {
     "usernameOrEmailLabel": "Username or email",
     "usernameLabel": "Username",
+    "displaynameLabel": "Display name",
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "confirmPasswordLabel": "Confirm your password",
@@ -36,6 +37,7 @@
   },
   "placeholder": {
     "username": "example",
+    "displayname": "Example",
     "email": "example@domain.com",
     "password": "password"
   },

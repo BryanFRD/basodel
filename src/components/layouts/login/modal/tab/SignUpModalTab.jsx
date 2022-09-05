@@ -27,19 +27,23 @@ const SignUpModalTab = ({setShow}) => {
       {hasError ? <h5 className={`${theme.textError} text-center`}>{t('error.signup')}</h5> : <></>}
       <Form.Group className='w-100 pb-4'>
         <Form.Label>{t('login.usernameLabel')}</Form.Label>
-        <Form.Control placeholder={t('placeholder.username')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+        <Form.Control placeholder={t('placeholder.username')} name='username' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+      </Form.Group>
+      <Form.Group className='w-100 pb-4'>
+        <Form.Label>{t('login.displaynameLabel')}</Form.Label>
+        <Form.Control placeholder={t('placeholder.displayname')} name='displayname' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
       </Form.Group>
       <Form.Group className='w-100 pb-4'>
         <Form.Label>{t('login.emailLabel')}</Form.Label>
-        <Form.Control placeholder={t('placeholder.email')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+        <Form.Control placeholder={t('placeholder.email')} name='email' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
       </Form.Group>
       <Form.Group className='w-100 pb-4'>
         <Form.Label>{t('login.passwordLabel')}</Form.Label>
-        <Form.Control type='password' placeholder={t('placeholder.password')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+        <Form.Control type='password' placeholder={t('placeholder.password')} name='password' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
       </Form.Group>
       <Form.Group className='w-100 pb-4'>
         <Form.Label>{t('login.confirmPasswordLabel')}</Form.Label>
-        <Form.Control type='password' placeholder={t('placeholder.password')} className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+        <Form.Control type='password' placeholder={t('placeholder.password')} name='confirmPassword' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
       </Form.Group>
       <Button variant={theme.submitFormVariant} type='submit' className='px-4 py-2'>{t('login.signupButton')}</Button>
     </Form>
