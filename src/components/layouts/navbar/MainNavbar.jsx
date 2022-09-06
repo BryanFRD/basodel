@@ -4,13 +4,13 @@ import Navbar from 'react-bootstrap/esm/Navbar';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../context/ThemeContext';
 import { 
-  RiHome2Line, 
-  RiShoppingBasket2Line, 
-  RiChat3Line, 
-  RiSettings4Line, 
-  RiArrowLeftSLine, 
-  RiArrowRightSLine, 
-  RiAccountCircleLine } from 'react-icons/ri'
+  RiHome2Line,
+  RiShoppingBasket2Line,
+  RiChat3Line,
+  RiSettings4Line,
+  RiArrowLeftSLine,
+  RiArrowRightSLine,
+  RiAccountCircleLine } from 'react-icons/ri';
 import NavbarLink from './NavbarLink';
 import LoginModal from '../login/modal/LoginModal';
 import { UserContext } from '../../../context/UserContext';
