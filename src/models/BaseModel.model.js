@@ -9,7 +9,7 @@ export class BaseModel {
     for(const key in props) {
       if(!this.hasOwnProperty(key)){
         delete props[key];
-        continue
+        continue;
       }
       
       if(key.endsWith('Date')){
