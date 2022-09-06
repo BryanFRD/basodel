@@ -3,6 +3,7 @@ import './MainNavbar.scss';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../context/ThemeContext';
+import { UserContext } from '../../../context/UserContext';
 import { 
   RiHome2Line,
   RiShoppingBasket2Line,
@@ -13,7 +14,6 @@ import {
   RiAccountCircleLine } from 'react-icons/ri';
 import NavbarLink from './NavbarLink';
 import LoginModal from '../login/modal/LoginModal';
-import { UserContext } from '../../../context/UserContext';
 import GenericLink from '../../generic/link/GenericLink';
 import SecondNavbar from './secondNavbar/SecondNavbar';
 import Row from 'react-bootstrap/Row';
