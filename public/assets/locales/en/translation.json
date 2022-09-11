@@ -23,9 +23,9 @@
     "game": "Game"
   },
   "login": {
-    "usernameOrEmailLabel": "Username or email",
-    "usernameLabel": "Username",
-    "displaynameLabel": "Display name",
+    "loginOrEmailLabel": "Username or email",
+    "loginLabel": "Username",
+    "usernameLabel": "Display name",
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "confirmPasswordLabel": "Confirm your password",
@@ -37,8 +37,8 @@
     "acceptCGU": "Accept CGU"
   },
   "placeholder": {
-    "username": "example",
-    "displayname": "Example",
+    "login": "example",
+    "username": "Example",
     "email": "example@domain.com",
     "password": "password"
   },

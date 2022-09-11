@@ -60,8 +60,8 @@ const LogInModalTab = ({setShow}) => {
         <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleSubmit}>
           {hasError && <h5 className={`${theme.textError} text-center`}>{t('error.login')}</h5>}
           <Form.Group className='w-100 pb-4'>
-            <Form.Label>{t('login.usernameOrEmailLabel')}</Form.Label>
-            <Form.Control placeholder={t('placeholder.email')} name='usernameOrEmail' className={`${theme.bgClass} ${theme.text}`} required>
+            <Form.Label>{t('login.loginOrEmailLabel')}</Form.Label>
+            <Form.Control placeholder={t('placeholder.email')} name='loginOrEmail' className={`${theme.bgClass} ${theme.text}`} required>
             </Form.Control>
           </Form.Group>
           <Form.Group className='w-100'>

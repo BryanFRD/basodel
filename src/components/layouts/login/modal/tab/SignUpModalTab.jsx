@@ -28,12 +28,12 @@ const SignUpModalTab = ({setShow}) => {
     <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleSubmit}>
       {hasError ? <h5 className={`${theme.textError} text-center`}>{t('error.signup')}</h5> : <></>}
       <Form.Group className='w-100 pb-4'>
-        <Form.Label>{t('login.usernameLabel')}</Form.Label>
-        <Form.Control placeholder={t('placeholder.username')} name='username' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+        <Form.Label>{t('login.loginLabel')}</Form.Label>
+        <Form.Control placeholder={t('placeholder.login')} name='login' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
       </Form.Group>
       <Form.Group className='w-100 pb-4'>
-        <Form.Label>{t('login.displaynameLabel')}</Form.Label>
-        <Form.Control placeholder={t('placeholder.displayname')} name='displayname' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
+        <Form.Label>{t('login.usernameLabel')}</Form.Label>
+        <Form.Control placeholder={t('placeholder.username')} name='username' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>
       </Form.Group>
       <Form.Group className='w-100 pb-4'>
         <Form.Label>{t('login.emailLabel')}</Form.Label>
