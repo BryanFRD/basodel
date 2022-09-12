@@ -12,12 +12,16 @@ const UserContextProvider = (props) => {
   
   const handleSignup = async (param) => {
     console.log('param:', param);
-    setUser(true);
     
-    console.log(BasodelAPI);
+    const error = BasodelAPI.post('user', {model: {...param}})
+      .then(response => {
+        console.log(response);
+        
+        return false
+      })
+      .catch(error => error);
     
-    //TODO return error or false
-    return false;
+    return error;
   }
   
   const handleLogin = async (param) => {
