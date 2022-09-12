@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import BasodelAPI from '../api/BasodelApi';
 
 export const UserContext = React.createContext();
 
 const UserContextProvider = (props) => {
   const [user, setUser] = useState(false);
   
+  useEffect(() => {
+    console.log('test')
+  }, []);
+  
   const handleSignup = async (param) => {
     console.log('param:', param);
     setUser(true);
     
+    console.log(BasodelAPI);
+    
     //TODO return error or false
-    return true;
+    return false;
   }
   
   const handleLogin = async (param) => {
