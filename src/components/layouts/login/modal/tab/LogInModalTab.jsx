@@ -61,7 +61,12 @@ const LogInModalTab = ({setShow}) => {
           {hasError && <h5 className={`${theme.textError} text-center`}>{t('error.login')}</h5>}
           <Form.Group className='w-100 pb-4'>
             <Form.Label>{t('login.loginOrEmailLabel')}</Form.Label>
-            <Form.Control placeholder={t('placeholder.email')} name='loginOrEmail' className={`${theme.bgClass} ${theme.text}`} required>
+            <Form.Control
+              placeholder={t('placeholder.email')}
+              name='loginOrEmail'
+              className={`${theme.bgClass} ${theme.text}`}
+              defaultValue={localStorage.getItem('rememberedUser')}
+              required>
             </Form.Control>
           </Form.Group>
           <Form.Group className='w-100'>

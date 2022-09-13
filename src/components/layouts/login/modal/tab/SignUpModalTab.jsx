@@ -26,7 +26,7 @@ const SignUpModalTab = ({setShow}) => {
   //TODO Pattern for input
   return (
     <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleSubmit}>
-      {hasError ? <h5 className={`${theme.textError} text-center`}>{t('error.signup')}</h5> : <></>}
+      {hasError ? <h5 className={`${theme.textError} text-center`}>{t(hasError)}</h5> : <></>}
       <Form.Group className='w-100 pb-4'>
         <Form.Label>{t('login.loginLabel')}</Form.Label>
         <Form.Control placeholder={t('placeholder.login')} name='login' className={`${theme.bgClass} ${theme.text}`} required></Form.Control>

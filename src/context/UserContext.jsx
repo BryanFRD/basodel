@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BasodelAPI from '../api/BasodelApi';
+import { DataManager } from '../helpers/DataManager.helper';
 
 export const UserContext = React.createContext();
 
@@ -7,21 +7,35 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState(false);
   
   useEffect(() => {
-    console.log('test')
+    
   }, []);
   
   const handleSignup = async (param) => {
-    console.log('param:', param);
+    if(param.password === param.confirmPassword){
+      if(!param.acceptCGU)
+        return 'error.acceptCGU';
+      
+      const model =
+      {
+        model: {
+          email: param.email,
+          login: param.login,
+          password: param.password,
+          user_account: {
+            username: param.username
+          }
+        }
+      }
+      
+      const user = await DataManager.create('usercredential', model);
+      
+      if(!user)
+        return 'error.signup';
+    } else {
+      return 'error.samePassword';
+    }
     
-    const error = BasodelAPI.post('user', {model: {...param}})
-      .then(response => {
-        console.log(response);
-        
-        return false
-      })
-      .catch(error => error);
-    
-    return error;
+    return false;
   }
   
   const handleLogin = async (param) => {
