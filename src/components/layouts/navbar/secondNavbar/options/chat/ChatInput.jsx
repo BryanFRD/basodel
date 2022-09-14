@@ -16,9 +16,9 @@ const ChatInput = ({setMessages}) => {
     if(!user || !messageContent?.trim())
       return;
     
-    setMessages(prevValue => [...prevValue, {      
+    setMessages(prevValue => [...prevValue, {
       id: Math.random().toString(16).slice(2),
-      sender: Math.random() < 0.5,
+      sender: user.id,
       content: messageContent.trim()
     }]);
     

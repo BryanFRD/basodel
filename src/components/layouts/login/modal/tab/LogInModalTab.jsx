@@ -13,6 +13,7 @@ const LogInModalTab = ({setShow}) => {
   const { t } = useTranslation();
   const [ hasError, setHasError ] = useState();
   const [ showForgotPasswordTab, setShowForgotPasswordTab ] = useState(false);
+  const [ loginOrEmailValue, setLoginOrEmailValue ] = useState(localStorage.getItem('rememberedUser') ?? '');
   
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,6 +27,10 @@ const LogInModalTab = ({setShow}) => {
       setShow(false);
   }
   
+  const handleLoginOrEmailInput = (event) => {
+    setLoginOrEmailValue(event.target.value);
+  }
+  
   const handleForgotPassword = (event) => {
     event.preventDefault();
     forgotPassword(event);
@@ -36,7 +41,6 @@ const LogInModalTab = ({setShow}) => {
     setShowForgotPasswordTab(value);
   }
   
-  //TODO Pattern for input, remember password & forgot password
   return (
     <>
       {showForgotPasswordTab ?
@@ -65,13 +69,21 @@ const LogInModalTab = ({setShow}) => {
               placeholder={t('placeholder.email')}
               name='loginOrEmail'
               className={`${theme.bgClass} ${theme.text}`}
-              defaultValue={localStorage.getItem('rememberedUser')}
+              onChange={handleLoginOrEmailInput}
+              value={loginOrEmailValue}
+              maxLength={50}
               required>
             </Form.Control>
           </Form.Group>
           <Form.Group className='w-100'>
             <Form.Label>{t('login.passwordLabel')}</Form.Label>
-            <Form.Control type='password' placeholder={t('placeholder.password')} name='password' className={`${theme.bgClass} ${theme.text}`} required>
+            <Form.Control
+              type='password'
+              placeholder={t('placeholder.password')}
+              name='password'
+              className={`${theme.bgClass} ${theme.text}`}
+              maxLength={255}
+              required>
             </Form.Control>
           </Form.Group>
           <Form.Group className=' w-100 d-flex flex-column flex-lg-row gap-5 py-3 justify-content-lg-between pb-3'>

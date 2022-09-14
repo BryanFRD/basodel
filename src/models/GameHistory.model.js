@@ -1,6 +1,6 @@
-import { BaseModel } from "./BaseModel.model";
+import BaseModel from "./BaseModel.model";
 
-export class GameHistory extends BaseModel {
+export default class GameHistory extends BaseModel {
   
   playersId = [];
   information = {};

@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 import { DataManager } from '../helpers/DataManager.helper';
 
@@ -7,51 +8,63 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState(false);
   
   useEffect(() => {
-    
-  }, []);
-  
-  const handleSignup = async (param) => {
-    if(param.password === param.confirmPassword){
-      if(!param.acceptCGU)
-        return 'error.acceptCGU';
+    const refreshUser = async () => {
+      const userAccount = await DataManager.refreshToken();
       
-      const model =
-      {
-        model: {
-          email: param.email,
-          login: param.login,
-          password: param.password,
-          user_account: {
-            username: param.username
-          }
+      if(userAccount)
+        setUser(userAccount);
+    }
+    
+    refreshUser();
+  }, []);
+
+  const handleSignup = async (param) => {
+    const model =
+    {
+      model: {
+        email: param.email,
+        login: param.login,
+        password: param.password,
+        user_account: {
+          username: param.username
         }
       }
-      
-      const user = await DataManager.create('usercredential', model);
-      
-      if(!user)
-        return 'error.signup';
-    } else {
-      return 'error.samePassword';
     }
+      
+    const user = await DataManager.create('usercredential', model);
+      
+    if(!user)
+      return 'error.signup';
     
     return false;
   }
   
   const handleLogin = async (param) => {
-    console.log('param:', param);
-    setUser(true);
+    if(param.remember)
+      localStorage.setItem('rememberedUser', param.loginOrEmail);
     
-    //TODO return error or false
-    return true;
+    const model = {
+      loginOrEmail: param.loginOrEmail,
+      password: param.password
+    }
+      
+    const {user, error} = await DataManager.auth(model);
+    
+    if(error)
+      return 'error.login';
+      
+    setUser(user);
+    return false;
   }
   
   const handleLogout = async (param) => {
     console.log('param:', param);
-    setUser(false);
     
-    //TODO return error or false
-    return true;
+    setUser(false);
+    Cookies.set('authToken', '');
+    
+    //TODO Redis ?
+    return false;
   }
   
   const forgotPassword = async (param) => {

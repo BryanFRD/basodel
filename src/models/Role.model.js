@@ -1,6 +1,6 @@
-import { BaseModel } from "./BaseModel.model";
+import BaseModel from "./BaseModel.model";
 
-export class Role extends BaseModel {
+export default class Role extends BaseModel {
   
   name = '';
   

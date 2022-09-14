@@ -1,8 +1,8 @@
-export class BaseModel {
+export default class BaseModel {
   
   id = -1;
-  createdDate = -1;
-  lastUpdatedDate = -1;
+  createdAt = -1;
+  updatedAt = -1;
   isDeleted = false;
   
   assign = (props) => {

@@ -29,9 +29,9 @@ class BaseScene extends Phaser.Scene {
   }
   
   update = () => {
-    console.log(this.game);
-    console.log(document.querySelector('#gameRoot').offsetWidth, document.querySelector('#gameRoot').offsetHeight);
-    console.log('DefaultScene: update');
+    // console.log(this.game);
+    // console.log(document.querySelector('#gameRoot').offsetWidth, document.querySelector('#gameRoot').offsetHeight);
+    // console.log('DefaultScene: update');
   }
   
 }

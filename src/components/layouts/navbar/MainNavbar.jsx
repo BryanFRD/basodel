@@ -21,7 +21,7 @@ import Col from 'react-bootstrap/Col';
 
 const MainNavbar = () => {
   const { theme } = useContext(ThemeContext);
-  const { user } = useContext(UserContext);
+  const { user, handleLogout } = useContext(UserContext);
   const { t } = useTranslation();
   const [ navbarState, setNavbarState ] = useState({isExpanded: false, showModal: false, collapsed: false, secondNav: false});
   
@@ -107,10 +107,17 @@ const MainNavbar = () => {
                 className={`account-link`}
                 navbarState={navbarState}
                 title={user ?
-                  <div>
+                  <div className='d-flex flex-column gap-4 gap-lg-1'>
                     {/* TODO Montrer les infos de l'utilisateur */}
-                    <GenericLink to='/account' className={theme.link}>
-                      Bernard
+                    <GenericLink
+                      to='/account'
+                      className={`${theme.link} text-nowrap px-lg-2 py-1 d-lg-inline text-lg-end`}>
+                        {user.username}
+                    </GenericLink>
+                    <GenericLink 
+                      className={`${theme.bgHover} text-nowrap px-lg-2 py-1 d-lg-inline text-lg-end`}
+                      onClick={() => handleLogout()}>
+                        {t('generic.logout')}
                     </GenericLink>
                   </div>
                   :

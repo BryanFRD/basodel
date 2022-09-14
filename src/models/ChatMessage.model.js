@@ -1,6 +1,6 @@
-import { BaseModel } from "./BaseModel.model";
+import BaseModel from "./BaseModel.model";
 
-export class ChatMessage extends BaseModel {
+export default class ChatMessage extends BaseModel {
   
   message = '';
   userAccountId = -1;

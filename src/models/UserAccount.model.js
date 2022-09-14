@@ -1,6 +1,6 @@
-import { BaseModel } from "./BaseModel.model";
+import BaseModel from "./BaseModel.model";
 
-export class UserAccount extends BaseModel {
+export default class UserAccount extends BaseModel {
   
   username = '';
   xp = 0;
