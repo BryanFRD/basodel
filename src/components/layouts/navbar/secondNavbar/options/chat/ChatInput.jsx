@@ -17,9 +17,12 @@ const ChatInput = ({setMessages}) => {
       return;
     
     setMessages(prevValue => [...prevValue, {
-      id: Math.random().toString(16).slice(2),
-      sender: user.id,
-      content: messageContent.trim()
+      user: {
+        id: user.id,
+        username: user.username,
+        roleColor: 'COLOR'
+      },
+      message: messageContent.trim()
     }]);
     
     setMessageContent('');
