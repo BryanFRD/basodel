@@ -12,7 +12,7 @@ export class DataManager {
    */
   static create = async (route, model) => {
     const response = await BasodelAPI.post(route, model);
-      
+    
     return response;
   }
   
@@ -23,15 +23,14 @@ export class DataManager {
    * @param {*} id number or array of number
    */
   static get = async (table, id) => {
+    let response;
     if(!id){
-      
+      response = await BasodelAPI.get(table);
     } else {
-      if(typeof id === Array){
-        
-      } else {
-        
-      }
+      response = await BasodelAPI.get(table, {mode: {id}});
     }
+    
+    return response;
   }
   
   /**
@@ -53,7 +52,7 @@ export class DataManager {
         return error;
       })
       .catch(error => error);
-    
+      
     return {user, error};
   }
   

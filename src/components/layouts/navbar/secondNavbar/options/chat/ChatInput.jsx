@@ -16,6 +16,7 @@ const ChatInput = ({setMessages}) => {
     if(!user || !messageContent?.trim())
       return;
     
+    //TODO Enlever username et roleColor, et le mettre dans le socket lors de l'envoi du message
     setMessages(prevValue => [...prevValue, {
       user: {
         id: user.id,
