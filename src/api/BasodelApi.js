@@ -1,8 +1,9 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import config from '../config';
 
 const BasodelAPI = axios.create({
-  baseURL: 'http://localhost:5001/'
+  baseURL: config.API_URL
 });
 
 BasodelAPI.interceptors.response.use((response) => {
