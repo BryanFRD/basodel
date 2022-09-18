@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import BasodelAPI, { refreshToken } from '../api/BasodelApi';
 import UserAccount from '../models/UserAccount.model';
 
@@ -11,9 +10,7 @@ export class DataManager {
    * @param {*} model model to create
    */
   static create = async (route, model) => {
-    const response = await BasodelAPI.post(route, model);
-    
-    return response;
+    return BasodelAPI.post(route, model);
   }
   
   /**
@@ -23,39 +20,37 @@ export class DataManager {
    * @param {*} id number or array of number
    */
   static get = async (table, id) => {
-    let response;
     if(!id){
-      response = await BasodelAPI.get(table);
-    } else {
-      response = await BasodelAPI.get(table, {mode: {id}});
+      return BasodelAPI.get(table);
     }
     
-    return response;
+    return BasodelAPI.get(table, {model: {id}});
   }
   
   /**
    * Authenticate
    * 
    * @param {*} model model used for authentication
-   * @returns 
+   * @returns {UserAccount, error}
    */
   static auth = async (model) => {
-    let user;
-    
-    const error = await BasodelAPI.post('auth', {model})
+    return BasodelAPI.post('auth', {model})
       .then(response => {
-        Cookies.set('authToken', response.data.content.refreshToken);
-        BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data.content.accessToken}`;
-        
-        user = new UserAccount(response.data.content.user_account);
+        if(response?.data)
+          return {UserAccount: new UserAccount(response.data.userAccount)};
+        else {
+          return {error: response.response.data.error};
+        }
       }, error => {
-        return error;
-      })
-      .catch(error => error);
-      
-    return {user, error};
+        return {error};
+      });
   }
   
+  /**
+   * Refresh AccessToken
+   * 
+   * @returns UserAccount
+   */
   static refreshToken = async () => {
     const { userAccount } = await refreshToken();
     

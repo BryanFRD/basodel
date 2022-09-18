@@ -18,48 +18,60 @@ const UserContextProvider = (props) => {
     refreshUser();
   }, []);
 
+  /**
+   * 
+   * @param {*} param {email, login, password, user_account: {username}}
+   * @returns false or error
+   */
   const handleSignup = async (param) => {
-    const model =
-    {
-      model: {
-        email: param.email,
-        login: param.login,
-        password: param.password,
-        user_account: {
-          username: param.username
-        }
+    const model ={
+      email: param.email,
+      login: param.login,
+      password: param.password,
+      user_account: {
+        username: param.username
       }
     }
       
-    const user = await DataManager.create('usercredential', model);
-      
-    if(!user)
-      return 'error.signup';
-    
-    return false;
+    return await DataManager.create('usercredential', model)
+      .then(value => {
+        console.log('value:', value);
+        return false;
+      }, error => {
+        console.log('error:', error);
+        return true;
+      })
   }
   
+  /**
+   * 
+   * @param {*} param {loginOrEmail, password}
+   * @returns false or error
+   */
   const handleLogin = async (param) => {
     if(param.remember)
       localStorage.setItem('rememberedUser', param.loginOrEmail);
     
     const model = {
-      loginOrEmail: param.loginOrEmail,
+      email: param.loginOrEmail,
+      login: param.loginOrEmail,
       password: param.password
     }
       
-    const {user, error} = await DataManager.auth(model);
+    const {UserAccount, error} = await DataManager.auth(model);
     
     if(error)
-      return 'error.login';
+      return error;
       
-    setUser(user);
+    setUser(UserAccount);
     return false;
   }
   
-  const handleLogout = async (param) => {
-    console.log('param:', param);
-    
+  /**
+   * 
+   * @returns false or error
+   */
+  const handleLogout = async () => {
     setUser(false);
     Cookies.set('authToken', '');
     

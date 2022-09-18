@@ -21,10 +21,7 @@ const LogInModalTab = ({setShow}) => {
     const jsonData = Object.fromEntries(new FormData(event.currentTarget));
     const error = await handleLogin(jsonData);
     
-    setHasError(error);
-    
-    if(!error)
-      setShow(false);
+    error ? setHasError(error) : setShow(false);
   }
   
   const handleLoginOrEmailInput = (event) => {
@@ -62,7 +59,7 @@ const LogInModalTab = ({setShow}) => {
         </>
       :
         <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleSubmit}>
-          {hasError && <h5 className={`${theme.textError} text-center`}>{t('error.login')}</h5>}
+          {hasError && <h5 className={`${theme.textError} text-center`}>{t(hasError)}</h5>}
           <Form.Group className='w-100 pb-4'>
             <Form.Label>{t('login.loginOrEmailLabel')}</Form.Label>
             <Form.Control

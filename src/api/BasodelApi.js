@@ -6,19 +6,25 @@ const BasodelAPI = axios.create({
 });
 
 BasodelAPI.interceptors.response.use((response) => {
+  if(response.config.url === 'auth' && response.config.method === 'post'){
+    Cookies.set('authToken', response.data.refreshToken);
+    BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data.accessToken}`;
+  }
+  
   return response;
-}, async (error) => {
+}, (error) => {
   const originalRequest = error.config;
-  if(error.config.url !== 'refreshtoken' && error.response.status === 401 && !originalRequest.retry){
-    originalRequest.retry = true;
-    
+  if(error.config.url !== 'auth' && error.response.status === 401 && !originalRequest.retry){
     const { accessToken } = refreshToken();
+    originalRequest.retry = true;
     
     if(accessToken)
       originalRequest.headers['authorization'] = `Bearer ${accessToken}`;
       
     return BasodelAPI(originalRequest);
   }
+  
+  return error;
 });
 
 export const refreshToken = async () => {
@@ -26,22 +32,20 @@ export const refreshToken = async () => {
   if(refreshToken){
     BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${refreshToken}`;
     
-    let result = {};
-    await BasodelAPI.get('refreshtoken')
+    return BasodelAPI.get('auth')
       .then(response => {
         if(!response)
           return;
         
-        console.log('response:', response);
-        BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data.content.accessToken}`;
-        
-        result = {accessToken: response.data.content.accessToken, userAccount: response.data.content.userAccount};
+        BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data.accessToken}`;
+        return {accessToken: response.data.accessToken, userAccount: response.data.userAccount};
       }, error => {
         Cookies.set('authToken', '');
+        
+        return error;
     });
-    
-    return result;
   }
+  
   return {};
 }
 
