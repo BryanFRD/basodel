@@ -72,5 +72,8 @@
   },
   "confirmation": {
     "title": "Confirmation en cours..."
+  },
+  "message": {
+    "emailSent": "Email envoyé !"
   }
 }

@@ -41,6 +41,10 @@ const UserContextProvider = (props) => {
         toast.success(t(value.data.message));
         return false;
       }, error => {
+        if(error.response.data.error)
+          console.log('message:', error.response.data.error);
+          
+        
         return error.response.data.error;
       })
   }

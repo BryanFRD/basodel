@@ -7,7 +7,7 @@ export class DataManager {
   /**
    * POST
    * 
-   * @param {*} route if route is an available model then it will convert reponse into the model
+   * @param {*} route if route is an available model then it will return a Model
    * @param {*} params
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
@@ -23,7 +23,7 @@ export class DataManager {
   /**
    * GET
    * 
-   * @param {*} route if route is an available model then it will convert reponse into the model
+   * @param {*} route if route is an available model then it will return a Model
    * @param {*} params
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
    */
@@ -33,6 +33,22 @@ export class DataManager {
     if(models[route])
       return new models[route](await promise.response.data);
       
+    return promise;
+  }
+  
+  /**
+   * UPDATE
+   * 
+   * @param {*} route  if route is an available model then it will return a Model
+   * @param {*} params 
+   * @returns {(BaseModel|Promise<AxiosResponse<any, any>>)}
+   */
+  static update = async (route, params) => {
+    const promise = BasodelAPI.get(route.toLowerCase(), params);
+    
+    if(models[route])
+      return new models[route](await promise.response.data);
+    
     return promise;
   }
   
