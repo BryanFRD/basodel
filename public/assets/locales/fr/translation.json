@@ -26,7 +26,8 @@
       "create": {
         "notFound": "Aucun identifiant/email trouvé !",
         "confirmEmail": "Vous devez confirmer votre email !",
-        "authentication": "Mot de passe incorrect !"
+        "authentication": "Mot de passe incorrect !",
+        "password": "Mot de passe incorrect !"
       },
       "get": {
         "notFound": "Aucun identifiant/email trouvé !",
@@ -68,5 +69,8 @@
   "chat": {
     "blockUser": "Bloquer",
     "reportUser": "Signaler"
+  },
+  "confirmation": {
+    "title": "Confirmation en cours..."
   }
 }
