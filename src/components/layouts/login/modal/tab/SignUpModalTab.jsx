@@ -4,6 +4,8 @@ import { ThemeContext } from '../../../../../context/ThemeContext';
 import { UserContext } from '../../../../../context/UserContext';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Validator from '../../../../../validators/Validator.validator';
+import { useEffect } from 'react';
 
 const SignUpModalTab = ({setShow}) => {
   const { theme } = useContext(ThemeContext)
@@ -19,6 +21,8 @@ const SignUpModalTab = ({setShow}) => {
     confirmPassword: '',
     acceptCGU: false
   });
+  
+  const [ validations, setValidations ] = useState({});
   
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,21 +49,25 @@ const SignUpModalTab = ({setShow}) => {
     });
   }
   
-  const emailRegex = /^((?!\.)[\w_.-]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-  
-  const minLengthValidate = (value) => {
-    return value.length >= 5
-  }
-  
-  const isValidated = () => {
-    return (
-      values.login.length >= 5 &&
-      values.username.length >= 5 &&
-      emailRegex.test(values.email) &&
-      values.password.length >= 5 &&
-      values.password === values.confirmPassword &&
-      values.acceptCGU);
-  }
+  useEffect(() => {
+    setValidations(prevValues => {
+      const login = Validator.login(values.login);
+      const email = Validator.email(values.email);
+      const username = Validator.username(values.username);
+      const password = Validator.password(values.password) && values.password === values.confirmPassword;
+      const confirmPassword = Validator.password(values.confirmPassword) && values.password === values.confirmPassword;
+      const allValidated = (
+        login &&
+        email &&
+        username &&
+        password &&
+        confirmPassword &&
+        values.acceptCGU
+      );
+      
+      return {login, email, username, password, confirmPassword, allValidated};
+    });
+  }, [values]);
   
   return (
     <Form className='d-flex flex-column gap-3 p-5 align-items-center' onSubmit={handleSubmit}>
@@ -71,7 +79,7 @@ const SignUpModalTab = ({setShow}) => {
           name='login'
           onChange={handleInputChange}
           value={values.login}
-          className={`${theme.bgClass} ${theme.text} ${minLengthValidate(values.login) ? 'border-success' : 'border-danger'}`}
+          className={`${theme.bgClass} ${theme.text} ${validations.login ? 'border-success' : 'border-danger'}`}
           maxLength={50}
           required>
         </Form.Control>
@@ -83,7 +91,7 @@ const SignUpModalTab = ({setShow}) => {
           name='username'
           onChange={handleInputChange}
           value={values.username}
-          className={`${theme.bgClass} ${theme.text} ${minLengthValidate(values.username) ? 'border-success' : 'border-danger'}`}
+          className={`${theme.bgClass} ${theme.text} ${validations.username ? 'border-success' : 'border-danger'}`}
           maxLength={12}
           required>
           </Form.Control>
@@ -95,7 +103,7 @@ const SignUpModalTab = ({setShow}) => {
           name='email'
           onChange={handleInputChange}
           value={values.email}
-          className={`${theme.bgClass} ${theme.text} ${emailRegex.test(values.email) ? 'border-success' : 'border-danger'}`}
+          className={`${theme.bgClass} ${theme.text} ${validations.email ? 'border-success' : 'border-danger'}`}
           maxLength={50}
           required>
           </Form.Control>
@@ -108,7 +116,7 @@ const SignUpModalTab = ({setShow}) => {
           name='password'
           onChange={handleInputChange}
           value={values.password}
-          className={`${theme.bgClass} ${theme.text} ${minLengthValidate(values.password) && values.password === values.confirmPassword ? 'border-success' : 'border-danger'}`}
+          className={`${theme.bgClass} ${theme.text} ${validations.password ? 'border-success' : 'border-danger'}`}
           maxLength={255}
           required>
         </Form.Control>
@@ -121,7 +129,7 @@ const SignUpModalTab = ({setShow}) => {
           name='confirmPassword'
           onChange={handleInputChange}
           value={values.confirmPassword}
-          className={`${theme.bgClass} ${theme.text} ${minLengthValidate(values.confirmPassword) && values.password === values.confirmPassword ? 'border-success' : 'border-danger'}`}
+          className={`${theme.bgClass} ${theme.text} ${validations.confirmPassword ? 'border-success' : 'border-danger'}`}
           maxLength={255}
           required>
         </Form.Control>
@@ -129,7 +137,7 @@ const SignUpModalTab = ({setShow}) => {
       <Form.Group className='w-100'>
         <Form.Check label={t('login.acceptCGU')} name='acceptCGU' onChange={handleInputChange} checked={values.acceptCGU}></Form.Check>
       </Form.Group>
-      <Button variant={theme.submitFormVariant} type='submit' className='px-4 py-2' disabled={!isValidated()}>{t('login.signupButton')}</Button>
+      <Button variant={theme.submitFormVariant} type='submit' className='px-4 py-2' disabled={!validations.allValidated}>{t('login.signupButton')}</Button>
     </Form>
   );
 };

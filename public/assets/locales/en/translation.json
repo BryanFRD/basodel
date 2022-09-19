@@ -13,6 +13,26 @@
     "comingSoon": "Coming Soon"
   },
   "error": {
+    "usercredential": {
+      "create": {
+        "login": "Error on login",
+        "email": "Error on email",
+        "password": "Error on password",
+        "username": "Error on username",
+        "undefined": "Error"
+      }
+    },
+    "auth": {
+      "create": {
+        "notFound": "No login/email found!",
+        "confirmEmail": "You must confirm your email!",
+        "authentication": "Incorrect password"
+      },
+      "get": {
+        "notFound": "No login/email found!",
+        "confirmEmail": "You must confirm your email!"
+      }
+    },
     "mustBeLogged": "You must be logged in!",
     "404": "Page not found!",
     "login": "Login error!",

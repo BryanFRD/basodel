@@ -36,7 +36,7 @@ function App() {
             </Suspense>
           }/>
           
-          <Route path='/confirmation:confirmed' element={
+          <Route path='/confirmation/confirmed' element={
             <Suspense fallback={<LoadingSpinner />}>
               <ConfirmationScreen />
             </Suspense>

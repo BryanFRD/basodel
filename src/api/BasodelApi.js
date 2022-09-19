@@ -1,19 +1,19 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import config from '../config';
+import Config from '../config/Config';
 
 const BasodelAPI = axios.create({
-  baseURL: config.API_URL
+  baseURL: Config.API.URL
 });
 
-BasodelAPI.interceptors.response.use((response) => {
+BasodelAPI.interceptors.response.use(response => {
   if(response.config.url === 'auth' && response.config.method === 'post'){
     Cookies.set('authToken', response.data.refreshToken);
     BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data.accessToken}`;
   }
   
   return response;
-}, (error) => {
+}, async error => {
   const originalRequest = error.config;
   if(error.config.url !== 'auth' && error.response.status === 401 && !originalRequest.retry){
     const { accessToken } = refreshToken();
@@ -21,11 +21,11 @@ BasodelAPI.interceptors.response.use((response) => {
     
     if(accessToken)
       originalRequest.headers['authorization'] = `Bearer ${accessToken}`;
-      
+    
     return BasodelAPI(originalRequest);
   }
   
-  return error;
+  return Promise.reject(error);
 });
 
 export const refreshToken = async () => {
@@ -43,7 +43,7 @@ export const refreshToken = async () => {
       }, error => {
         Cookies.set('authToken', '');
         
-        return error;
+        return Promise.reject(error);
     });
   }
   

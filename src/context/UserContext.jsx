@@ -1,10 +1,13 @@
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 import { DataManager } from '../helpers/DataManager.helper';
 
 export const UserContext = React.createContext();
 
 const UserContextProvider = (props) => {
+  const { t } = useTranslation();
   const [user, setUser] = useState(false);
   
   useEffect(() => {
@@ -20,11 +23,11 @@ const UserContextProvider = (props) => {
 
   /**
    * 
-   * @param {*} param {email, login, password, user_account: {username}}
-   * @returns false or error
+   * @param {{email, login, password, user_account: {username}}} param
+   * @returns {(boolean|string)} false or error
    */
   const handleSignup = async (param) => {
-    const model ={
+    const model = {
       email: param.email,
       login: param.login,
       password: param.password,
@@ -33,20 +36,19 @@ const UserContextProvider = (props) => {
       }
     }
       
-    return await DataManager.create('usercredential', model)
+    return await DataManager.create('usercredential', {model})
       .then(value => {
-        console.log('value:', value);
+        toast.success(t(value.data.message));
         return false;
       }, error => {
-        console.log('error:', error);
-        return true;
+        return error.response.data.error;
       })
   }
   
   /**
    * 
-   * @param {*} param {loginOrEmail, password}
-   * @returns false or error
+   * @param {{loginOrEmail, password}} param
+   * @returns {(boolean|string)} false or error
    */
   const handleLogin = async (param) => {
     if(param.remember)
@@ -58,13 +60,13 @@ const UserContextProvider = (props) => {
       password: param.password
     }
       
-    const {UserAccount, error} = await DataManager.auth(model);
-    
-    if(error)
-      return error;
-      
-    setUser(UserAccount);
-    return false;
+    return await DataManager.auth({model})
+      .then(value => {
+        console.log('value:', value);
+        return false;
+      }, error => {
+        return error.response.data.error;
+      });
   }
   
   /**

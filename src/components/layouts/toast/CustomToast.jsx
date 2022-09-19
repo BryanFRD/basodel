@@ -1,12 +1,10 @@
 import React from 'react';
-import { useContext } from 'react';
-import { Toaster, useToaster } from 'react-hot-toast';
-import { ThemeContext } from '../../../context/ThemeContext';
+import { Toaster } from 'react-hot-toast';
 
 const CustomToast = () => {
-  const { theme } = useContext(ThemeContext);
-  const { toasts, handlers } = useToaster();
-  const { startPause, endPause } = handlers;
+  // const { theme } = useContext(ThemeContext);
+  // const { toasts, handlers } = useToaster();
+  // const { startPause, endPause } = handlers;
   
   return (
     <Toaster position='bottom-right'/>

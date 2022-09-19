@@ -13,6 +13,26 @@
     "comingSoon": "Arrive bientôt"
   },
   "error": {
+    "usercredential": {
+      "create": {
+        "login": "Erreur sur l'identifiant",
+        "email": "Erreur sur l'email",
+        "password": "Erreur sur le mot de passe",
+        "username": "Erreur sur le nom d'utilisateur",
+        "undefined": "Erreur"
+      }
+    },
+    "auth": {
+      "create": {
+        "notFound": "Aucun identifiant/email trouvé !",
+        "confirmEmail": "Vous devez confirmer votre email !",
+        "authentication": "Mot de passe incorrect !"
+      },
+      "get": {
+        "notFound": "Aucun identifiant/email trouvé !",
+        "confirmEmail": "Vous devez confirmer votre email !"
+      }
+    },
     "mustBeLogged": "Vous devez être connecté !",
     "404": "Page non trouvée !",
     "login": "Erreur lors de la connexion !",

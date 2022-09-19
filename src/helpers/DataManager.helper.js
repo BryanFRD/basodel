@@ -1,35 +1,46 @@
 import BasodelAPI, { refreshToken } from '../api/BasodelApi';
 import UserAccount from '../models/UserAccount.model';
+import * as models from '../models';
 
 export class DataManager {
   
   /**
    * POST
    * 
-   * @param {*} route
+   * @param {*} route if route is an available model then it will convert reponse into the model
    * @param {*} params
-   * @return {Promise<AxiosResponse<any, any>>}
+   * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
   static create = async (route, params) => {
-    return BasodelAPI.post(route, params);
+    const promise = BasodelAPI.post(route.toLowerCase(), params);
+    
+    if(models[route])
+      return new models[route](await promise.response.data);
+      
+    return promise;
   }
   
   /**
    * GET
    * 
-   * @param {*} route
+   * @param {*} route if route is an available model then it will convert reponse into the model
    * @param {*} params
-   * @return {Promise<AxiosResponse<any, any>>}
+   * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
    */
   static get = async (route, params) => {
-    return BasodelAPI.get(route, params);
+    const promise = BasodelAPI.get(route.toLowerCase(), params);
+    
+    if(models[route])
+      return new models[route](await promise.response.data);
+      
+    return promise;
   }
   
   /**
    * Authenticate
    * 
    * @param {*} params
-   * @returns {{UserAccount, error}}
+   * @returns {(UserAccount|error|Promise)}
    */
   static auth = async (params) => {
     return BasodelAPI.post('auth', params)
@@ -40,14 +51,14 @@ export class DataManager {
           return {error: response.response.data.error};
         }
       }, error => {
-        return {error};
+        return Promise.reject(error);
       });
   }
   
   /**
    * Refresh AccessToken
    * 
-   * @returns {UserAccount}
+   * @returns {(UserAccount|undefined)}
    */
   static refreshToken = async () => {
     const { userAccount } = await refreshToken();
