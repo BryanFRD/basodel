@@ -6,39 +6,37 @@ export class DataManager {
   /**
    * POST
    * 
-   * @param {*} route name of the route
-   * @param {*} model model to create
+   * @param {*} route
+   * @param {*} params
+   * @return {Promise<AxiosResponse<any, any>>}
    */
-  static create = async (route, model) => {
-    return BasodelAPI.post(route, model);
+  static create = async (route, params) => {
+    return BasodelAPI.post(route, params);
   }
   
   /**
    * GET
    * 
-   * @param {*} route name of the route
-   * @param {*} id number or array of number
+   * @param {*} route
+   * @param {*} params
+   * @return {Promise<AxiosResponse<any, any>>}
    */
-  static get = async (table, id) => {
-    if(!id){
-      return BasodelAPI.get(table);
-    }
-    
-    return BasodelAPI.get(table, {model: {id}});
+  static get = async (route, params) => {
+    return BasodelAPI.get(route, params);
   }
   
   /**
    * Authenticate
    * 
-   * @param {*} model model used for authentication
-   * @returns {UserAccount, error}
+   * @param {*} params
+   * @returns {{UserAccount, error}}
    */
-  static auth = async (model) => {
-    return BasodelAPI.post('auth', {model})
+  static auth = async (params) => {
+    return BasodelAPI.post('auth', params)
       .then(response => {
-        if(response?.data)
+        if(response?.data){
           return {UserAccount: new UserAccount(response.data.userAccount)};
-        else {
+        } else {
           return {error: response.response.data.error};
         }
       }, error => {
@@ -49,13 +47,13 @@ export class DataManager {
   /**
    * Refresh AccessToken
    * 
-   * @returns UserAccount
+   * @returns {UserAccount}
    */
   static refreshToken = async () => {
     const { userAccount } = await refreshToken();
     
     if(userAccount)
-      return new UserAccount(userAccount)
+      return new UserAccount(userAccount);
   }
   
 }

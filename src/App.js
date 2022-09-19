@@ -6,6 +6,7 @@ import NoFooterBaseScreen from './screens/NoFooterBaseScreen';
 import BaseScreen from './screens/BaseScreen';
 import LoadingSpinner from './components/layouts/LoadingSpinner';
 import NotFoundScreen from './screens/NotFoundScreen';
+import ConfirmationScreen from './screens/ConfirmationScreen';
 
 const HomeScreen = React.lazy(() => import('./screens/HomeScreen'));
 const ShopScreen = React.lazy(() => import('./screens/ShopScreen'));
@@ -32,6 +33,12 @@ function App() {
           <Route path='/account' element={
             <Suspense fallback={<LoadingSpinner />}>
               <AccountScreen />
+            </Suspense>
+          }/>
+          
+          <Route path='/confirmation:confirmed' element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <ConfirmationScreen />
             </Suspense>
           }/>
           
