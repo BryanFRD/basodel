@@ -5,6 +5,7 @@ import MainNavbar from '../components/layouts/navbar/MainNavbar';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { ThemeContext } from '../context/ThemeContext';
+import CustomToast from '../components/layouts/toast/CustomToast';
 
 const BaseScreen = () => {
   const { theme } = useContext(ThemeContext);
@@ -25,6 +26,7 @@ const BaseScreen = () => {
             <footer>
               <Footer className='d-none'/>
             </footer>
+            <CustomToast />
           </div>
         </Col>
       </Row>

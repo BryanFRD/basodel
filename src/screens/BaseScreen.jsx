@@ -5,9 +5,11 @@ import MainNavbar from '../components/layouts/navbar/MainNavbar';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { ThemeContext } from '../context/ThemeContext';
+import CustomToast from '../components/layouts/toast/CustomToast';
 
 const BaseScreen = () => {
   const { theme } = useContext(ThemeContext);
+  
   return (
     <>
       <Row className={`g-0 ${theme.bgClass} ${theme.text}`}>
@@ -16,7 +18,7 @@ const BaseScreen = () => {
             <MainNavbar />
           </header>
         </Col>
-        <Col>
+        <Col className='position-relative'>
           <div id='mainDiv'>
             <main>
               <Outlet />
@@ -24,6 +26,7 @@ const BaseScreen = () => {
             <footer>
               <Footer/>
             </footer>
+            <CustomToast />
           </div>
         </Col>
       </Row>
