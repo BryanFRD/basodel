@@ -1,7 +1,7 @@
 export default class Config {
   
   static API = {
-    URL: 'http://localhost:5001'
+    URL: process.env.NODE_ENV === 'production' ? 'https://api.basodel.bryan-ferrando.fr' : 'http://localhost:5001'
   }
   
 }
