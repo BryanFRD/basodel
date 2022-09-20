@@ -28,7 +28,7 @@ export class DataManager {
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
    */
   static get = async (route, params) => {
-    const promise = BasodelAPI.get(route.toLowerCase(), params);
+    const promise = BasodelAPI.get(route.toLowerCase(), {params});
     
     if(models[route])
       return new models[route](await promise.response.data);
@@ -44,7 +44,7 @@ export class DataManager {
    * @returns {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
   static update = async (route, params) => {
-    const promise = BasodelAPI.get(route.toLowerCase(), params);
+    const promise = BasodelAPI.put(route.toLowerCase(), params);
     
     if(models[route])
       return new models[route](await promise.response.data);

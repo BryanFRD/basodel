@@ -42,9 +42,6 @@ const UserContextProvider = (props) => {
         return false;
       }, error => {
         if(error.response.data.error)
-          console.log('message:', error.response.data.error);
-          
-        
         return error.response.data.error;
       })
   }
@@ -66,7 +63,7 @@ const UserContextProvider = (props) => {
       
     return await DataManager.auth({model})
       .then(value => {
-        console.log('value:', value);
+        setUser(value.UserAccount);
         return false;
       }, error => {
         return error.response.data.error;

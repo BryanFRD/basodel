@@ -19,13 +19,13 @@ const ConfirmationScreen = () => {
   useEffect(() => {
     if(request.current)
       return;
-      
-    request.current = Promise.resolve(DataManager.update(`confirmation`, {token}));
+    
+    request.current = DataManager.update(`confirmation`, {token: token});
     
     toast.promise(request.current, {
-      loading: t('confirmation.loading'),
-      success: t('confirmation.success'),
-      error: t('confirmation.error')
+      loading: t('confirmation.email.loading'),
+      success: t('confirmation.email.success'),
+      error: t('confirmation.email.error')
     });
     
     navigate('/');

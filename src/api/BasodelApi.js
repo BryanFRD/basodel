@@ -43,7 +43,7 @@ export const refreshToken = async () => {
       }, error => {
         Cookies.set('authToken', '');
         
-        return Promise.reject(error);
+        return error;
     });
   }
   

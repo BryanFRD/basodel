@@ -5,26 +5,28 @@ import { RiSendPlane2Fill } from 'react-icons/ri';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import { UserContext } from '../../../../../../context/UserContext';
 import { useTranslation } from 'react-i18next';
+import { SocketContext } from '../../../../../../context/SocketContext';
 
-const ChatInput = ({setMessages}) => {
+const ChatInput = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
+  const { socket } = useContext(SocketContext);
   const { t } = useTranslation();
   const [ messageContent, setMessageContent ] = useState();
   
   const handleSubmitMessage = () => {
     if(!user || !messageContent?.trim())
       return;
-    
-    //TODO Enlever username et roleColor, et le mettre dans le socket lors de l'envoi du message
-    setMessages(prevValue => [...prevValue, {
+      
+    const content = {
       user: {
         id: user.id,
-        username: user.username,
-        roleColor: 'COLOR'
+        username: user.username
       },
       message: messageContent.trim()
-    }]);
+    }
+      
+    socket.emit('sendMessage', content);
     
     setMessageContent('');
   }

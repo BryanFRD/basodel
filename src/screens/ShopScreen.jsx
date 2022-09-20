@@ -1,14 +1,11 @@
 import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
-import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../context/ThemeContext';
 
 const ShopScreen = () => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
-  
-  toast.success('Shop');
   
   return (
     <Container fluid className={`d-flex flex-column gap-5 justify-content-center align-items-center ${theme.bgClass} ${theme.text}`}>

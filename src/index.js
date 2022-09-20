@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import SocketContextProvider from './context/SocketContext';
 import ThemeContextProvider from './context/ThemeContext';
 import UserContextProvider from './context/UserContext';
 
@@ -11,7 +12,9 @@ root.render(
   <React.StrictMode>
     <UserContextProvider>
       <ThemeContextProvider>
-        <App />
+        <SocketContextProvider>
+          <App />
+        </SocketContextProvider>
       </ThemeContextProvider>
     </UserContextProvider>
   </React.StrictMode>

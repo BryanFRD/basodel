@@ -19,7 +19,10 @@
         "email": "Erreur sur l'email",
         "password": "Erreur sur le mot de passe",
         "username": "Erreur sur le nom d'utilisateur",
-        "undefined": "Erreur"
+        "undefined": "Erreur",
+        "user_accounts_username": "Nom d'utilisateur déjà existant !",
+        "user_credentials_email": "Email déjà utilisé !",
+        "user_credentials_login": "Identifiant déjà utilisé !"
       }
     },
     "auth": {
@@ -71,7 +74,12 @@
     "reportUser": "Signaler"
   },
   "confirmation": {
-    "title": "Confirmation en cours..."
+    "title": "Confirmation en cours...",
+    "email": {
+      "loading": "Vérification...",
+      "success": "Votre email à bien été validé !",
+      "error": "Votre email n'a pas pus être validé !"
+    }
   },
   "message": {
     "emailSent": "Email envoyé !"

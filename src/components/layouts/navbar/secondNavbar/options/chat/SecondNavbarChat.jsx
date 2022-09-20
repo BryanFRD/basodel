@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SecondNavbarChat.scss';
 import { useTranslation } from 'react-i18next';
 import ChatInput from './ChatInput';
@@ -6,12 +6,6 @@ import ChatContent from './ChatContent';
 
 const SecondNavbarChat = () => {
   const { t } = useTranslation();
-  
-  /*************************************************************/
-  
-  const [messages, setMessages] = useState([]);
-  
-  /*************************************************************/
   
   return (
     <div className={`secondnavbar-chat d-flex flex-column user-select-none`}>
@@ -22,8 +16,8 @@ const SecondNavbarChat = () => {
         <hr className='w-100 mt-2 mb-0'/>
       </div>
       <div className={`chat-box w-100 d-flex flex-column`}>
-        <ChatContent messages={messages}/>
-        <ChatInput setMessages={setMessages}/>
+        <ChatContent/>
+        <ChatInput/>
       </div>
     </div>
   );

@@ -19,7 +19,10 @@
         "email": "Error on email",
         "password": "Error on password",
         "username": "Error on username",
-        "undefined": "Error"
+        "undefined": "Error",
+        "user_accounts_username": "Username already used !",
+        "user_credentials_email": "Email already used !",
+        "user_credentials_login": "Login already used !"
       }
     },
     "auth": {
@@ -71,6 +74,11 @@
     "reportUser": "Report"
   },
   "confirmation": {
-    "title": "Confirmation in progress..."
+    "title": "Confirmation in progress...",
+    "email": {
+      "loading": "Confirmation...",
+      "success": "Your email has been verified!",
+      "error": "Your email couldn't be verified!"
+    }
   }
 }

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Container from 'react-bootstrap/Container'
 import { useTranslation } from 'react-i18next';
-import GameWindow from '../components/game/GameWindow';
 import { ThemeContext } from '../context/ThemeContext';
 import { UserContext } from '../context/UserContext';
 import GenericLink from '../components/generic/link/GenericLink';
@@ -22,7 +21,8 @@ const HomeScreen = () => {
       <LoginModal show={showModal} setShow={setShowModal} />
       <Container fluid className={`${theme.bgClass} ${theme.text} g-0 h-100 w-100`}>
         {user ?
-          <GameWindow />
+          // <GameWindow />
+          <span>HOME SCREEN CONNECTED</span>
           :
           <Container fluid className='d-flex w-100 flex-column gap-5 align-center justify-content-center align-items-center'>
             {t('error.mustBeLogged')}
