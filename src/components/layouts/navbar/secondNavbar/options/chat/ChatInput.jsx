@@ -38,7 +38,7 @@ const ChatInput = () => {
   const handleSubmitInput = (event) => {
     if(event.keyCode === 13 && event.shiftKey === false){
       event.preventDefault();
-      handleSubmitMessage();
+      handleSubmitMessage(event);
     }
   }
   

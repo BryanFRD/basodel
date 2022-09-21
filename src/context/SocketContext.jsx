@@ -14,6 +14,8 @@ const SocketContextProvider = (props) => {
     socket.on('receiveMessage', (data) => {
       setMessages(prevValue => [...prevValue, data]);
     });
+    
+    return () => socket.off('receiveMessage');
   }, [socket]);
   
   return (<SocketContext.Provider value={{socket, messages}}>{props.children}</SocketContext.Provider>)

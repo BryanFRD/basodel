@@ -22,7 +22,7 @@ const ChatContent = () => {
       chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [messages]);
   
   return (
     <div ref={chatContentRef} className={`chat-content px-2 ${theme.customScrollbar}`}>

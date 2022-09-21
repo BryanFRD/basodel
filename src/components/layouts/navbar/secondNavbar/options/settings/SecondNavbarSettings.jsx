@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import useLanguages from '../../../../../../js/useLanguages';
+import { RiCloseLine } from 'react-icons/ri';
 
-const SecondNavbarSettings = () => {
+const SecondNavbarSettings = ({handleClose}) => {
   const { theme, changeThemeTo } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
   const [ changeTheme, setChangeTheme ] = useState(theme.name === 'dark');
@@ -25,9 +26,12 @@ const SecondNavbarSettings = () => {
   
   return (
     <div className={`d-flex flex-column align-items-center user-select-none`}>
-      <h4 className='mx-4 text-center'>
-        {t('generic.settings')}
-      </h4>
+      <div className='d-flex my-3'>
+        <h4 className='mx-4 text-center mb-0 align-self-center w-100'>
+          {t('generic.settings')}
+        </h4>
+        <RiCloseLine className='ms-auto d-block mt-1 mb-2 m-lg-1 ms-lg-auto mx-3 mx-lg-3 fs-2 cursor-pointer' onClick={handleClose}/>
+      </div>
       <hr className='w-100 mt-2'/>
       <div className='w-100 px-3 d-flex flex-column gap-5'>
         <section className='text-center d-flex flex-column gap-3'>
