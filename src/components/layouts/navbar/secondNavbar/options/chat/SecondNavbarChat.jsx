@@ -10,12 +10,12 @@ const SecondNavbarChat = ({handleClose}) => {
   
   return (
     <div className={`secondnavbar-chat d-flex flex-column user-select-none`}>
-      <div className='d-flex flex-column w-100'>
-        <div className='d-flex mt-3'>
-          <h4 className='mx-4 text-center mb-0 align-self-center w-100'>
+      <div className='d-flex flex-column w-100 mt-3'>
+        <div className='d-flex my-3 me-3'>
+          <h4 className='mx-3 text-center mb-0 align-self-center w-100 me-n3 me-lg-n4'>
             {t('generic.chat')}
           </h4>
-          <RiCloseLine className='ms-auto d-block mt-1 mb-2 m-lg-1 ms-lg-auto mx-3 mx-lg-3 fs-2 cursor-pointer' onClick={handleClose}/>
+          <RiCloseLine className='ms-auto d-block my-3 m-lg-1 me-5 fs-2 cursor-pointer' onClick={handleClose}/>
         </div>
         <hr className='w-100 mt-2 mb-0'/>
       </div>

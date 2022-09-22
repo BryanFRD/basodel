@@ -26,13 +26,15 @@ const SecondNavbarSettings = ({handleClose}) => {
   
   return (
     <div className={`d-flex flex-column align-items-center user-select-none`}>
-      <div className='d-flex my-3'>
-        <h4 className='mx-4 text-center mb-0 align-self-center w-100'>
-          {t('generic.settings')}
-        </h4>
-        <RiCloseLine className='ms-auto d-block mt-1 mb-2 m-lg-1 ms-lg-auto mx-3 mx-lg-3 fs-2 cursor-pointer' onClick={handleClose}/>
+      <div className='d-flex flex-column w-100 mt-3'>
+        <div className='d-flex mt-3 me-3'>
+          <h4 className='mx-3 text-center mb-0 align-self-center w-100 me-n3'>
+            {t('generic.settings')}
+          </h4>
+          <RiCloseLine className='ms-auto d-block my-3 m-lg-1 me-5 fs-2 cursor-pointer' onClick={handleClose}/>
+        </div>
+        <hr className='w-100 mt-2'/>
       </div>
-      <hr className='w-100 mt-2'/>
       <div className='w-100 px-3 d-flex flex-column gap-5'>
         <section className='text-center d-flex flex-column gap-3'>
           <h5>
@@ -45,8 +47,7 @@ const SecondNavbarSettings = ({handleClose}) => {
               className={`form-select form-select-sm w-auto ${theme.bgClass} ${theme.text}`}
               onChange={handleLangChange}
               value={i18n.language}>
-                {
-                languages.map((language, index) => 
+                {languages.map((language, index) => 
                   <option
                     value={language.lang}
                     key={`langKey-${index}`}>

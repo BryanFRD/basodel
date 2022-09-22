@@ -17,7 +17,7 @@ const SecondNavbar = ({secondNav, changeSecondNav}) => {
   };
   
   return (
-    <div id='secondNavbar' className={`h-100 vh-100 mh-100 w-100 d-flex py-3 ${theme.shadow} ${theme.bgClass} ${theme.text}`}>
+    <div id='secondNavbar' className={`h-100 vh-100 mh-100 w-100 pb-3 ${theme.shadow} ${theme.bgClass} ${theme.text}`}>
       {secondNavOptions[secondNav]}
     </div>
   );
