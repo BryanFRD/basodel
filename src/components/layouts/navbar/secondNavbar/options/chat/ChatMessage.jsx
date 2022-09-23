@@ -5,6 +5,7 @@ import { ThemeContext } from '../../../../../../context/ThemeContext';
 import { UserContext } from '../../../../../../context/UserContext';
 
 const ChatMessage = ({message}) => {  
+  console.log('message:', message);
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const { user } = useContext(UserContext);
@@ -18,12 +19,12 @@ const ChatMessage = ({message}) => {
   }
   
   return (
-    <div className={`chat-message-container ${theme.chat} ${message.user.id === user.id ? 'message-sender' : 'message-receiver'}`}>
+    <div className={`chat-message-container ${theme.chat} ${message.userAccountId === user.id ? 'message-sender' : 'message-receiver'}`}>
       <div className={`chat-message d-flex flex-column`}>
         <Dropdown>
-          <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>{message.user.username}</Dropdown.Toggle>
+          <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>{message.username}</Dropdown.Toggle>
           <Dropdown.Menu variant={theme.variant}>
-            <Dropdown.ItemText>{message.user.username}</Dropdown.ItemText>
+            <Dropdown.ItemText>{message.username}</Dropdown.ItemText>
             {user && <>
               <Dropdown.Divider />
               <Dropdown.Item className={theme.textDanger} onClick={handleBlockUser}>

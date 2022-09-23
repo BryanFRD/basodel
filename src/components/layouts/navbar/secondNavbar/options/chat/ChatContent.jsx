@@ -26,9 +26,9 @@ const ChatContent = () => {
   
   return (
     <div ref={chatContentRef} className={`chat-content px-2 ${theme.customScrollbar}`}>
-      {messages.map(message => <>
+      {messages.map(message =>
         <ChatMessage key={message.id} message={message} />
-      </>)}
+      )}
     </div>
   );
 };

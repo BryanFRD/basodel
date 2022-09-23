@@ -19,10 +19,7 @@ const ChatInput = () => {
       return;
       
     const content = {
-      user: {
-        id: user.id,
-        username: user.username
-      },
+      userAccountId : user.id,
       message: messageContent.trim()
     }
       
