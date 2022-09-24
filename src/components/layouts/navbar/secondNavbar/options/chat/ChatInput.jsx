@@ -22,7 +22,7 @@ const ChatInput = () => {
       userAccountId : user.id,
       message: messageContent.trim()
     }
-      
+    
     socket.emit('sendMessage', content);
     
     setMessageContent('');
