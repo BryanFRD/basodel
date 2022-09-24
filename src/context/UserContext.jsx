@@ -12,7 +12,9 @@ const UserContextProvider = (props) => {
   
   useEffect(() => {
     const refreshUser = async () => {
-      const userAccount = await DataManager.refreshToken();
+      const userAccount = await DataManager.refreshToken(handleLogout);
+      
+      console.log(Date.now() + (undefined ?? -1) * 1000)
       
       if(userAccount)
         setUser(userAccount);
@@ -78,7 +80,6 @@ const UserContextProvider = (props) => {
     setUser(false);
     Cookies.set('authToken', '');
     
-    //TODO Redis ?
     return false;
   }
   

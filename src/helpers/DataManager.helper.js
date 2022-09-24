@@ -62,7 +62,7 @@ export class DataManager {
     return BasodelAPI.post('auth', params)
       .then(response => {
         if(response?.data){
-          return {UserAccount: new UserAccount(response.data.userAccount)};
+          return {UserAccount: new UserAccount(response.data.userCredential.user_account)};
         } else {
           return {error: response.response.data.error};
         }
@@ -76,11 +76,11 @@ export class DataManager {
    * 
    * @returns {(UserAccount|undefined)}
    */
-  static refreshToken = async () => {
-    const { userAccount } = await refreshToken();
+  static refreshToken = async (handleLogout) => {
+    const { userCredential } = await refreshToken(handleLogout);
     
-    if(userAccount)
-      return new UserAccount(userAccount);
+    if(userCredential)
+      return new UserAccount(userCredential.user_account);
   }
   
 }

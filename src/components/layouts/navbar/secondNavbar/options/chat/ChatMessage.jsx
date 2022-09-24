@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import { UserContext } from '../../../../../../context/UserContext';
 
-const ChatMessage = ({message}) => {  
-  console.log('message:', message);
+const ChatMessage = ({message}) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
   const { user } = useContext(UserContext);
