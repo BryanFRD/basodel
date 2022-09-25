@@ -14,8 +14,6 @@ const UserContextProvider = (props) => {
     const refreshUser = async () => {
       const userAccount = await DataManager.refreshToken(handleLogout);
       
-      console.log(Date.now() + (undefined ?? -1) * 1000)
-      
       if(userAccount)
         setUser(userAccount);
     }
@@ -78,6 +76,7 @@ const UserContextProvider = (props) => {
    */
   const handleLogout = async () => {
     setUser(false);
+    Cookies.set('accessToken', '');
     Cookies.set('authToken', '');
     
     return false;

@@ -10,10 +10,18 @@ const BasodelAPI = axios.create({
 
 BasodelAPI.interceptors.response.use(response => {
   if(response.config.url === 'auth' && response.config.method === 'post'){
-    const expires = response?.data?.expires;
-    Cookies.set('authToken', response?.data?.refreshToken, {
+    const accessTokenExpires = response?.data?.accessTokenExpires;
+    const refreshTokenExpires = response?.data?.refreshTokenExpires;
+    const now = Date.now();
+    
+    Cookies.set('accessToken', response.data?.accessToken, {
       secure: true,
-      expires: new Date(Date.now() + expires ? expires * 1000 : -1)
+      expires: new Date(now + (accessTokenExpires ? accessTokenExpires * 1000 : -1))
+    })
+    
+    Cookies.set('authToken', response.data?.refreshToken, {
+      secure: true,
+      expires: new Date(now + (refreshTokenExpires ? refreshTokenExpires * 1000 : -1))
     });
     BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response?.data?.accessToken}`;
   }
@@ -50,13 +58,22 @@ export const refreshToken = async (handleLogout) => {
           
         BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data?.accessToken}`;
         
-        const expires = response?.data?.expires;
+        const accessTokenExpires = response?.data?.accessTokenExpires;
+        const refreshTokenExpires = response?.data?.refreshTokenExpires;
+        const now = Date.now();
+        
+        Cookies.set('accessToken', response.data?.accessToken, {
+          secure: true,
+          expires: new Date(now + (accessTokenExpires ? accessTokenExpires * 1000 : -1))
+        })
+        
         Cookies.set('authToken', response.data?.refreshToken, {
           secure: true,
-          expires: new Date(Date.now() + expires ? expires * 1000 : -1)
+          expires: new Date(now + (refreshTokenExpires ? refreshTokenExpires * 1000 : -1))
         });
         return {...response.data};
       }, error => {
+        Cookies.set('accessToken', '');
         Cookies.set('authToken', '');
         
         if(_handleLogout)

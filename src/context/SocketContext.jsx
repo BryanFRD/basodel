@@ -1,18 +1,14 @@
 import Cookies from 'js-cookie';
-import React, { useState } from 'react';
-import { useMemo } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useContext } from 'react';
 import { io } from 'socket.io-client';
 import Config from '../config/Config';
+import { UserContext } from './UserContext';
 
 export const SocketContext = React.createContext();
 
 const SocketContextProvider = (props) => {
-  const socket = useMemo(() => {
-    return io.connect(Config.API.URL, {
-      auth: {token: Cookies.get('authToken')}
-    });
-  }, []);
+  const {user} = useContext(UserContext);
+  const socket = useMemo(() => io(Config.API.URL, {auth: {token: (user.id ? Cookies.get('accessToken') : '')}}).connect(), [user.id]);
   const [messages, setMessages] = useState([]);
   const [latency, setLatency] = useState(-1);
   
@@ -33,6 +29,9 @@ const SocketContextProvider = (props) => {
       clearInterval(pingInterval);
       
       socket.off('receiveMessage');
+      
+      console.log(socket.connected)
+      socket.disconnect();
     }
   }, [socket]);
   
