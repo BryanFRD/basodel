@@ -8,7 +8,7 @@ export const SocketContext = React.createContext();
 
 const SocketContextProvider = (props) => {
   const {user} = useContext(UserContext);
-  const socket = useMemo(() => io(Config.API.URL, {auth: {token: (user.id ? Cookies.get('accessToken') : '')}}).connect(), [user.id]);
+  const socket = useMemo(() => io.connect(Config.API.URL, {auth: {token: (user.id ? Cookies.get('accessToken') : '')}}), [user.id]);
   const [messages, setMessages] = useState([]);
   const [latency, setLatency] = useState(-1);
   

@@ -13,6 +13,6 @@ const ShopScreen = () => {
       <span>{t('generic.comingSoon')}</span>
     </Container>
   );
-};
+}
 
 export default ShopScreen;
