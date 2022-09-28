@@ -4,25 +4,23 @@ import { io } from 'socket.io-client';
 import Config from '../config/Config';
 import { UserContext } from './UserContext';
 
-const socket = io.connect(Config.API.URL);
 export const SocketContext = React.createContext();
+const socket = io(Config.API.URL, {auth: {}});
 
 const SocketContextProvider = (props) => {
   const {user} = useContext(UserContext);
-  // const socket = useMemo(() => io.connect(Config.API.URL, {auth: {token: (user.id ? Cookies.get('accessToken') : '')}}), [user.id]);
   const [messages, setMessages] = useState([]);
   const [latency, setLatency] = useState(-1);
   
-  // useEffect(() => {
-    //   const socketIO = io.connect(Config.API.URL, {
-      //     auth: {token: (user.id ? Cookies.get('accessToken') : '')},
-      //   });
-      //   return () => socketIO?.disconnect();
-      // }, [user])
-      
+  useEffect(() => {
+    socket.auth.token = Cookies.get('accessToken');
+    socket.connect();
+    
+    return () => socket?.disconnect();
+  }, [user]);
+  
   useEffect(() => {
     const pingInterval = setInterval(() => {
-      console.log('latency:', latency);
       const start = Date.now();
       
       socket.emit('ping', () => {
@@ -39,6 +37,7 @@ const SocketContextProvider = (props) => {
       
       socket.off('receiveMessage');
     }
+    
   }, []);
   
   return (<SocketContext.Provider value={{socket, messages, latency}}>{props.children}</SocketContext.Provider>);

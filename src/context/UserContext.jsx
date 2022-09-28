@@ -16,11 +16,13 @@ const UserContextProvider = (props) => {
       
       if(userAccount)
         setUser(userAccount);
+      else
+        setUser(undefined);
     }
     
     refreshUser();
   }, []);
-
+  
   /**
    * 
    * @param {{email, login, password, user_account: {username}}} param
@@ -86,7 +88,16 @@ const UserContextProvider = (props) => {
     console.log('param:', param);
   }
   
-  return (<UserContext.Provider value={{user, handleSignup, handleLogin, handleLogout, forgotPassword}}>{props.children}</UserContext.Provider>);
+  return (<UserContext.Provider
+    value={
+      {
+        user,
+        handleSignup,
+        handleLogin,
+        handleLogout,
+        forgotPassword
+      }
+    }>{props.children}</UserContext.Provider>);
 }
 
 export default UserContextProvider;
