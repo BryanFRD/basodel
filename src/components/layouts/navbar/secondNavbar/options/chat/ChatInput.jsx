@@ -1,18 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { RiSendPlane2Fill } from 'react-icons/ri';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import { UserContext } from '../../../../../../context/UserContext';
 import { useTranslation } from 'react-i18next';
 import { SocketContext } from '../../../../../../context/SocketContext';
+import EmojiPicker, { Emoji } from 'emoji-picker-react';
 
 const ChatInput = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
+  const [ showEmoji, setShowEmoji ] = useState(false);
   const { t } = useTranslation();
-  const [ messageContent, setMessageContent ] = useState();
+  const [ messageContent, setMessageContent ] = useState('');
+  const inputRef = useRef();
   
   const handleSubmitMessage = () => {
     if(!user || !messageContent?.trim())
@@ -39,14 +40,25 @@ const ChatInput = () => {
     }
   }
   
+  const handleShowPicker = () => {
+    setShowEmoji(prevValue => !prevValue);
+  }
+  
+  const handleEmojiClick = (picker) => {
+    setMessageContent(prevValue => prevValue + picker.emoji);
+    setShowEmoji(false);
+    inputRef?.current?.focus();
+  }
+  
   return (
     <div className='d-flex flex-column gap-3'>
       <hr className='mt-0'/>
-      <Form className={`chat-input d-flex align-items-center justify-content-center gap-3 px-3 ${theme.text}`} onSubmit={handleSubmitMessage}>
+      <Form className={`position-relative chat-input d-flex align-items-center justify-content-center gap-3 px-3 ${theme.text}`} onSubmit={handleSubmitMessage}>
         {user ?
           <>
             <Form.Control
               as='textarea'
+              ref={inputRef}
               name='messageInput'
               className={`${theme.bgClass} ${theme.text} ${theme.customScrollbar}`}
               value={messageContent}
@@ -54,11 +66,22 @@ const ChatInput = () => {
               onKeyDown={handleSubmitInput}
               maxLength={255}>
             </Form.Control>
-            <Button
+            <div className='cursor-pointer' onClick={handleShowPicker}>
+              <Emoji unified='1f603'/>
+            </div>
+            {showEmoji &&
+              <div className='position-absolute' style={{bottom: '0'}}>
+                <EmojiPicker
+                  emojiStyle='twitter'
+                  onEmojiClick={handleEmojiClick}
+                  theme={theme.emojiPicker}/>
+              </div>
+            }
+            {/* <Button
               className={`${theme.bgClass} border-0 ${theme.sendButtonChat}`}
               onClick={handleSubmitMessage}>
                 <RiSendPlane2Fill />
-            </Button>
+            </Button> */}
           </>
           :
           <span className={`${theme.bgClass}`}>{t('error.mustBeLogged')}</span>

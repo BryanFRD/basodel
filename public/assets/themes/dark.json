@@ -22,5 +22,6 @@
   "textWarning": "text-warning",
   "sendButtonChat": "text-primary",
   "customScrollbar": "custom-scrollbar-dark",
-  "chat": "chat-dark"
+  "chat": "chat-dark",
+  "emojiPicker": "dark"
 }
