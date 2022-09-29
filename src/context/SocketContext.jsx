@@ -16,7 +16,7 @@ const SocketContextProvider = (props) => {
     socket.auth.token = Cookies.get('accessToken');
     socket.connect();
     
-    return () => socket?.disconnect();
+    return () => socket.disconnect();
   }, [user]);
   
   useEffect(() => {
