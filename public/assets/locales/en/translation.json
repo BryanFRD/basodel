@@ -19,7 +19,7 @@
         "email": "Error on email",
         "password": "Error on password",
         "username": "Error on username",
-        "undefined": "Error",
+        "error": "Error",
         "user_accounts_username": "Username already used !",
         "user_credentials_email": "Email already used !",
         "user_credentials_login": "Login already used !"
@@ -71,7 +71,10 @@
   },
   "chat": {
     "blockUser": "Block",
-    "reportUser": "Report"
+    "unblockUser": "Unblock",
+    "reportUser": "Report",
+    "userBlocked": "User blocked",
+    "messageBlocked": "Message blocked."
   },
   "confirmation": {
     "title": "Confirmation in progress...",
@@ -80,5 +83,8 @@
       "success": "Your email has been verified!",
       "error": "Your email couldn't be verified!"
     }
+  },
+  "message": {
+    "emailSent": "Email sent!"
   }
 }

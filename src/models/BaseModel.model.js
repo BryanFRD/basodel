@@ -3,7 +3,6 @@ export default class BaseModel {
   id = -1;
   createdAt = -1;
   updatedAt = -1;
-  isDeleted = false;
   
   assign = (props) => {
     for(const key in props) {
@@ -12,7 +11,7 @@ export default class BaseModel {
         continue;
       }
       
-      if(key.endsWith('Date')){
+      if(key.endsWith('At')){
         props[key] = new Date(props[key]);
       }
     }

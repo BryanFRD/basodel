@@ -19,7 +19,7 @@
         "email": "Erreur sur l'email",
         "password": "Erreur sur le mot de passe",
         "username": "Erreur sur le nom d'utilisateur",
-        "undefined": "Erreur",
+        "error": "Erreur",
         "user_accounts_username": "Nom d'utilisateur déjà existant !",
         "user_credentials_email": "Email déjà utilisé !",
         "user_credentials_login": "Identifiant déjà utilisé !"
@@ -71,7 +71,10 @@
   },
   "chat": {
     "blockUser": "Bloquer",
-    "reportUser": "Signaler"
+    "unblockUser": "Débloquer",
+    "reportUser": "Signaler",
+    "userBlocked": "Utilisateur bloqué",
+    "messageBlocked": "Message bloqué."
   },
   "confirmation": {
     "title": "Confirmation en cours...",

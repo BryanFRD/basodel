@@ -8,58 +8,78 @@ export class DataManager {
    * POST
    * 
    * @param {*} route if route is an available model then it will return a Model
+   * @param {*} data
    * @param {*} params
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
-  static create = async (route, params) => {
-    const promise = BasodelAPI.post(route.toLowerCase(), params);
+  static create = async (route, data, params = {}) => {
+    const searchParams = new URLSearchParams(params);
     
-    if(models[route])
-      return new models[route](await promise.response.data);
-      
-    return promise;
+    BasodelAPI.post(`${route.toLowerCase()}${searchParams.toString()}`, data)
+      .then(response => {
+        if(response?.data?.model){
+          return {model: new models[route](response.data.model)};
+        } else {
+          return {error: response.data.error};
+        }
+      }, error => {
+        return Promise.reject(error);
+      });
   }
   
   /**
    * GET
    * 
    * @param {*} route if route is an available model then it will return a Model
-   * @param {*} params
+   * @param {*} data
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
    */
-  static get = async (route, params) => {
-    const promise = BasodelAPI.get(route.toLowerCase(), {params});
+  static get = async (route, data, params) => {
+    const searchParams = new URLSearchParams(params);
     
-    if(models[route])
-      return new models[route](await promise.response.data);
-      
-    return promise;
+    return BasodelAPI.get(`${route.toLowerCase()}${searchParams.toString()}`, {data})
+      .then(response => {
+        if(response?.data?.model){
+          return {model: new models[route](response.data.model)};
+        } else {
+          return {error: response.data.error};
+        }
+      }, error => {
+        return Promise.reject(error);
+      });
   }
   
   /**
    * UPDATE
    * 
    * @param {*} route  if route is an available model then it will return a Model
-   * @param {*} params 
+   * @param {*} data
+   * @param {object}
    * @returns {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
-  static update = async (route, params) => {
-    const promise = BasodelAPI.put(route.toLowerCase(), params);
+  static update = async (route, data, params, softUpdate = false) => {
+    const searchParams = new URLSearchParams(params);
     
-    if(models[route])
-      return new models[route](await promise.response.data);
-    
-    return promise;
+    return BasodelAPI.put(`${route.toLowerCase()}?${searchParams.toString()}`, data)
+      .then(response => {
+        if(response?.data?.model){
+          return {model: new models[route](softUpdate ? data.model : response.data.model)};
+        } else {
+          return {error: response.data.error};
+        }
+      }, error => {
+        return Promise.reject(error);
+      });
   }
   
   /**
    * Authenticate
    * 
-   * @param {*} params
+   * @param {*} data
    * @returns {(UserAccount|error|Promise)}
    */
-  static auth = async (params) => {
-    return BasodelAPI.post('auth', params)
+  static auth = async (data) => {
+    return BasodelAPI.post('auth', data)
       .then(response => {
         if(response?.data){
           return {UserAccount: new UserAccount(response.data.userCredential.user_account)};

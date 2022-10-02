@@ -43,7 +43,6 @@ const UserContextProvider = (props) => {
         toast.success(t(value.data.message));
         return false;
       }, error => {
-        if(error.response.data.error)
         return error.response.data.error;
       })
   }
@@ -88,6 +87,23 @@ const UserContextProvider = (props) => {
     console.log('param:', param);
   }
   
+  /**
+   * 
+   * @param {boolean} softUpdate keep the same instance or not
+   * @param {boolean} updateState update user state or not
+   * @returns 
+   */
+  const updateUser = async (softUpdate = false) => {
+    return DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, softUpdate)
+      .then(value => { 
+        console.log('value:', value.model);
+        setUser(value.model);
+        return false;
+      }, error => {
+        return error.data.error;
+      });
+  }
+  
   return (<UserContext.Provider
     value={
       {
@@ -95,7 +111,8 @@ const UserContextProvider = (props) => {
         handleSignup,
         handleLogin,
         handleLogout,
-        forgotPassword
+        forgotPassword,
+        updateUser
       }
     }>{props.children}</UserContext.Provider>);
 }

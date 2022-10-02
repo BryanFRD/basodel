@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
@@ -7,10 +7,20 @@ import { UserContext } from '../../../../../../context/UserContext';
 const ChatMessage = ({message}) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
-  const { user } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
+  const blockedUser = useMemo(() => {
+    const index = user?.getBlockedUserIndex(message.userAccountId);
+    
+    return {index, blocked: index !== -1}
+  }, [user, message.userAccountId]);
   
   const handleBlockUser = () => {
-    console.log(`Blocked: ${JSON.stringify(message)}`);
+    if(blockedUser.blocked)
+      user.blockedUser.splice(blockedUser.index, 1);
+    else
+      user.blockedUser.push(message.userAccountId)
+      
+    updateUser(true);
   }
   
   const handleReportUser = () => {
@@ -18,16 +28,19 @@ const ChatMessage = ({message}) => {
   }
   
   return (
-    <div className={`chat-message-container ${theme.chat} ${message.userAccountId === user.id ? 'message-sender' : 'message-receiver'}`}>
+    <div className={`chat-message-container ${theme.chat} ${
+      message.userAccountId === user?.id ? 'message-sender' : 'message-receiver'}`}>
       <div className={`chat-message d-flex flex-column`}>
         <Dropdown>
-          <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>{message.username}</Dropdown.Toggle>
+          <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>
+            {blockedUser.blocked ? t('chat.userBlocked') : message.username}
+          </Dropdown.Toggle>
           <Dropdown.Menu variant={theme.variant}>
-            <Dropdown.ItemText>{message.username}</Dropdown.ItemText>
-            {user && <>
+            <Dropdown.ItemText>{blockedUser.blocked ? t('chat.userBlocked') : message.username}</Dropdown.ItemText>
+            {(user && user.id !== message.userAccountId) && <>
               <Dropdown.Divider />
               <Dropdown.Item className={theme.textDanger} onClick={handleBlockUser}>
-                {t('chat.blockUser')}
+                {t(blockedUser.blocked ? 'chat.unblockUser' : 'chat.blockUser')}
               </Dropdown.Item>
               <Dropdown.Item className={theme.textDanger} onClick={handleReportUser}>
                 {t('chat.reportUser')}
@@ -35,8 +48,7 @@ const ChatMessage = ({message}) => {
             </>}
           </Dropdown.Menu>
         </Dropdown>
-        {/* <GenerikLink className={`chat-username mb-2`}>Bernard</GenerikLink> */}
-        <span>{message.message}</span>
+        <span className={`${blockedUser.blocked ? 'text-muted' : ''}`}>{blockedUser.blocked ? t('chat.messageBlocked') : message.message}</span>
       </div>
     </div>
   );

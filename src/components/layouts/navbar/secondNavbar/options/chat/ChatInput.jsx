@@ -72,16 +72,12 @@ const ChatInput = () => {
             {showEmoji &&
               <div className='position-absolute' style={{bottom: '0'}}>
                 <EmojiPicker
-                  emojiStyle='twitter'
+                  lazyLoad={true}
+                  emojiStyle='native'
                   onEmojiClick={handleEmojiClick}
                   theme={theme.emojiPicker}/>
               </div>
             }
-            {/* <Button
-              className={`${theme.bgClass} border-0 ${theme.sendButtonChat}`}
-              onClick={handleSubmitMessage}>
-                <RiSendPlane2Fill />
-            </Button> */}
           </>
           :
           <span className={`${theme.bgClass}`}>{t('error.mustBeLogged')}</span>
