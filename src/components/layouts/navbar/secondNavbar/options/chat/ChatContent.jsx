@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { SocketContext } from '../../../../../../context/SocketContext';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import ChatMessage from './ChatMessage';
 
-const ChatContent = () => {
+const ChatContent = ({messages}) => {
   const { theme } = useContext(ThemeContext);
   const chatContentRef = useRef();
   const [ autoScroll, setAutoScroll ] = useState(true);
-  const { messages } = useContext(SocketContext);
   
   const handleScrollEvent = ({target}) => {
     setAutoScroll(target.scrollTop === (target.scrollHeight - target.clientHeight));
@@ -27,7 +25,7 @@ const ChatContent = () => {
   return (
     <div ref={chatContentRef} className={`chat-content px-2 ${theme.customScrollbar}`}>
       {messages.map(message =>
-        <ChatMessage key={message.id} message={message} />
+        <ChatMessage key={message.messageId} message={message} />
       )}
     </div>
   );

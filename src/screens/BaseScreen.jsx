@@ -18,7 +18,7 @@ const BaseScreen = () => {
             <MainNavbar />
           </header>
         </Col>
-        <Col className='position-relative'>
+        <Col>
           <div id='mainDiv'>
             <main>
               <Outlet />

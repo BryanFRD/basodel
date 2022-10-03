@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './MainNavbar.scss';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import { useTranslation } from 'react-i18next';
@@ -18,12 +18,25 @@ import GenericLink from '../../generic/link/GenericLink';
 import SecondNavbar from './secondNavbar/SecondNavbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { SocketContext } from '../../../context/SocketContext';
 
 const MainNavbar = () => {
   const { theme } = useContext(ThemeContext);
   const { user, handleLogout } = useContext(UserContext);
+  const {socket} = useContext(SocketContext);
   const { t } = useTranslation();
+  const [messages, setMessages] = useState([]);
   const [ navbarState, setNavbarState ] = useState({isExpanded: false, showModal: false, collapsed: false, secondNav: false});
+  
+  useEffect(() => {    
+    socket.on('receiveMessage', (data) => {
+      setMessages(prevValue => [...prevValue, data]);
+    });
+    
+    return () => {      
+      socket.off('receiveMessage');
+    }
+  }, [socket]);
   
   const onClickExpand = () => {
     setNavbarState(prevValue => ({...prevValue, isExpanded: !prevValue.isExpanded}));
@@ -55,7 +68,7 @@ const MainNavbar = () => {
     <Row className='g-0'>
       <LoginModal show={navbarState.showModal} setShow={setNavbarState} />
       <Col>
-      {navbarState.secondNav && <SecondNavbar secondNav={navbarState.secondNav} changeSecondNav={changeSecondNav}/>}
+      {navbarState.secondNav && <SecondNavbar secondNav={navbarState.secondNav} changeSecondNav={changeSecondNav} messages={messages}/>}
       </Col>
       <Col lg='auto'>
       <Navbar id='mainNavBar' expanded={navbarState.collapsed} variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}

@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import './i18n';
-import NoFooterBaseScreen from './screens/NoFooterBaseScreen';
 import BaseScreen from './screens/BaseScreen';
 import LoadingSpinner from './components/layouts/LoadingSpinner';
 import NotFoundScreen from './screens/NotFoundScreen';
@@ -16,14 +15,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<NoFooterBaseScreen />}>
+        <Route path='/' element={<BaseScreen />}>
           <Route index element={
             <Suspense fallback={<LoadingSpinner />}>
               <HomeScreen />
             </Suspense>
           } />
-        </Route>
-        <Route path='/' element={<BaseScreen />}>
           <Route path='/shop' element={
             <Suspense fallback={<LoadingSpinner />}>
               <ShopScreen />

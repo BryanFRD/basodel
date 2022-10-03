@@ -5,8 +5,8 @@ import ChatInput from './ChatInput';
 import ChatContent from './ChatContent';
 import { RiCloseLine } from 'react-icons/ri';
 
-const SecondNavbarChat = ({handleClose}) => {
-  const { t } = useTranslation();
+const SecondNavbarChat = ({handleClose, messages}) => {
+  const {t} = useTranslation();
   
   return (
     <div className={`secondnavbar-chat d-flex flex-column user-select-none`}>
@@ -20,7 +20,7 @@ const SecondNavbarChat = ({handleClose}) => {
         <hr className='w-100 mt-2 mb-0'/>
       </div>
       <div className={`chat-box w-100 d-flex flex-column`}>
-        <ChatContent/>
+        <ChatContent messages={messages}/>
         <ChatInput/>
       </div>
     </div>

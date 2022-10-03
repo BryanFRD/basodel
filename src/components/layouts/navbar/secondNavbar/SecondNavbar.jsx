@@ -4,7 +4,7 @@ import SecondNavbarChat from './options/chat/SecondNavbarChat';
 import SecondNavbarSettings from './options/settings/SecondNavbarSettings';
 import { ThemeContext } from '../../../../context/ThemeContext';
 
-const SecondNavbar = ({secondNav, changeSecondNav}) => {
+const SecondNavbar = ({secondNav, changeSecondNav, messages}) => {
   const { theme } = useContext(ThemeContext);
   
   const handleClose = () => {
@@ -12,7 +12,7 @@ const SecondNavbar = ({secondNav, changeSecondNav}) => {
   }
   
   const secondNavOptions = {
-    chat: (<SecondNavbarChat handleClose={handleClose}/>),
+    chat: (<SecondNavbarChat handleClose={handleClose} messages={messages}/>),
     settings: (<SecondNavbarSettings handleClose={handleClose}/>)
   };
   
