@@ -11,9 +11,7 @@ export default class UserAccount extends BaseModel {
   constructor(props){
     super();
     
-    console.log('props:', props);
     this.assign(props);
-    console.log('this:', this);
   }
   
   getLevel = () => {

@@ -8,7 +8,7 @@ export const UserContext = React.createContext();
 
 const UserContextProvider = (props) => {
   const { t } = useTranslation();
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState();
   
   useEffect(() => {
     const refreshUser = async () => {
@@ -76,7 +76,7 @@ const UserContextProvider = (props) => {
    * @returns false or error
    */
   const handleLogout = async () => {
-    setUser(false);
+    setUser(undefined);
     Cookies.set('accessToken', '');
     Cookies.set('authToken', '');
     
@@ -96,7 +96,6 @@ const UserContextProvider = (props) => {
   const updateUser = async (softUpdate = false) => {
     return DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, softUpdate)
       .then(value => { 
-        console.log('value:', value.model);
         setUser(value.model);
         return false;
       }, error => {

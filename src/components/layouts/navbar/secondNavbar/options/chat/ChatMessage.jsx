@@ -11,7 +11,7 @@ const ChatMessage = ({message}) => {
   const blockedUser = useMemo(() => {
     const index = user?.getBlockedUserIndex(message.userAccountId);
     
-    return {index, blocked: index !== -1}
+    return {index, blocked: index !== -1 && user}
   }, [user, message.userAccountId]);
   
   const handleBlockUser = () => {
