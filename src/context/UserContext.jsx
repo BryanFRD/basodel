@@ -40,7 +40,7 @@ const UserContextProvider = (props) => {
       
     return await DataManager.create('usercredential', {model})
       .then(value => {
-        toast.success(t(value.data.message));
+        toast.success(t(value.message));
         return false;
       }, error => {
         return error.response.data.error;
@@ -99,7 +99,7 @@ const UserContextProvider = (props) => {
         setUser(value.model);
         return false;
       }, error => {
-        return error.data.error;
+        return error.response.data.error;
       });
   }
   

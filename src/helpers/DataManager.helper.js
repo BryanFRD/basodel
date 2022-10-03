@@ -15,12 +15,12 @@ export class DataManager {
   static create = async (route, data, params = {}) => {
     const searchParams = new URLSearchParams(params);
     
-    BasodelAPI.post(`${route.toLowerCase()}${searchParams.toString()}`, data)
+    return BasodelAPI.post(`${route.toLowerCase()}${params ? `?${searchParams.toString()}` : ''}`, data)
       .then(response => {
-        if(response?.data?.model){
-          return {model: new models[route](response.data.model)};
+        if(!response?.data?.error){
+          return {model: this.getModel(route, response.data.model), message: response.data.message};
         } else {
-          return {error: response.data.error};
+          return {error: response?.data?.error};
         }
       }, error => {
         return Promise.reject(error);
@@ -37,10 +37,10 @@ export class DataManager {
   static get = async (route, data, params) => {
     const searchParams = new URLSearchParams(params);
     
-    return BasodelAPI.get(`${route.toLowerCase()}${searchParams.toString()}`, {data})
+    return BasodelAPI.get(`${route.toLowerCase()}${params ? `?${searchParams.toString()}` : ''}`, {data})
       .then(response => {
-        if(response?.data?.model){
-          return {model: new models[route](response.data.model)};
+        if(!response?.data?.error){
+          return {model: this.getModel(route, response.data.model), message: response.data.message};
         } else {
           return {error: response.data.error};
         }
@@ -60,10 +60,10 @@ export class DataManager {
   static update = async (route, data, params, softUpdate = false) => {
     const searchParams = new URLSearchParams(params);
     
-    return BasodelAPI.put(`${route.toLowerCase()}?${searchParams.toString()}`, data)
+    return BasodelAPI.put(`${route.toLowerCase()}${params ? `?${searchParams.toString()}` : ''}`, data)
       .then(response => {
-        if(response?.data?.model){
-          return {model: new models[route](softUpdate ? data.model : response.data.model)};
+        if(!response?.data?.error){
+          return {model: this.getModel(route, softUpdate ? data.model : response.data.model), message: response.data.message};
         } else {
           return {error: response.data.error};
         }
@@ -81,10 +81,10 @@ export class DataManager {
   static auth = async (data) => {
     return BasodelAPI.post('auth', data)
       .then(response => {
-        if(response?.data){
+        if(!response?.data?.error){
           return {UserAccount: new UserAccount(response.data.userCredential.user_account)};
         } else {
-          return {error: response.response.data.error};
+          return {error: response.data.error};
         }
       }, error => {
         return Promise.reject(error);
@@ -101,6 +101,10 @@ export class DataManager {
     
     if(userCredential)
       return new UserAccount(userCredential.user_account);
+  }
+  
+  static getModel = (modelName, props) => {
+    return models[modelName] ? new models[modelName](props) : null;
   }
   
 }
