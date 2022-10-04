@@ -11,7 +11,7 @@ const SecondNavbarChat = ({handleClose, messages}) => {
   return (
     <div className={`secondnavbar-chat d-flex flex-column user-select-none`}>
       <div className='d-flex flex-column w-100 mt-3'>
-        <div className='d-flex my-3 me-3'>
+        <div className='d-flex my-3 me-0 me-lg-3'>
           <h4 className='mx-3 text-center mb-0 align-self-center w-100 me-n3 me-lg-n4'>
             {t('generic.chat')}
           </h4>

@@ -27,7 +27,7 @@ const SecondNavbarSettings = ({handleClose}) => {
   return (
     <div className={`d-flex flex-column align-items-center user-select-none`}>
       <div className='d-flex flex-column w-100 mt-3'>
-        <div className='d-flex mt-3 me-3'>
+        <div className='d-flex mt-3 me-0 me-lg-3'>
           <h4 className='mx-3 text-center mb-0 align-self-center w-100 me-n3'>
             {t('generic.settings')}
           </h4>
@@ -39,7 +39,7 @@ const SecondNavbarSettings = ({handleClose}) => {
         <section className='text-center d-flex flex-column gap-3'>
           <h5>
             {t('settings.interface')}
-            <hr className='my-1'/>
+            <hr className='my-1 mt-3'/>
           </h5>
           <div className='d-flex justify-content-between gap-5'>
             <label htmlFor='languageInput'>{t('generic.language')}</label>
@@ -64,7 +64,7 @@ const SecondNavbarSettings = ({handleClose}) => {
         <section className='text-center d-flex flex-column gap-3'>
           <h5>
             {t('settings.game')}
-            <hr className='my-1'/>
+            <hr className='my-1 mt-3'/>
           </h5>
           <span>{t('generic.comingSoon')}</span>
         </section>

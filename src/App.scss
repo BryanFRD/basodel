@@ -35,6 +35,26 @@ body {
       background-color: #212529 !important;
     }
   }
+  
+  &lighter- {
+    &light {
+      background-color: #e9ecef;
+    }
+    
+    &dark {
+      background-color: #343a40;
+    }
+  }
+  //TODO Colors for darker version
+  &darker- {
+    &light {
+      background-color: var(--bg-gray-500);
+    }
+    
+    &dark {
+      background-color: var(--bg-gray-500);
+    }
+  }
 }
 
 .bg-hover-light:hover {
@@ -223,5 +243,7 @@ body {
     }
   }
 }
+
+$enable-negative-margins: true;
 
 @import '~bootstrap/scss/bootstrap';

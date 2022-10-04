@@ -10,7 +10,7 @@ const ChatInput = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
-  const [ showEmoji, setShowEmoji ] = useState(false);
+  const [ emojiState, setEmojiState ] = useState({show: false, unified: `1f60${Math.floor(Math.random() * 9)}`});
   const { t } = useTranslation();
   const [ messageContent, setMessageContent ] = useState('');
   const inputRef = useRef();
@@ -33,46 +33,74 @@ const ChatInput = () => {
     setMessageContent(event.target.value);
   }
   
-  const handleSubmitInput = (event) => {
+  const handleKeyDown = (event) => {
     if(event.keyCode === 13 && event.shiftKey === false){
       event.preventDefault();
       handleSubmitMessage(event);
+      event.target.style.height = '2.25em';
     }
+    
+    
+  }
+  
+  const handleInput = (event) => {
+    console.log('event.target.scrollHeight:', event.target.scrollHeight);
+    event.target.style.height = '2.25em';
+    event.target.style.height = `${event.target.scrollHeight}px`;
   }
   
   const handleShowPicker = () => {
-    setShowEmoji(prevValue => !prevValue);
+    setEmojiState(prevValue => ({...prevValue, show: !prevValue.show}));
   }
   
   const handleEmojiClick = (picker) => {
     setMessageContent(prevValue => prevValue + picker.emoji);
-    setShowEmoji(false);
+    setEmojiState(prevValue => ({...prevValue, show: !prevValue.show}));
     inputRef?.current?.focus();
   }
   
+  const handleNewEmojiUnified = () => {
+    setEmojiState(prevValue => ({
+      ...prevValue,
+      unified: generateNewEmojiUnified(prevValue.unified)
+    }))
+  }
+  
+  const generateNewEmojiUnified = (previousValue) => {
+    const unified = `1f60${Math.floor(Math.random() * 9)}`;
+    
+    return unified === previousValue ? generateNewEmojiUnified(previousValue) : unified;
+  }
+  
   return (
-    <div className='d-flex flex-column gap-3'>
+    <div className='chat-input-content d-flex flex-column gap-3'>
       <hr className='mt-0'/>
-      <Form className={`position-relative chat-input d-flex align-items-center justify-content-center gap-3 px-3 ${theme.text}`} onSubmit={handleSubmitMessage}>
+      <Form
+        className={`position-relative chat-input d-flex align-items-center justify-content-center rounded mx-4 ${theme.bgClassLighter} ${theme.text}`}
+        onSubmit={handleSubmitMessage}>
         {user ?
           <>
             <Form.Control
-              onFocus={() => setShowEmoji(false)}
+              onFocus={() => setEmojiState(prevValue => ({...prevValue, show: false}))}
               as='textarea'
               ref={inputRef}
-              name='messageInput'
-              className={`${theme.bgClass} ${theme.text} ${theme.customScrollbar}`}
+              className={`bg-transparent ${theme.text} ${theme.customScrollbar} border-0 outline-0 shadow-none`}
               value={messageContent}
               onChange={handleOnChangeMessage}
-              onKeyDown={handleSubmitInput}
+              onKeyDown={handleKeyDown}
+              onInput={handleInput}
               maxLength={255}>
             </Form.Control>
-            <div className='cursor-pointer' onClick={handleShowPicker}>
-              <Emoji unified='1f603' emojiStyle='native'/>
+            <div
+              className='cursor-pointer emojiPicker px-2 align-self-start py-1'
+              onClick={handleShowPicker}
+              onMouseEnter={handleNewEmojiUnified}>
+              <Emoji unified={emojiState.unified} emojiStyle='native'/>
             </div>
-            {showEmoji &&
-              <div className='position-absolute' style={{bottom: '14rem', maxHeight: '50vh'}}>
+            {emojiState.show &&
+              <div className='position-absolute' style={{bottom: '6rem'}}>
                 <EmojiPicker
+                  searchPlaceHolder=''
                   lazyLoad={true}
                   emojiStyle='native'
                   onEmojiClick={handleEmojiClick}

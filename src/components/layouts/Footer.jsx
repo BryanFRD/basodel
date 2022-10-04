@@ -7,11 +7,11 @@ const Footer = ({className}) => {
   
   return (
     <Container fluid className={`p-3 text-center fw-light ${theme.bgClass} ${theme.text} ${className}`}>
-      <div>© 2022 Copyright:&nbsp;
+      <div>©&nbsp;2022&nbsp;Copyright: &nbsp;
         <a href='https://bryan-ferrando.fr'
         target='_blank'
         rel='noreferrer'
-        className={`fw-normal ${theme.link}`}>
+        className={`fw-normal text-nowrap ${theme.link}`}>
           bryan-ferrando.fr
         </a>
       </div>
