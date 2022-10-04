@@ -15,7 +15,7 @@ export class DataManager {
   static create = async (route, data, params = {}) => {
     const searchParams = new URLSearchParams(params);
     
-    return BasodelAPI.post(`${route.toLowerCase()}${params ? `?${searchParams.toString()}` : ''}`, data)
+    return BasodelAPI.post(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
       .then(response => {
         if(!response?.data?.error){
           return {model: this.getModel(route, response.data.model), message: response.data.message};
@@ -37,7 +37,7 @@ export class DataManager {
   static get = async (route, data, params) => {
     const searchParams = new URLSearchParams(params);
     
-    return BasodelAPI.get(`${route.toLowerCase()}${params ? `?${searchParams.toString()}` : ''}`, {data})
+    return BasodelAPI.get(`${route.toLowerCase()}${this.buildSearchParams(params)}`, {data})
       .then(response => {
         if(!response?.data?.error){
           return {model: this.getModel(route, response.data.model), message: response.data.message};
@@ -60,7 +60,7 @@ export class DataManager {
   static update = async (route, data, params, softUpdate = false) => {
     const searchParams = new URLSearchParams(params);
     
-    return BasodelAPI.put(`${route.toLowerCase()}${params ? `?${searchParams.toString()}` : ''}`, data)
+    return BasodelAPI.put(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
       .then(response => {
         if(!response?.data?.error){
           return {model: this.getModel(route, softUpdate ? data.model : response.data.model), message: response.data.message};
@@ -105,6 +105,23 @@ export class DataManager {
   
   static getModel = (modelName, props) => {
     return models[modelName] ? new models[modelName](props) : null;
+  }
+  
+  static buildSearchParams = (params) => {
+    if(!params)
+      return '';
+    
+    const searchParams = new URLSearchParams();
+    
+    Object.entries(params).forEach(([key, value]) => {
+      if(typeof value === 'object'){
+        value.forEach(v => searchParams.append(key, v));
+      } else {
+        searchParams.append(key, value);
+      }
+    })
+    
+    return `?${searchParams}`;
   }
   
 }

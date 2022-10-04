@@ -94,8 +94,8 @@ const UserContextProvider = (props) => {
    * @returns 
    */
   const updateUser = async (softUpdate = false) => {
-    return DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, softUpdate)
-      .then(value => { 
+    return DataManager.update('UserAccount', {model: user}, {id: user.id, include: ["blockedUser", "role"]}, softUpdate)
+      .then(value => {
         setUser(value.model);
         return false;
       }, error => {

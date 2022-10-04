@@ -42,7 +42,7 @@ const ChatMessage = ({message}) => {
               <Dropdown.Item className={theme.textDanger} onClick={handleBlockUser}>
                 {t(blockedUser.blocked ? 'chat.unblockUser' : 'chat.blockUser')}
               </Dropdown.Item>
-              <Dropdown.Item className={theme.textDanger} onClick={handleReportUser}>
+              <Dropdown.Item className={`${theme.textDanger} text-decoration-line-through`} onClick={handleReportUser} disabled>
                 {t('chat.reportUser')}
               </Dropdown.Item>
             </>}
