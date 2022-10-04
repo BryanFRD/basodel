@@ -57,6 +57,7 @@ const ChatInput = () => {
         {user ?
           <>
             <Form.Control
+              onFocus={() => setShowEmoji(false)}
               as='textarea'
               ref={inputRef}
               name='messageInput'
@@ -67,10 +68,10 @@ const ChatInput = () => {
               maxLength={255}>
             </Form.Control>
             <div className='cursor-pointer' onClick={handleShowPicker}>
-              <Emoji unified='1f603'/>
+              <Emoji unified='1f603' emojiStyle='native'/>
             </div>
             {showEmoji &&
-              <div className='position-absolute' style={{bottom: '0'}}>
+              <div className='position-absolute' style={{bottom: '14rem', maxHeight: '50vh'}}>
                 <EmojiPicker
                   lazyLoad={true}
                   emojiStyle='native'
