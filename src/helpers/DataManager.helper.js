@@ -13,8 +13,6 @@ export class DataManager {
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
   static create = async (route, data, params = {}) => {
-    const searchParams = new URLSearchParams(params);
-    
     return BasodelAPI.post(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
       .then(response => {
         if(!response?.data?.error){
@@ -35,8 +33,6 @@ export class DataManager {
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
    */
   static get = async (route, data, params) => {
-    const searchParams = new URLSearchParams(params);
-    
     return BasodelAPI.get(`${route.toLowerCase()}${this.buildSearchParams(params)}`, {data})
       .then(response => {
         if(!response?.data?.error){
@@ -58,8 +54,6 @@ export class DataManager {
    * @returns {(BaseModel|Promise<AxiosResponse<any, any>>)}
    */
   static update = async (route, data, params, softUpdate = false) => {
-    const searchParams = new URLSearchParams(params);
-    
     return BasodelAPI.put(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
       .then(response => {
         if(!response?.data?.error){

@@ -14,6 +14,7 @@ const ChatInput = () => {
   const { t } = useTranslation();
   const [ messageContent, setMessageContent ] = useState('');
   const inputRef = useRef();
+  const formRef = useRef();
   
   const handleSubmitMessage = () => {
     if(!user || !messageContent?.trim())
@@ -39,14 +40,13 @@ const ChatInput = () => {
       handleSubmitMessage(event);
       event.target.style.height = '2.25em';
     }
-    
-    
   }
   
-  const handleInput = (event) => {
-    console.log('event.target.scrollHeight:', event.target.scrollHeight);
-    event.target.style.height = '2.25em';
-    event.target.style.height = `${event.target.scrollHeight}px`;
+  const handleInput = () => {
+    const defaultHeight = '2.25em';
+    console.log(inputRef.current.style.height);
+    inputRef.current.style.height = defaultHeight;
+    inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
   }
   
   const handleShowPicker = () => {
@@ -73,7 +73,7 @@ const ChatInput = () => {
   }
   
   return (
-    <div className='chat-input-content d-flex flex-column gap-3'>
+    <div className='chat-input-content d-flex flex-column gap-3'ref={formRef}>
       <hr className='mt-0'/>
       <Form
         className={`position-relative chat-input d-flex align-items-center justify-content-center rounded mx-4 ${theme.bgClassLighter} ${theme.text}`}
