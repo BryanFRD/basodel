@@ -38,15 +38,18 @@ const ChatInput = () => {
     if(event.keyCode === 13 && event.shiftKey === false){
       event.preventDefault();
       handleSubmitMessage(event);
-      event.target.style.height = '2.25em';
+      
+      inputRef.current.style.height = '2.6em';
     }
   }
   
   const handleInput = () => {
     const defaultHeight = '2.25em';
-    console.log(inputRef.current.style.height);
+    
     inputRef.current.style.height = defaultHeight;
     inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+    
+    inputRef.current.scrollTop = inputRef.current.scrollHeight;
   }
   
   const handleShowPicker = () => {
@@ -92,7 +95,7 @@ const ChatInput = () => {
               maxLength={255}>
             </Form.Control>
             <div
-              className='cursor-pointer emojiPicker px-2 align-self-start py-1'
+              className='cursor-pointer emojiPicker px-2 align-self-start pb-1'
               onClick={handleShowPicker}
               onMouseEnter={handleNewEmojiUnified}>
               <Emoji unified={emojiState.unified} emojiStyle='native'/>

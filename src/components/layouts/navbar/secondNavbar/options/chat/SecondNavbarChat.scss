@@ -57,6 +57,7 @@
       border-radius: 10px;
       white-space: pre-wrap;
       word-break: break-word;
+      user-select: text;
     }
     
     .chat-username {
@@ -92,13 +93,13 @@
     resize: none;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    min-height: 2.6em;
+    min-height: 2.55em;
     height: 2.6em;
     max-height: 5.5rem;
   }
   
   .emojiPicker {
-    margin-top: 0.20em;
+    margin-top: 0.4em;
     transition: margin-top 0.15s;
     transition-timing-function: cubic-bezier(.65,.75,.50,1.65);
     & span {
@@ -108,7 +109,7 @@
       transition-timing-function: cubic-bezier(.65,.75,.50,1.65);
     }
     &:hover {
-      margin-top: 0.09em;
+      margin-top: 0.3em;
       & span {
         filter: grayscale(0);
         font-size: 1.75em !important;

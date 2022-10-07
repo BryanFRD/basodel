@@ -13,12 +13,30 @@ const ChatContent = ({messages}) => {
   
   useEffect(() => {
     chatContentRef.current.addEventListener('scroll', handleScrollEvent);
+    
+    const resizeObserver = new ResizeObserver(() => {
+      setAutoScroll((prevValue) => {
+        if(prevValue){
+          chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
+        }
+        
+        return prevValue;
+      })
+    });
+    
+    resizeObserver.observe(chatContentRef.current);
+    
+    return () => {
+      resizeObserver.disconnect();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatContentRef])
   
   useEffect(() => {
     if(autoScroll){
       chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
     }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
   
