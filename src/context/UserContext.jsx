@@ -79,8 +79,9 @@ const UserContextProvider = (props) => {
    */
   const handleLogout = async () => {
     setUser(undefined);
-    Cookies.set('accessToken', '');
+    
     Cookies.set('authToken', '');
+    Cookies.set('accessToken', '');
     
     return false;
   }

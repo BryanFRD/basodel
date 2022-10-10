@@ -9,20 +9,13 @@ const BasodelAPI = axios.create({
 });
 
 BasodelAPI.interceptors.response.use(response => {
-  if(response.config.url === 'auth' && response.config.method === 'post'){
-    const accessTokenExpires = response?.data?.accessTokenExpires;
-    const refreshTokenExpires = response?.data?.refreshTokenExpires;
-    const now = Date.now();
+  if(response.data?.authToken){
+    setTokens('authToken', response.data.authToken, response.data.authTokenExpires);
+  }
+  
+  if(response.data?.accessToken){
+    setTokens('accessToken', response.data.accessToken, response.data.accessTokenExpires);
     
-    Cookies.set('accessToken', response.data?.accessToken, {
-      secure: true,
-      expires: new Date(now + (accessTokenExpires ? accessTokenExpires * 1000 : -1))
-    })
-    
-    Cookies.set('authToken', response.data?.refreshToken, {
-      secure: true,
-      expires: new Date(now + (refreshTokenExpires ? refreshTokenExpires * 1000 : -1))
-    });
     BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response?.data?.accessToken}`;
   }
   
@@ -34,8 +27,7 @@ BasodelAPI.interceptors.response.use(response => {
     
     const { accessToken } = refreshToken();
     
-    if(accessToken)
-      originalRequest.headers['authorization'] = `Bearer ${accessToken}`;
+    originalRequest.headers['authorization'] = `Bearer ${accessToken}`;
     
     return BasodelAPI(originalRequest);
   }
@@ -44,10 +36,10 @@ BasodelAPI.interceptors.response.use(response => {
 });
 
 export const refreshToken = async () => {
-  const refreshToken = Cookies.get('authToken');
+  const authToken = Cookies.get('authToken');
   
-  if(refreshToken){
-    BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${refreshToken}`;
+  if(authToken){
+    BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${authToken}`;
     
     return BasodelAPI.get('auth')
       .then(response => {
@@ -56,23 +48,13 @@ export const refreshToken = async () => {
           
         BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data?.accessToken}`;
         
-        const accessTokenExpires = response?.data?.accessTokenExpires;
-        const refreshTokenExpires = response?.data?.refreshTokenExpires;
-        const now = Date.now();
+        setTokens('authToken', response.data?.authToken, response.data?.authTokenExpires);
+        setTokens('accessToken', response.data?.accessToken, response.data?.accessTokenExpires);
         
-        Cookies.set('accessToken', response.data?.accessToken, {
-          secure: true,
-          expires: new Date(now + (accessTokenExpires ? accessTokenExpires * 1000 : -1))
-        })
-        
-        Cookies.set('authToken', response.data?.refreshToken, {
-          secure: true,
-          expires: new Date(now + (refreshTokenExpires ? refreshTokenExpires * 1000 : -1))
-        });
         return {...response.data};
       }, error => {
-        Cookies.set('accessToken', '');
         Cookies.set('authToken', '');
+        Cookies.set('accessToken', '');
         
         if(handleLogout)
           handleLogout();
@@ -82,6 +64,13 @@ export const refreshToken = async () => {
   }
   
   return {};
+}
+
+const setTokens = (name, value, expires) => {
+  Cookies.set(name, value, {
+    secure: true,
+    expires: new Date(Date.now() + (expires ? expires * 1000 : -1))
+  });
 }
 
 export default BasodelAPI;
