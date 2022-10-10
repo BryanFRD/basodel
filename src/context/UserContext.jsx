@@ -11,8 +11,10 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState();
   
   useEffect(() => {
+    DataManager.handleLogout = handleLogout;
+    
     const refreshUser = async () => {
-      const userAccount = await DataManager.refreshToken(handleLogout);
+      const userAccount = await DataManager.refreshToken();
       
       if(userAccount)
         setUser(userAccount);

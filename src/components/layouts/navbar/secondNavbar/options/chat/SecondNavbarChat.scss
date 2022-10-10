@@ -15,8 +15,6 @@
     flex: 1 1 auto;
     overflow-y: scroll;
     
-    min-height: 0;
-    
     :first-child {
       margin-top: auto;
     }
@@ -25,7 +23,6 @@
   .chat-input-content {
     flex-shrink: 0;
     
-    min-height: 0;
     max-height: auto;
     margin-bottom: 3rem;
   }

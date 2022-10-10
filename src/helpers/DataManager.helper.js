@@ -90,8 +90,8 @@ export class DataManager {
    * 
    * @returns {(UserAccount|undefined)}
    */
-  static refreshToken = async (handleLogout) => {
-    const { userCredential } = await refreshToken(handleLogout);
+  static refreshToken = async () => {
+    const { userCredential } = await refreshToken();
     
     if(userCredential)
       return new UserAccount(userCredential.user_account);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import Config from '../config/Config';
 
-let _handleLogout;
+export let handleLogout;
 
 const BasodelAPI = axios.create({
   baseURL: Config.API.URL
@@ -43,11 +43,9 @@ BasodelAPI.interceptors.response.use(response => {
   return Promise.reject(error);
 });
 
-export const refreshToken = async (handleLogout) => {
-  if(!_handleLogout)
-    _handleLogout = handleLogout;
-  
+export const refreshToken = async () => {
   const refreshToken = Cookies.get('authToken');
+  
   if(refreshToken){
     BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${refreshToken}`;
     
@@ -76,8 +74,8 @@ export const refreshToken = async (handleLogout) => {
         Cookies.set('accessToken', '');
         Cookies.set('authToken', '');
         
-        if(_handleLogout)
-          _handleLogout();
+        if(handleLogout)
+          handleLogout();
         
         return error;
     });
