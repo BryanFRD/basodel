@@ -35,18 +35,20 @@ const ChatMessage = ({message}) => {
           <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>
             {blockedUser.blocked ? t('chat.userBlocked') : message.username}
           </Dropdown.Toggle>
-          <Dropdown.Menu variant={theme.variant}>
-            <Dropdown.ItemText>{blockedUser.blocked ? t('chat.userBlocked') : message.username}</Dropdown.ItemText>
-            {(user && user.id !== message.userAccountId) && <>
-              <Dropdown.Divider />
-              <Dropdown.Item className={theme.textDanger} onClick={handleBlockUser}>
-                {t(blockedUser.blocked ? 'chat.unblockUser' : 'chat.blockUser')}
-              </Dropdown.Item>
-              <Dropdown.Item className={`${theme.textDanger} text-decoration-line-through`} onClick={handleReportUser} disabled>
-                {t('chat.reportUser')}
-              </Dropdown.Item>
-            </>}
-          </Dropdown.Menu>
+          {user &&
+            <Dropdown.Menu variant={theme.variant}>
+              <Dropdown.ItemText>{blockedUser.blocked ? t('chat.userBlocked') : message.username}</Dropdown.ItemText>
+              {user.id !== message.userAccountId && <>
+                <Dropdown.Divider />
+                <Dropdown.Item className={theme.textDanger} onClick={handleBlockUser}>
+                  {t(blockedUser.blocked ? 'chat.unblockUser' : 'chat.blockUser')}
+                </Dropdown.Item>
+                <Dropdown.Item className={`${theme.textDanger} text-decoration-line-through`} onClick={handleReportUser} disabled>
+                  {t('chat.reportUser')}
+                </Dropdown.Item>
+              </>}
+            </Dropdown.Menu>  
+          }
         </Dropdown>
         <span className={`${blockedUser.blocked ? 'text-muted' : ''}`}>{blockedUser.blocked ? t('chat.messageBlocked') : message.message}</span>
       </div>

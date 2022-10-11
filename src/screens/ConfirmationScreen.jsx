@@ -20,7 +20,7 @@ const ConfirmationScreen = () => {
     if(request.current)
       return;
     
-    request.current = DataManager.update(`confirmation`, {token: token});
+    request.current = DataManager.create(`confirmation`, null, {token});
     
     toast.promise(request.current, {
       loading: t('confirmation.email.loading'),

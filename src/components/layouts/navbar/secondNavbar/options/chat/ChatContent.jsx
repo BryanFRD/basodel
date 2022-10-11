@@ -21,7 +21,7 @@ const ChatContent = ({messages}) => {
         }
         
         return prevValue;
-      })
+      });
     });
     
     resizeObserver.observe(chatContentRef.current);

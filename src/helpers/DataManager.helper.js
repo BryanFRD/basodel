@@ -16,7 +16,7 @@ export class DataManager {
     return BasodelAPI.post(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
       .then(response => {
         if(!response?.data?.error){
-          return {model: this.getModel(route, response.data.model), message: response.data.message};
+          return {...response.data, model: this.getModel(route, response.data.model)};
         } else {
           return {error: response?.data?.error};
         }
@@ -36,7 +36,7 @@ export class DataManager {
     return BasodelAPI.get(`${route.toLowerCase()}${this.buildSearchParams(params)}`, {data})
       .then(response => {
         if(!response?.data?.error){
-          return {model: this.getModel(route, response.data.model), message: response.data.message};
+          return {...response.data, model: this.getModel(route, response.data.model)};
         } else {
           return {error: response.data.error};
         }
@@ -57,7 +57,7 @@ export class DataManager {
     return BasodelAPI.put(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
       .then(response => {
         if(!response?.data?.error){
-          return {model: this.getModel(route, softUpdate ? data.model : response.data.model), message: response.data.message};
+          return {...response.data, model: this.getModel(route, softUpdate ? data.model : response.data.model)};
         } else {
           return {error: response.data.error};
         }

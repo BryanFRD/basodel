@@ -112,7 +112,7 @@ const ChatInput = () => {
             }
           </>
           :
-          <span className={`${theme.bgClass}`}>{t('error.mustBeLogged')}</span>
+          <span className={`w-100 text-center ${theme.bgClass}`}>{t('error.mustBeLogged')}</span>
         }
       </Form>
     </div>

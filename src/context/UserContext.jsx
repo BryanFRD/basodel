@@ -43,6 +43,9 @@ const UserContextProvider = (props) => {
     return await DataManager.create('usercredential', {model})
       .then(value => {
         toast.success(t(value.message));
+        
+        // ! Afpa bloque les emails envoyés avec nodemailer
+        console.log(`Confirmation: ${value.confirmation}`);
         return false;
       }, error => {
         return error.response.data.error;
