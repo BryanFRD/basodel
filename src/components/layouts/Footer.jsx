@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 import Container from 'react-bootstrap/esm/Container';
 
-const Footer = ({className}) => {
+const Footer = () => {
   const { theme } = useContext(ThemeContext);
   
   return (
-    <Container fluid className={`p-3 text-center fw-light ${theme.bgClass} ${theme.text} ${className}`}>
+    <Container fluid className={`p-3 text-center fw-light ${theme.bgClass} ${theme.text}`}>
       <div>©&nbsp;2022&nbsp;Copyright: &nbsp;
         <a href='https://bryan-ferrando.fr'
         target='_blank'

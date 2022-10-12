@@ -27,8 +27,8 @@
     },
     "auth": {
       "create": {
-        "notFound": "No login/email found!",
-        "confirmEmail": "You must confirm your email!",
+        "login": "No login/email found or hasn't been confirmed yet!",
+        "notFound": "No login/email found or hasn't been confirmed yet!",
         "authentication": "Incorrect password",
         "password": "Incorrect password"
       },
