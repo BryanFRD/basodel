@@ -1,29 +1,20 @@
 import React from 'react';
 import './GameWindow.scss';
 import { useEffect } from 'react';
-import { useRef } from 'react';
-import Phaser from 'phaser';
-import BaseScene from '../../js/game/scene/BaseScene';
+import {game} from '../../index';
+import { useResizeDetector } from 'react-resize-detector';
 
 const GameWindow = () => {
-  const gameRef = useRef();
-  const gameRootRef = useRef();
+  const {ref} = useResizeDetector({onResize: (w, h) => {
+    game.scale.resize(w, h);
+    
+  }});
   
   useEffect(() => {
-    const config = {
-      type: Phaser.AUTO,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      mode: Phaser.Scale.RESIZE,
-      parent: gameRootRef.current,
-      scene: BaseScene
-    };
-    
-    if(!gameRef.current)
-      gameRef.current = new Phaser.Game(config);
-  }, []);
+    ref.current.append(game.canvas);
+  }, [ref]);
   
-  return (<div id='gameRoot' className='w-100 h-100' ref={gameRootRef}></div>);
+  return (<div id='gameRoot' className='w-100 h-100' ref={ref}></div>);
 };
 
 export default GameWindow;

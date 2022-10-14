@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './Theme.scss'
 import './App.scss';
 import './i18n';
 import BaseScreen from './screens/BaseScreen';
