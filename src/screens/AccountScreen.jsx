@@ -1,9 +1,17 @@
 import React from 'react';
+import { Container, Tabs } from 'react-bootstrap';
 
 const AccountScreen = () => {
   return (
     <div>
-      ACCOUNT SCREEN
+      <div>
+        <Tabs defaultActiveKey='overview' justify fill className={`text-link`}>
+          test1
+        </Tabs>
+      </div>
+      <Container>
+        test2
+      </Container>
     </div>
   );
 };

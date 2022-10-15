@@ -23,8 +23,8 @@ const HomeScreen = () => {
       <LoginModal show={showModal} setShow={setShowModal} />
       <Container fluid className={`${theme.bgClass} ${theme.text} g-0 h-100 w-100`}>
         {user ?
-          <GameWindow />
-          // <span>HOME SCREEN CONNECTED</span>
+          // <GameWindow />
+          <span>HOME SCREEN CONNECTED</span>
           :
           <Container fluid className='d-flex w-100 flex-column gap-5 align-center justify-content-center align-items-center'>
             {t('error.mustBeLogged')}

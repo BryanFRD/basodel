@@ -1,8 +1,18 @@
+@use 'sass:color';
+
 @font-face {
   font-family: RetroGaming;
   src: url('../public/assets/fonts/retro-gaming/Retro\ Gaming.ttf') format('truetype');
   font-size: xx-large;
 }
+
+$light: #f0f0f0;
+$lightLighter: lighten($light, 10%);
+$lightDarker: darken($light, 3%);
+
+$dark: #262626;
+$darkLighter: lighten($dark, 10%);
+$darkDarker: darken($dark, 3%);
 
 body {
   font-family: RetroGaming, Arial, sans-serif !important;
@@ -29,40 +39,40 @@ body {
   } 
   @media screen and (min-width: 992px) {
     &lg-light {
-      background-color: #f8f9fa !important;
+      background-color: $light !important;
     }
     &lg-dark {
-      background-color: #212529 !important;
+      background-color: $dark !important;
     }
   }
   
   &lighter- {
     &light {
-      background-color: #e9ecef;
+      background-color: $lightLighter;
     }
     
     &dark {
-      background-color: #343a40;
+      background-color: $darkLighter;
     }
   }
   //TODO Colors for darker version
   &darker- {
     &light {
-      background-color: var(--bg-gray-500);
+      background-color: $lightDarker;
     }
     
     &dark {
-      background-color: var(--bg-gray-500);
+      background-color: $darkDarker;
     }
   }
 }
 
 .bg-hover-light:hover {
-  background-color: rgba($color: #f8f9fa, $alpha: 0.1);
+  background-color: rgba($color: $light, $alpha: 0.1);
 }
 
 .bg-hover-dark:hover {
-  background-color: rgba($color: #212529, $alpha: 0.1);
+  background-color: rgba($color: $dark, $alpha: 0.1);
 }
 
 .cursor-pointer {
@@ -70,14 +80,14 @@ body {
 }
 
 .shadow-light {
-  -webkit-box-shadow: 0px 0px 2px 0px #e9ecef80;
-  -moz-box-shadow: 0px 0px 2px 0px #e9ecef80;
-  box-shadow: 0px 0px 2px 0px #e9ecef80;
+  -webkit-box-shadow: 0px 0px 2px 0px $lightLighter;
+  -moz-box-shadow: 0px 0px 2px 0px $lightLighter;
+  box-shadow: 0px 0px 2px 0px $lightLighter;
 }
 .shadow-dark {
-  -webkit-box-shadow: 0px 0px 2px 0px #343a4080;
-  -moz-box-shadow: 0px 0px 2px 0px #343a4080;
-  box-shadow: 0px 0px 2px 0px #343a4080;
+  -webkit-box-shadow: 0px 0px 2px 0px $darkLighter;
+  -moz-box-shadow: 0px 0px 2px 0px $darkLighter;
+  box-shadow: 0px 0px 2px 0px $darkLighter;
 }
 
 .modal-light {
