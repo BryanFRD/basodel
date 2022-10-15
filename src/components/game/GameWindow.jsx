@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './GameWindow.scss';
 import { useEffect } from 'react';
 import {game} from '../../index';
-import { useResizeDetector } from 'react-resize-detector';
 
 const GameWindow = () => {
-  const {ref} = useResizeDetector({onResize: (w, h) => {
-    game.scale.resize(w, h);
-    
-  }});
+  const ref = useRef();
   
   useEffect(() => {
     ref.current.append(game.canvas);
