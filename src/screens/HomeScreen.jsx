@@ -21,7 +21,7 @@ const HomeScreen = () => {
   return (
     <>
       <LoginModal show={showModal} setShow={setShowModal} />
-      <Container fluid className={`${theme.bgClass} ${theme.text} g-0 h-100 w-100`}>
+      <Container fluid className={`g-0`}>
         {user ?
           // <GameWindow />
           <span>HOME SCREEN CONNECTED</span>

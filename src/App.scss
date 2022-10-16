@@ -34,15 +34,35 @@ body {
 }
 
 .bg- {
-  &transparent {
+  &invisible {
     background-color: transparent;
   } 
   @media screen and (min-width: 992px) {
-    &lg-light {
-      background-color: $light !important;
+    &lg- {
+      &light {
+        background-color: $light !important;
+        
+        &-lighter {
+          background-color: $lightLighter !important;
+        }
+        
+        &-darker {
+          background-color: $lightDarker !important;
+        }
+      }
     }
-    &lg-dark {
-      background-color: $dark !important;
+    &lg- {
+      &dark {
+        background-color: $dark !important;
+        
+        &-lighter {
+          background-color: $darkLighter !important;
+        }
+        
+        &-darker {
+          background-color: $darkDarker !important;
+        }
+      }
     }
   }
   

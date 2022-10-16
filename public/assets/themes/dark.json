@@ -9,6 +9,8 @@
   "bgClassLighter": "bg-lighter-dark",
   "bgClassDarker": "bg-darker-dark",
   "bgLgClass": "bg-lg-dark",
+  "bgLgClassLighter": "bg-lg-dark-lighter",
+  "bgLgClassDarker": "bg-lg-dark-darker",
   "text": "text-light",
   "link": "link-light",
   "shadow": "shadow-light",
