@@ -92,15 +92,16 @@ body {
 
 .modal-light {
   .modal-content {
-    background-color: #f8f9fa;
-    color: #212529;
+    background-color: $light;
+    color: $dark;
   }
-  
-  .nav-item {
-    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #f8f9fa;
+  .nav-tabs {
+    --bs-nav-tabs-border-color: #262626;
+    --bs-nav-tabs-link-hover-border-color: #262626;
+    --bs-nav-tabs-link-active-border-color: #262626 #262626 #f0f0f0;
     
-    button {
-      color: #212529 !important;
+    .nav-item button {
+      color: $dark !important;
     }
   }
   
@@ -112,7 +113,7 @@ body {
       width: 1rem;
       left: -1rem;
       bottom: -1px;
-      border-bottom: 1px solid #dee2e6;
+      border-bottom: 1px solid $dark;
     }
     
     &::after {
@@ -121,27 +122,28 @@ body {
       width: 1rem;
       right: -1rem;
       bottom: -1px;
-      border-bottom: 1px solid #dee2e6;
+      border-bottom: 1px solid $dark;
     }
   }
   
   .nav-link.active {
-    background-color: #f8f9fa !important;
-    color: #212529 !important;
+    background-color: $light !important;
+    color: $dark !important;
   }
 }
 
 .modal-dark {
   .modal-content {
-    background-color: #212529;
-    color: #f8f9fa;
+    background-color: $dark;
+    color: $light;
   }
   
   .nav-item {
-    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #212529;
+    --bs-nav-tabs-link-hover-border-color: #f0f0f0;
+    --bs-nav-tabs-link-active-border-color: #f0f0f0 #f0f0f0 #262626;
     
     button {
-      color: #f8f9fa !important;
+      color: $light !important;
     }
   }
   
@@ -153,7 +155,7 @@ body {
       width: 1rem;
       left: -1rem;
       bottom: -1px;
-      border-bottom: 1px solid #dee2e6;
+      border-bottom: 1px solid $lightDarker;
     }
     
     &::after {
@@ -162,13 +164,13 @@ body {
       width: 1rem;
       right: -1rem;
       bottom: -1px;
-      border-bottom: 1px solid #dee2e6;
+      border-bottom: 1px solid $lightDarker;
     }
   }
   
   .nav-link.active {
-    background-color: #212529 !important;
-    color: #f8f9fa !important;
+    background-color: $dark !important;
+    color: $light !important;
   }
 }
 
@@ -184,7 +186,7 @@ body {
     
     &::-webkit-scrollbar-thumb {
       border-radius: 4px !important;
-      background-color: #dee2e6;
+      background-color: $light;
     }
   }
   
@@ -199,7 +201,7 @@ body {
     
     &::-webkit-scrollbar-thumb {
       border-radius: 4px !important;
-      background-color: #495057;
+      background-color: $dark;
     }
   }
 }
@@ -208,7 +210,7 @@ body {
   &-light {
     &.message-receiver .chat-message {
       background-color: #cdd4da;
-      color: #212529;
+      color: $dark;
       .chat-username {
         color: #495057;
         &::before {
@@ -219,7 +221,7 @@ body {
     
     &.message-sender .chat-message {
       background-color: #0d9efd;
-      color: #f8f9fa;
+      color: $light;
       .chat-username {
         color: #dee2e6;
         &::before {
