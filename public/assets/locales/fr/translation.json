@@ -10,7 +10,8 @@
     "back": "Retour",
     "chat": "Chat",
     "settings": "Paramètres",
-    "comingSoon": "Arrive bientôt"
+    "comingSoon": "Arrive bientôt",
+    "search": "Rechercher..."
   },
   "error": {
     "usercredential": {
@@ -74,7 +75,8 @@
     "unblockUser": "Débloquer",
     "reportUser": "Signaler",
     "userBlocked": "Utilisateur bloqué",
-    "messageBlocked": "Message bloqué."
+    "messageBlocked": "Message bloqué.",
+    "messagePlaceholder": "Message..."
   },
   "confirmation": {
     "title": "Confirmation en cours...",

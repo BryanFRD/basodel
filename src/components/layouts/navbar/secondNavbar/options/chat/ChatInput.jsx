@@ -5,6 +5,7 @@ import { UserContext } from '../../../../../../context/UserContext';
 import { useTranslation } from 'react-i18next';
 import { SocketContext } from '../../../../../../context/SocketContext';
 import EmojiPicker, { Emoji } from 'emoji-picker-react';
+import {RiSendPlane2Fill} from 'react-icons/ri';
 
 const ChatInput = () => {
   const { theme } = useContext(ThemeContext);
@@ -78,43 +79,51 @@ const ChatInput = () => {
   return (
     <div className='chat-input-content d-flex flex-column gap-3'ref={formRef}>
       <hr className='mt-0'/>
-      <Form
-        className={`position-relative chat-input d-flex align-items-center justify-content-center rounded mx-4 ${theme.bgClassLighter} ${theme.text}`}
-        onSubmit={handleSubmitMessage}>
-        {user ?
-          <>
-            <Form.Control
-              onFocus={() => setEmojiState(prevValue => ({...prevValue, show: false}))}
-              as='textarea'
-              ref={inputRef}
-              className={`bg-transparent ${theme.text} ${theme.customScrollbar} border-0 outline-0 shadow-none`}
-              value={messageContent}
-              onChange={handleOnChangeMessage}
-              onKeyDown={handleKeyDown}
-              onInput={handleInput}
-              maxLength={255}>
-            </Form.Control>
-            <div
-              className='cursor-pointer emojiPicker px-2 align-self-start pb-1'
-              onClick={handleShowPicker}
-              onMouseEnter={handleNewEmojiUnified}>
-              <Emoji unified={emojiState.unified} emojiStyle='native'/>
-            </div>
-            {emojiState.show &&
-              <div className='position-absolute' style={{bottom: '6rem'}}>
-                <EmojiPicker
-                  searchPlaceHolder=''
-                  lazyLoad={true}
-                  emojiStyle='native'
-                  onEmojiClick={handleEmojiClick}
-                  theme={theme.emojiPicker}/>
+      <div className='d-flex mx-4 gap-3'>
+        <Form
+          className={`position-relative chat-input d-flex align-items-center justify-content-center w-100 rounded ${theme.bgClassLighter} ${theme.text}`}
+          onSubmit={handleSubmitMessage}>
+          {user ?
+            <>
+              <Form.Control
+                onFocus={() => setEmojiState(prevValue => ({...prevValue, show: false}))}
+                as='textarea'
+                placeholder={t('chat.messagePlaceholder')}
+                ref={inputRef}
+                className={`bg-transparent ${theme.text} ${theme.customScrollbar} border-0 outline-0 shadow-none w-100`}
+                value={messageContent}
+                onChange={handleOnChangeMessage}
+                onKeyDown={handleKeyDown}
+                onInput={handleInput}
+                maxLength={255}>
+              </Form.Control>
+              <div
+                className='cursor-pointer emojiPicker px-2 align-self-start pb-1'
+                onClick={handleShowPicker}
+                onMouseEnter={handleNewEmojiUnified}>
+                <Emoji unified={emojiState.unified} emojiStyle='twitter'/>
               </div>
-            }
-          </>
-          :
-          <span className={`w-100 text-center ${theme.bgClass}`}>{t('error.mustBeLogged')}</span>
+              {emojiState.show &&
+                <div className='position-absolute' style={{bottom: '6rem'}}>
+                  <EmojiPicker
+                    searchPlaceHolder={t('generic.search')}
+                    lazyLoad={true}
+                    emojiStyle='twitter'
+                    onEmojiClick={handleEmojiClick}
+                    theme={theme.emojiPicker}/>
+                </div>
+              }
+            </>
+            :
+            <span className={`w-100 text-center ${theme.bgClass}`}>{t('error.mustBeLogged')}</span>
+          }
+        </Form>
+        {messageContent &&
+          <RiSendPlane2Fill
+            className={`chat-submitButton align-self-center cursor-pointer text-white ${theme.bgHover}`}
+            onClick={handleSubmitMessage}/>
         }
-      </Form>
+      </div>
     </div>
   );
 };

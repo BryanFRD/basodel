@@ -6,7 +6,7 @@ const Footer = () => {
   const { theme } = useContext(ThemeContext);
   
   return (
-    <Container fluid className={`p-3 text-center fw-light ${theme.bg} ${theme.text}`}>
+    <Container fluid className={`p-3 text-center fw-light ${theme.bgDarker} ${theme.text}`}>
       <div>©&nbsp;2022&nbsp;Copyright: &nbsp;
         <a href='https://bryan-ferrando.fr'
         target='_blank'

@@ -86,7 +86,6 @@
 
 .chat-input {
   textarea {
-    transform-origin: bottom;
     resize: none;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -96,23 +95,24 @@
   }
   
   .emojiPicker {
-    margin-top: 0.4em;
-    transition: margin-top 0.15s;
-    transition-timing-function: cubic-bezier(.65,.75,.50,1.65);
-    & span {
+    margin-top: 0.25em;
+    & img {
       filter: grayscale(1);
-      font-size: 1.5em !important;
-      transition: all 0.15s;
-      transition-timing-function: cubic-bezier(.65,.75,.50,1.65);
+      scale: 0.75;
+      transition: all 0.25s;
+      transition-timing-function: cubic-bezier(.75,-.5,.25,1.5);
     }
     &:hover {
-      margin-top: 0.3em;
-      & span {
+      & img {
         filter: grayscale(0);
-        font-size: 1.75em !important;
-        margin-right: -0.1em;
-        margin-left: -0.1em;
+        scale: 0.85;
       }
     }
   }
+}
+
+.chat-submitButton {
+  padding: 0.25em;
+  font-size: 1.25em;
+  border-radius: 50%;
 }

@@ -28,8 +28,7 @@ const ChatMessage = ({message}) => {
   }
   
   return (
-    <div className={`chat-message-container ${theme.chat} ${
-      message.userAccountId === user?.id ? 'message-sender' : 'message-receiver'}`}>
+    <div className={`chat-message-container ${theme.chat} ${message.userAccountId === user?.id ? 'message-sender' : 'message-receiver'}`}>
       <div className={`chat-message d-flex flex-column`}>
         <Dropdown>
           <Dropdown.Toggle variant={theme.variant} className={`chat-username m-0 p-0 mb-2`}>
