@@ -12,7 +12,7 @@ const BaseScreen = () => {
   
   return (
     <>
-      <Row className={`g-0 ${theme.bgClass} ${theme.text}`}>
+      <Row className={`g-0 ${theme.bgClassDarker} ${theme.text}`}>
         <Col className='order-lg-1' lg='auto'>
           <header>
             <MainNavbar />

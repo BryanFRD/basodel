@@ -72,9 +72,9 @@ const MainNavbar = () => {
       </Col>
       <Col lg='auto'>
       <Navbar id='mainNavBar' expanded={navbarState.collapsed} variant={theme.variant} expand='lg' onToggle={handleToggleCollapse}
-      className={`user-select-none bg-invisible ${navbarState.collapsed && `${theme.shadow} ${theme.bgClassDarker}`} ${theme.bgLgClassDarker} ${theme.mainNavbarShadow}`}>
+      className={`user-select-none bg-invisible ${navbarState.collapsed && `${theme.shadow} ${theme.bgClass}`} ${theme.bgLgClass} ${theme.mainNavbarShadow}`}>
         <Navbar.Toggle className={`ms-auto me-3 ms-lg-0 ${theme.bgClass} opacity-50`} onClick={handleToggleCollapse}/>
-        <Navbar.Collapse className={`px-3 px-lg-0 mx-lg-0 pb-2 pb-lg-0 ${theme.bgClassDarker}`}>
+        <Navbar.Collapse className={`px-3 px-lg-0 mx-lg-0 pb-2 pb-lg-0 ${theme.bgClass}`}>
           <div className='h-100 d-flex flex-column gap-3 gap-lg-0 justify-content-lg-between align-right'>
             <div className='d-flex gap-3 flex-column align-items-lg-end'>
               <NavbarLink
