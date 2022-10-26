@@ -4,6 +4,10 @@ import { ThemeContext } from '../../../../../../context/ThemeContext';
 import useLanguages from '../../../../../../js/useLanguages';
 import { RiCloseLine } from 'react-icons/ri';
 
+//TODO Faire une sorte de clé => valeur pour les options pour rendre la génération automatique et stocker les valeurs dans un objet 'json' dans un state
+// ! Key => une string
+// ! Value => un composent react (qui extends d'un base composant ?) pour avoir le choix entre un dropdown, checkbox, input etc...
+
 const SecondNavbarSettings = ({handleClose}) => {
   const { theme, changeThemeTo } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
