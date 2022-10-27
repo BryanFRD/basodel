@@ -19,7 +19,7 @@ export default class UserAccount extends BaseModel {
   }
   
   getBlockedUserIndex = (userId) => {
-    return this.blockedUser.findIndex((value) => userId === value || userId === value.id);
+    return this.blockedUser.findIndex((value) => userId === value.id);
   }
   
 }

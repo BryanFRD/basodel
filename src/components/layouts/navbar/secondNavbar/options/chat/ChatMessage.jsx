@@ -18,7 +18,7 @@ const ChatMessage = ({message}) => {
     if(blockedUser.blocked)
       user.blockedUser.splice(blockedUser.index, 1);
     else
-      user.blockedUser.push(message.userAccountId)
+      user.blockedUser.push({id: message.userAccountId})
       
     updateUser(true);
   }
