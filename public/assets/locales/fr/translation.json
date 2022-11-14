@@ -11,7 +11,8 @@
     "chat": "Chat",
     "settings": "Paramètres",
     "comingSoon": "Arrive bientôt",
-    "search": "Rechercher..."
+    "search": "Rechercher...",
+    "welcome": "Bienvenue "
   },
   "error": {
     "usercredential": {
@@ -68,7 +69,10 @@
     "password": "mot de passe"
   },
   "information": {
-    "resetPassword": "Un email de confirmation vous sera envoyé !"
+    "resetPassword": "Un email de confirmation vous sera envoyé !",
+    "game": {
+      "notImplementedYet": "Le jeu n'est pas encore implémenté !"
+    }
   },
   "chat": {
     "blockUser": "Bloquer",

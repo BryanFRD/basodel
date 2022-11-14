@@ -6,7 +6,6 @@ import { UserContext } from '../context/UserContext';
 import GenericLink from '../components/generic/link/GenericLink';
 import LoginModal from '../components/layouts/login/modal/LoginModal';
 import GameWindow from '../components/game/GameWindow';
-import './HomeScreen.scss';
 
 const HomeScreen = () => {
   const { theme } = useContext(ThemeContext);
@@ -22,11 +21,15 @@ const HomeScreen = () => {
     <>
       <LoginModal show={showModal} setShow={setShowModal} />
       <Container fluid className={`g-0 h-100`}>
+        <Container fluid className='d-flex w-100 flex-column gap-5 align-center justify-content-center align-items-center'>
         {user ?
           // <GameWindow />
-          <span>HOME SCREEN CONNECTED</span>
+          <div className='d-flex flex-column gap-5 text-center'>
+            <h3>{`${t('generic.welcome')} ${user.username}`}</h3>
+            <span>{t('information.game.notImplementedYet')}</span>
+          </div>
           :
-          <Container fluid className='d-flex w-100 flex-column gap-5 align-center justify-content-center align-items-center'>
+          <>
             {t('error.mustBeLogged')}
             <div className='d-flex flex-column flex-lg-row gap-5'>
               <GenericLink
@@ -40,8 +43,9 @@ const HomeScreen = () => {
                   {t('generic.signup')}
               </GenericLink>
             </div>
-          </Container>
+          </>
         }
+        </Container>
       </Container>
     </>
   );

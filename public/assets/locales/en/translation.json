@@ -11,7 +11,8 @@
     "chat": "Chat",
     "settings": "Settings",
     "comingSoon": "Coming Soon",
-    "search": "Search..."
+    "search": "Search...",
+    "welcome": "Welcome"
   },
   "error": {
     "usercredential": {
@@ -68,7 +69,10 @@
     "password": "password"
   },
   "information": {
-    "resetPassword": "A confirmation email will be sent to you !"
+    "resetPassword": "A confirmation email will be sent to you !",
+    "game": {
+      "notImplementedYet": "Game isn't implemented yet!"
+    }
   },
   "chat": {
     "blockUser": "Block",

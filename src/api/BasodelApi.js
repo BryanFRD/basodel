@@ -49,11 +49,6 @@ export const refreshToken = async () => {
       .then(response => {
         if(!response)
           return;
-          
-        BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response.data?.accessToken}`;
-        
-        setTokens('authToken', response.data?.authToken, response.data?.authTokenExpires);
-        setTokens('accessToken', response.data?.accessToken, response.data?.accessTokenExpires);
         
         return {...response.data};
       }, error => {
