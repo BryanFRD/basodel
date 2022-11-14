@@ -11,12 +11,16 @@ const BasodelAPI = axios.create({
 BasodelAPI.interceptors.response.use(response => {
   if(response.data?.authToken){
     setTokens('authToken', response.data.authToken, response.data.authTokenExpires);
+    
+    delete response.data.authToken;
   }
   
   if(response.data?.accessToken){
     setTokens('accessToken', response.data.accessToken, response.data.accessTokenExpires);
     
     BasodelAPI.defaults.headers.common['authorization'] = `Bearer ${response?.data?.accessToken}`;
+    
+    delete response.data.accessToken;
   }
   
   return response;

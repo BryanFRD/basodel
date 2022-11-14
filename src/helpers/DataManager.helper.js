@@ -7,7 +7,7 @@ export class DataManager {
   /**
    * POST
    * 
-   * @param {*} route if route is an available model then it will return a Model
+   * @param {*} route if route's available, it will return a Model
    * @param {*} data
    * @param {*} params
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}
@@ -28,7 +28,7 @@ export class DataManager {
   /**
    * GET
    * 
-   * @param {*} route if route is an available model then it will return a Model
+   * @param {*} route if route's available, it will return a Model
    * @param {*} data
    * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
    */
@@ -48,7 +48,7 @@ export class DataManager {
   /**
    * UPDATE
    * 
-   * @param {*} route  if route is an available model then it will return a Model
+   * @param {*} route  if route's available, it will return a Model
    * @param {*} data
    * @param {object}
    * @returns {(BaseModel|Promise<AxiosResponse<any, any>>)}
@@ -58,6 +58,25 @@ export class DataManager {
       .then(response => {
         if(!response?.data?.error){
           return {...response.data, model: this.getModel(route, softUpdate ? data.model : response.data.model)};
+        } else {
+          return {error: response.data.error};
+        }
+      }, error => {
+        return Promise.reject(error);
+      });
+  }
+  
+  /**
+   * 
+   * @param {*} route  
+   * @param {*} params 
+   * @returns 
+   */
+  static delete = async (route, params) => {
+    return BasodelAPI.delete(`${route.toLowerCase()}${this.buildSearchParams(params)}`)
+      .then(response => {
+        if(!response.data.error){
+          return {...response.data};
         } else {
           return {error: response.data.error};
         }

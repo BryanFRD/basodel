@@ -44,7 +44,7 @@ const UserContextProvider = (props) => {
       .then(value => {
         toast.success(t(value.message));
         
-        // ! Afpa bloque les emails envoyés avec nodemailer
+        // ! L'afpa bloque les emails envoyés avec nodemailer
         console.log(`Confirmation: ${value.confirmation}`);
         return false;
       }, error => {
@@ -93,6 +93,16 @@ const UserContextProvider = (props) => {
     console.log('param:', param);
   }
   
+  const reloadUser = async () => {
+    return await DataManager.get('UserAccount', {}, {include: ['blockedUser', 'role']})
+      .then(value => {
+        setUser(value.model);
+        return false;
+      }, error => {
+        return error.reponse.data.error;
+      });
+  }
+  
   /**
    * 
    * @param {boolean} softUpdate keep the same instance or not
@@ -100,7 +110,7 @@ const UserContextProvider = (props) => {
    * @returns 
    */
   const updateUser = async (softUpdate = false) => {
-    return DataManager.update('UserAccount', {model: user}, {id: user.id, include: ["blockedUser", "role"]}, softUpdate)
+    return await DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, softUpdate)
       .then(value => {
         setUser(value.model);
         return false;
@@ -117,6 +127,7 @@ const UserContextProvider = (props) => {
         handleLogin,
         handleLogout,
         forgotPassword,
+        reloadUser,
         updateUser
       }
     }>{props.children}</UserContext.Provider>);

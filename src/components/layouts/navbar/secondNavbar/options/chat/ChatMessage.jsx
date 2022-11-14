@@ -3,11 +3,12 @@ import { Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../../../../context/ThemeContext';
 import { UserContext } from '../../../../../../context/UserContext';
+import { DataManager } from '../../../../../../helpers/DataManager.helper';
 
 const ChatMessage = ({message}) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useTranslation();
-  const { user, updateUser } = useContext(UserContext);
+  const { user, reloadUser } = useContext(UserContext);
   const blockedUser = useMemo(() => {
     const index = user?.getBlockedUserIndex(message.userAccountId);
     
@@ -15,12 +16,11 @@ const ChatMessage = ({message}) => {
   }, [user, message.userAccountId]);
   
   const handleBlockUser = () => {
-    if(blockedUser.blocked)
-      user.blockedUser.splice(blockedUser.index, 1);
-    else
-      user.blockedUser.push({id: message.userAccountId})
-      
-    updateUser(true);
+    if(blockedUser.blocked){
+      DataManager.delete('blockedUser', {id: user.id, blockedUserAccountId: blockedUser.id}).then(reloadUser);
+    } else {
+      DataManager.create('blockedUser', {id: user.id, blockedUserAccountId: blockedUser.id}).then(reloadUser);
+    }
   }
   
   const handleReportUser = () => {
