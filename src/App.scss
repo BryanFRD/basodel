@@ -6,13 +6,7 @@
   font-size: xx-large;
 }
 
-$light: #f0f0f0;
-$lightLighter: lighten($light, 10%);
-$lightDarker: darken($light, 3%);
-
-$dark: #262626;
-$darkLighter: lighten($dark, 10%);
-$darkDarker: darken($dark, 3%);
+@import 'variables.scss';
 
 body {
   font-family: RetroGaming, Arial, sans-serif !important;
@@ -34,32 +28,48 @@ body {
 }
 
 .bg- {
+  &light {
+    transition: all 0.1s ease-in-out;
+    background-color: $light;
+  }
+  
+  &dark {
+    transition: all 0.1s ease-in-out;
+    background-color: $dark;
+  }
+  
   &invisible {
     background-color: transparent;
   } 
   @media screen and (min-width: 992px) {
     &lg- {
       &light {
+        transition: all 0.1s ease-in-out;
         background-color: $light !important;
         
         &-lighter {
+          transition: all 0.1s ease-in-out;
           background-color: $lightLighter !important;
         }
         
         &-darker {
+          transition: all 0.1s ease-in-out;
           background-color: $lightDarker !important;
         }
       }
     }
     &lg- {
       &dark {
+        transition: all 0.1s ease-in-out;
         background-color: $dark !important;
         
         &-lighter {
+          transition: all 0.1s ease-in-out;
           background-color: $darkLighter !important;
         }
         
         &-darker {
+          transition: all 0.1s ease-in-out;
           background-color: $darkDarker !important;
         }
       }
@@ -68,31 +78,35 @@ body {
   
   &lighter- {
     &light {
-      background-color: $lightLighter;
+      transition: all 0.1s ease-in-out;
+      background-color: $lightLighter !important;
     }
     
     &dark {
-      background-color: $darkLighter;
+      transition: all 0.1s ease-in-out;
+      background-color: $darkLighter !important;
     }
   }
   //TODO Colors for darker version
   &darker- {
     &light {
-      background-color: $lightDarker;
+      transition: all 0.1s ease-in-out;
+      background-color: $lightDarker !important;
     }
     
     &dark {
-      background-color: $darkDarker;
+      transition: all 0.1s ease-in-out;
+      background-color: $darkDarker !important;
     }
   }
 }
 
 .bg-hover-light:hover {
-  background-color: rgba($color: $light, $alpha: 0.1);
+  background-color: rgba($color: $light, $alpha: 0.1) !important;
 }
 
 .bg-hover-dark:hover {
-  background-color: rgba($color: $dark, $alpha: 0.1);
+  background-color: rgba($color: $dark, $alpha: 0.1) !important;
 }
 
 .cursor-pointer {

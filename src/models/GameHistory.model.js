@@ -1,6 +1,6 @@
 import BaseModel from "./BaseModel.model";
 
-export default class GameHistory extends BaseModel {
+export default class GameHistoryModel extends BaseModel {
   
   playersId = [];
   information = {};

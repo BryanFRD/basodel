@@ -44,7 +44,7 @@ const UserContextProvider = (props) => {
       .then(value => {
         toast.success(t(value.message));
         
-        // ! L'afpa bloque les emails envoyés avec nodemailer
+        // ! L'afpa bloque les emails envoyés
         console.log(`Confirmation: ${value.confirmation}`);
         return false;
       }, error => {
@@ -110,7 +110,7 @@ const UserContextProvider = (props) => {
    * @returns 
    */
   const updateUser = async (softUpdate = false) => {
-    return await DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, softUpdate)
+    return await DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, {}, softUpdate)
       .then(value => {
         setUser(value.model);
         return false;

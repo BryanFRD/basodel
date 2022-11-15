@@ -1,8 +1,12 @@
 import BaseModel from "./BaseModel.model";
 
-export default class RoleModel extends BaseModel {
+export default class ArticleModel extends BaseModel {
   
-  name = '';
+  title = '';
+  image = {};
+  silver = 0;
+  gold = 0;
+  promo = 0;
   
   constructor(props){
     super();

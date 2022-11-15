@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import './helpers/String.helper';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import './i18n';

@@ -1,8 +1,9 @@
 import BaseModel from "./BaseModel.model";
 
-export default class RoleModel extends BaseModel {
+export default class ImageModel extends BaseModel {
   
-  name = '';
+  src = '';
+  alt = '';
   
   constructor(props){
     super();

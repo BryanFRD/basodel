@@ -4,16 +4,28 @@ import * as models from '../models';
 
 export class DataManager {
   
+  static graphQL = async (queryType, field, data, modelName) => {
+    return BasodelAPI.post('graphql', {query: `${queryType} {${field} {${data}}}`})
+      .then(response => {
+        if(response?.data?.data[field]){
+          return {...response.data, data: this.getModel(modelName, response.data.data[field])};
+        }
+        return {error: response.data};
+      }, error => {
+        return Promise.reject(error);
+      });
+  }
+  
   /**
    * POST
    * 
    * @param {*} route if route's available, it will return a Model
    * @param {*} data
    * @param {*} params
-   * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}
+   * @return {(BaseModel|Array<BaseModel>|Promise<AxiosResponse<any, any>>)}
    */
-  static create = async (route, data, params = {}) => {
-    return BasodelAPI.post(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
+  static create = async (route, data, params = {}, config = {}) => {
+    return BasodelAPI.post(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data, config)
       .then(response => {
         if(!response?.data?.error){
           return {...response.data, model: this.getModel(route, response.data.model)};
@@ -30,10 +42,10 @@ export class DataManager {
    * 
    * @param {*} route if route's available, it will return a Model
    * @param {*} data
-   * @return {(BaseModel|Promise<AxiosResponse<any, any>>)}}
+   * @return {(BaseModel|Array<BaseModel>|Promise<AxiosResponse<any, any>>)}}
    */
-  static get = async (route, data, params) => {
-    return BasodelAPI.get(`${route.toLowerCase()}${this.buildSearchParams(params)}`, {data})
+  static get = async (route, params, config = {}) => {
+    return BasodelAPI.get(`${route.toLowerCase()}${this.buildSearchParams(params)}`, config)
       .then(response => {
         if(!response?.data?.error){
           return {...response.data, model: this.getModel(route, response.data.model)};
@@ -51,10 +63,10 @@ export class DataManager {
    * @param {*} route  if route's available, it will return a Model
    * @param {*} data
    * @param {object}
-   * @returns {(BaseModel|Promise<AxiosResponse<any, any>>)}
+   * @returns {(BaseModel|Array<BaseModel>|Promise<AxiosResponse<any, any>>)}
    */
-  static update = async (route, data, params, softUpdate = false) => {
-    return BasodelAPI.put(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data)
+  static update = async (route, data, params, config = {}, softUpdate = false) => {
+    return BasodelAPI.put(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data, config)
       .then(response => {
         if(!response?.data?.error){
           return {...response.data, model: this.getModel(route, softUpdate ? data.model : response.data.model)};
@@ -72,7 +84,7 @@ export class DataManager {
    * @param {*} params 
    * @returns 
    */
-  static delete = async (route, params) => {
+  static delete = async (route, params, config = {}) => {
     return BasodelAPI.delete(`${route.toLowerCase()}${this.buildSearchParams(params)}`)
       .then(response => {
         if(!response.data.error){
@@ -117,6 +129,10 @@ export class DataManager {
   }
   
   static getModel = (modelName, props) => {
+    if(props instanceof Array){
+      return props.map((prop) => this.getModel(modelName, prop));
+    }
+    
     return models[modelName] ? new models[modelName](props) : null;
   }
   
