@@ -15,7 +15,7 @@ export default class UserAccountModel extends BaseModel {
   }
   
   getLevel = () => {
-    return Math.floor((this.xp * (this.xp + 1)) / 2);
+    return Math.floor(Math.log(this.xp));
   }
   
   getBlockedUserIndex = (userId) => {

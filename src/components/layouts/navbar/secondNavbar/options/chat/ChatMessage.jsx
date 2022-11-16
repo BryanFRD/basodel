@@ -12,14 +12,14 @@ const ChatMessage = ({message}) => {
   const blockedUser = useMemo(() => {
     const index = user?.getBlockedUserIndex(message.userAccountId);
     
-    return {index, blocked: index !== -1 && user}
+    return {index, blocked: index !== -1}
   }, [user, message.userAccountId]);
   
   const handleBlockUser = () => {
     if(blockedUser.blocked){
-      DataManager.delete('blockedUser', {id: user.id, blockedUserAccountId: blockedUser.id}).then(reloadUser);
+      DataManager.delete('blockedUser', {userAccountId: user.id, blockedUserId: message.userAccountId}).finally(reloadUser);
     } else {
-      DataManager.create('blockedUser', {id: user.id, blockedUserAccountId: blockedUser.id}).then(reloadUser);
+      DataManager.create('blockedUser', {model: {userAccountId: user.id, blockedUserId: message.userAccountId}}).finally(reloadUser);
     }
   }
   

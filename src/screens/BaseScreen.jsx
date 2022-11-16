@@ -19,7 +19,7 @@ const BaseScreen = () => {
           </header>
         </Col>
         <Col>
-          <div id='mainDiv'>
+          <div id='mainDiv' className={`${theme.customScrollbarLighter}`}>
             <main>
               <Outlet />
             </main>

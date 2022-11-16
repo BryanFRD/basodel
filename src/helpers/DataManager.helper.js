@@ -4,11 +4,11 @@ import * as models from '../models';
 
 export class DataManager {
   
-  static graphQL = async (queryType, field, data, modelName) => {
+  static graphQL = async (queryType, field, data, modelName, raw = false) => {
     return BasodelAPI.post('graphql', {query: `${queryType} {${field} {${data}}}`})
       .then(response => {
         if(response?.data?.data[field]){
-          return {...response.data, data: this.getModel(modelName, response.data.data[field])};
+          return {...response.data, data: this.getModel(modelName, response.data.data[field], raw)};
         }
         return {error: response.data};
       }, error => {
@@ -24,11 +24,11 @@ export class DataManager {
    * @param {*} params
    * @return {(BaseModel|Array<BaseModel>|Promise<AxiosResponse<any, any>>)}
    */
-  static create = async (route, data, params = {}, config = {}) => {
+  static create = async (route, data, params = {}, config = {}, raw = false) => {
     return BasodelAPI.post(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data, config)
       .then(response => {
         if(!response?.data?.error){
-          return {...response.data, model: this.getModel(route, response.data.model)};
+          return {...response.data, model: this.getModel(route, response.data.model, raw)};
         } else {
           return {error: response?.data?.error};
         }
@@ -44,11 +44,11 @@ export class DataManager {
    * @param {*} data
    * @return {(BaseModel|Array<BaseModel>|Promise<AxiosResponse<any, any>>)}}
    */
-  static get = async (route, params, config = {}) => {
+  static get = async (route, params, config = {}, raw = false) => {
     return BasodelAPI.get(`${route.toLowerCase()}${this.buildSearchParams(params)}`, config)
       .then(response => {
         if(!response?.data?.error){
-          return {...response.data, model: this.getModel(route, response.data.model)};
+          return {...response.data, model: this.getModel(route, response.data.model, raw)};
         } else {
           return {error: response.data.error};
         }
@@ -65,11 +65,11 @@ export class DataManager {
    * @param {object}
    * @returns {(BaseModel|Array<BaseModel>|Promise<AxiosResponse<any, any>>)}
    */
-  static update = async (route, data, params, config = {}, softUpdate = false) => {
+  static update = async (route, data, params, config = {}, softUpdate = false, raw = false) => {
     return BasodelAPI.put(`${route.toLowerCase()}${this.buildSearchParams(params)}`, data, config)
       .then(response => {
         if(!response?.data?.error){
-          return {...response.data, model: this.getModel(route, softUpdate ? data.model : response.data.model)};
+          return {...response.data, model: this.getModel(route, softUpdate ? data.model : response.data.model, raw)};
         } else {
           return {error: response.data.error};
         }
@@ -81,14 +81,14 @@ export class DataManager {
   /**
    * 
    * @param {*} route  
-   * @param {*} params 
+   * @param {*} data 
    * @returns 
    */
-  static delete = async (route, params, config = {}) => {
-    return BasodelAPI.delete(`${route.toLowerCase()}${this.buildSearchParams(params)}`)
+  static delete = async (route, data, config = {}, raw = false) => {
+    return BasodelAPI.delete(`${route.toLowerCase()}${this.buildSearchParams(data)}`, config)
       .then(response => {
         if(!response.data.error){
-          return {...response.data};
+          return {...response.data, model: this.getModel(route, response.data.model, raw)};
         } else {
           return {error: response.data.error};
         }
@@ -128,7 +128,10 @@ export class DataManager {
       return new UserAccount(model.user_account);
   }
   
-  static getModel = (modelName, props) => {
+  static getModel = (modelName, props, raw = false) => {
+    if(raw)
+      return props;
+    
     if(props instanceof Array){
       return props.map((prop) => this.getModel(modelName, prop));
     }
@@ -144,7 +147,7 @@ export class DataManager {
     
     Object.entries(params).forEach(([key, value]) => {
       if(typeof value === 'object'){
-        value.forEach(v => {
+        Object.entries(value).forEach(([k, v]) => {
           searchParams.append(key, v);
         });
       } else {

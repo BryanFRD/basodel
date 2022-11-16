@@ -1,4 +1,8 @@
-@import '../../../variables.scss';
+@import '../variables.scss';
+
+.shop-container {
+  overflow-y: auto;
+}
 
 .shop-article {
   min-width: 135px;
@@ -7,14 +11,9 @@
     pointer-events: none;
   }
   
-  & img {
-    image-rendering: pixelated;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-  }
-  
   & .shop-promo {
     top: -10%;
     right: -30%;
   }
 }
+

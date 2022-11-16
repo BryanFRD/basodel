@@ -12,7 +12,8 @@
     "settings": "Paramètres",
     "comingSoon": "Arrive bientôt",
     "search": "Rechercher...",
-    "welcome": "Bienvenue "
+    "welcome": "Bienvenue ",
+    "level": "Niveau"
   },
   "error": {
     "usercredential": {
@@ -92,5 +93,13 @@
   },
   "message": {
     "emailSent": "Email envoyé !"
+  },
+  "shop": {
+    "title": {
+      "armors": "Armures",
+      "helmets": "Casques",
+      "boots": "Bottes",
+      "weapons": "Armes"
+    }
   }
 }

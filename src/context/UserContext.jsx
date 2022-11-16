@@ -94,8 +94,9 @@ const UserContextProvider = (props) => {
   }
   
   const reloadUser = async () => {
-    return await DataManager.get('UserAccount', {}, {include: ['blockedUser', 'role']})
+    return await DataManager.get('UserAccount', {id: user.id, include: ['blockedUser', 'role']})
       .then(value => {
+        console.log('value:', value);
         setUser(value.model);
         return false;
       }, error => {

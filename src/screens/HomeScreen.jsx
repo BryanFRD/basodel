@@ -5,7 +5,6 @@ import { ThemeContext } from '../context/ThemeContext';
 import { UserContext } from '../context/UserContext';
 import GenericLink from '../components/generic/link/GenericLink';
 import LoginModal from '../components/layouts/login/modal/LoginModal';
-import GameWindow from '../components/game/GameWindow';
 
 const HomeScreen = () => {
   const { theme } = useContext(ThemeContext);
