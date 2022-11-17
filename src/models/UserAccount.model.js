@@ -7,6 +7,7 @@ export default class UserAccountModel extends BaseModel {
   silver = 0;
   gold = 0;
   blockedUser = [];
+  articles = [];
   
   constructor(props){
     super();
@@ -19,7 +20,11 @@ export default class UserAccountModel extends BaseModel {
   }
   
   getBlockedUserIndex = (userId) => {
-    return this.blockedUser.findIndex((value) => userId === value.id);
+    return this.blockedUser.findIndex(value => userId === value.id);
+  }
+  
+  hasBoughtArticle = (articleId) => {
+    return this.articles.findIndex(article => articleId === article.id) !== -1;
   }
   
 }

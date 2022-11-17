@@ -94,9 +94,8 @@ const UserContextProvider = (props) => {
   }
   
   const reloadUser = async () => {
-    return await DataManager.get('UserAccount', {id: user.id, include: ['blockedUser', 'role']})
+    return await DataManager.get('UserAccount', {id: user.id, include: ['blockedUser', 'role', 'articles']})
       .then(value => {
-        console.log('value:', value);
         setUser(value.model);
         return false;
       }, error => {
@@ -111,7 +110,7 @@ const UserContextProvider = (props) => {
    * @returns 
    */
   const updateUser = async (softUpdate = false) => {
-    return await DataManager.update('UserAccount', {model: user}, {include: ["blockedUser", "role"]}, {}, softUpdate)
+    return await DataManager.update('UserAccount', {model: user}, {include: ['blockedUser', 'role', 'articles']}, {}, softUpdate)
       .then(value => {
         setUser(value.model);
         return false;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useContext } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
@@ -8,14 +8,16 @@ import { UserContext } from '../../../context/UserContext';
 const ShopArticle = ({article, onClick}) => {
   const {theme} = useContext(ThemeContext);
   const {user} = useContext(UserContext);
+  const hasBoughtArticle = useMemo(() => user?.hasBoughtArticle(article.id), [article, user]);
   
   return (
     <>
       <Card
-        className={`shop-article ${theme.bgClass} ${theme.shadow} border-0 shadow-0 ${user ? `${theme.bgHover} cursor-pointer` : ''}`}
-        onClick={() => user && onClick()}>
+        className={`shop-article ${theme.bgClass} ${theme.shadow} border-0 shadow-0 ${
+          (user && !hasBoughtArticle) ? `${theme.bgHover} cursor-pointer` : hasBoughtArticle && 'shop-bought'}`}
+        onClick={() => (user && !hasBoughtArticle) && onClick()}>
           {article.promo !== 0 &&
-            <Badge bg='' text='warning' className={`position-absolute position-right fs-4 fw-bold shop-promo`}>{`-${article.promo} %`}</Badge>
+            <Badge bg text='warning' className={`position-absolute position-right fs-4 fw-bold shop-promo`}>{`-${article.promo} %`}</Badge>
           }
         <Card.Img
           src={article.image?.src}

@@ -89,6 +89,11 @@
       "loading": "Vérification...",
       "success": "Votre email à bien été validé !",
       "error": "Votre email n'a pas pus être validé !"
+    },
+    "shop": {
+      "loading": "Vérification...",
+      "success": "Votre achat a bien été effectué !",
+      "error": "Erreur lors de votre achat !"
     }
   },
   "message": {
@@ -103,6 +108,11 @@
     },
     "category": {
       "nothing": "Aucun item trouvé !"
+    },
+    "purchase": {
+      "youPay": "Vous payerez",
+      "youHave": "Il vous restera",
+      "notEnoughMoney": "Vous n'avez pas assez d'argent!"
     },
     "cancel": "Annuler",
     "buy": "Acheter"

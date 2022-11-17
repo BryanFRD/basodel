@@ -84,11 +84,16 @@
     "messagePlaceholder": "Message..."
   },
   "confirmation": {
-    "title": "Confirmation in progress...",
+    "title": "Verification in progress...",
     "email": {
-      "loading": "Confirmation...",
+      "loading": "Verification...",
       "success": "Your email has been verified!",
       "error": "Your email couldn't be verified!"
+    },
+    "shop": {
+      "loading": "Verification...",
+      "success": "Your purchase has been completed!",
+      "error": "Error during your purchase!"
     }
   },
   "message": {
@@ -103,6 +108,11 @@
     },
     "category": {
       "nothing": "No item found!"
+    },
+    "purchase": {
+      "youPay": "You'll pay",
+      "youHave": "You'll have",
+      "notEnoughMoney": "You don't have enough money!"
     },
     "cancel": "Cancel",
     "buy": "Buy"
