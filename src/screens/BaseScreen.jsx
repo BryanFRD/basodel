@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../components/layouts/Footer';
 import MainNavbar from '../components/layouts/navbar/MainNavbar';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
@@ -19,13 +18,10 @@ const BaseScreen = () => {
           </header>
         </Col>
         <Col>
-          <div id='mainDiv' className={`${theme.customScrollbarLighter}`}>
+          <div id='mainDiv' className={`h-100 ${theme.customScrollbarLighter}`}>
             <main>
               <Outlet />
             </main>
-            <footer>
-              <Footer/>
-            </footer>
             <CustomToast />
           </div>
         </Col>

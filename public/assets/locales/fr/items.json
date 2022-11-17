@@ -1,0 +1,26 @@
+{
+  "armor": {
+    "armor1": "Première armure",
+    "armor2": "Seconde armure",
+    "armor3": "Troisième armure"
+  },
+  "helmet": {
+    "helmet1": "Premier casque",
+    "helmet2": "Second casque",
+    "helmet3": "Troisième casque",
+    "helmet4": "Casque de Léo"
+  },
+  "boot": {
+    "boot1": "Première botte",
+    "boot2": "Seconde botte",
+    "boot3": "Troisième botte",
+    "boot4": "Botte d'Astra"
+  },
+  "weapon": {
+    "weapon1": "Première arme",
+    "weapon2": "Seconde arme",
+    "weapon3": "Troisième arme",
+    "weapon4": "Quatrième arme",
+    "weapon5": "Cinquième arme"
+  }
+}

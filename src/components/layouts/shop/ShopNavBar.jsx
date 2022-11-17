@@ -13,11 +13,11 @@ const ShopNavBar = ({search, setSearch}) => {
   
   return (
     <div
-      className={`d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 w-100 p-3 ${theme.bgClass}`}>
+      className={`position-sticky sticky-top d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 w-100 p-3 ${theme.bgClass} ${theme.shadow}`}>
       <div className='d-flex gap-5 w-auto'>
         {user &&
           <div className='d-flex flex-column flex-lg-row gap-3 align-items-center text-nowrap'>
-            <div className='d-flex gap-5 align-items-center'>
+            <div className='d-flex gap-3 gap-lg-5 align-items-center'>
               <h4 className='m-0'>{user.username}</h4>
               <span>{`${t('generic.level')} ${user.getLevel()}`}</span>
             </div>

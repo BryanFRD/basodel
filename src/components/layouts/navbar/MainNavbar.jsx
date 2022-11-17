@@ -66,7 +66,7 @@ const MainNavbar = () => {
   
   return (
     <Row className='g-0'>
-      <LoginModal show={navbarState.showModal} setShow={setNavbarState} />
+      {!user && <LoginModal show={navbarState.showModal} setShow={setNavbarState} />}
       <Col>
       {navbarState.secondNav && <SecondNavbar secondNav={navbarState.secondNav} changeSecondNav={changeSecondNav} messages={messages}/>}
       </Col>
