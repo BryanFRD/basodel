@@ -5,6 +5,7 @@ header {
   top: 0;
   right: 0;
   width: 100%;
+  z-index: 12340;
   
   @media screen and (min-width: 992px) {
     position: -webkit-sticky;

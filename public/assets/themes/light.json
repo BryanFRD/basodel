@@ -29,5 +29,6 @@
   "customScrollbarLighter": "custom-scrollbar-light-lighter",
   "customScrollbarDarker": "custom-scrollbar-light-darker",
   "chat": "chat-light",
-  "emojiPicker": "light"
+  "emojiPicker": "light",
+  "mask": "mask-light"
 }

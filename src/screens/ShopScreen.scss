@@ -11,13 +11,18 @@
   & .shop-categories {
     flex: 1 1 auto;
     overflow-y: auto;
-    
-    & .footer {}
   }
 }
 
 .shop-article {
-  min-width: 130px;
+  position: relative;
+  min-width: 126px;
+  
+  & .hasBoughtArticle {
+    & h4 {
+      transform: rotate(-45deg);
+    }
+  }
   
   & * {
     pointer-events: none;

@@ -112,7 +112,8 @@
     "purchase": {
       "youPay": "Vous payerez",
       "youHave": "Il vous restera",
-      "notEnoughMoney": "Vous n'avez pas assez d'argent !"
+      "notEnoughMoney": "Vous n'avez pas assez d'argent !",
+      "bought": "Acheté"
     },
     "cancel": "Annuler",
     "buy": "Acheter"

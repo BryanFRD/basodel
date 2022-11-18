@@ -13,6 +13,7 @@ const ShopArticleModal = ({setModal, modal}) => {
   const {theme} = useContext(ThemeContext);
   const {user, reloadUser} = useContext(UserContext);
   const {t} = useTranslation(['translation', 'items']);
+  
   const money = useMemo(() => {
     const requiredSilver = Math.floor(modal.article?.silver * ((100 - modal.article?.promo) / 100));
     const requiredGold = Math.floor(modal.article?.gold * ((100 - modal.article?.promo) / 100));
@@ -26,10 +27,15 @@ const ShopArticleModal = ({setModal, modal}) => {
   }, [user, modal])
   
   const handleBuy = () => {
-    toast.promise(DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}}),{
+    if(!money.canBeBought)
+      return;
+    
+    toast.promise(DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}}), {
       loading: t('confirmation.shop.loading'),
       success: t('confirmation.shop.success'),
-      error: t('confirmation.shop.error')
+      error: t('confirmation.shop.error'),
+    }, {
+      className: `${theme.bgClassLighter} ${theme.text}`
     })
     
     DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}})

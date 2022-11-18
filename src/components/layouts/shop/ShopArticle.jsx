@@ -2,12 +2,14 @@ import React, { useMemo } from 'react';
 import { useContext } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Card from 'react-bootstrap/Card';
+import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../../context/ThemeContext';
 import { UserContext } from '../../../context/UserContext';
 
 const ShopArticle = ({article, onClick}) => {
   const {theme} = useContext(ThemeContext);
   const {user} = useContext(UserContext);
+  const {t} = useTranslation();
   const hasBoughtArticle = useMemo(() => user?.hasBoughtArticle(article.id), [article, user]);
   
   return (
@@ -16,6 +18,11 @@ const ShopArticle = ({article, onClick}) => {
         className={`shop-article ${theme.bgClass} ${theme.shadow} border-0 shadow-0 ${
           (user && !hasBoughtArticle) ? `${theme.bgHover} cursor-pointer` : hasBoughtArticle && 'shop-bought'}`}
         onClick={() => (user && !hasBoughtArticle) && onClick()}>
+          {hasBoughtArticle &&
+            <div className={`${theme.mask} hasBoughtArticle rounded`}>
+              <h4>{t('shop.purchase.bought')}</h4>
+            </div>
+          }
           {article.promo !== 0 &&
             <Badge bg text='warning' className={`position-absolute position-right fs-4 fw-bold shop-promo`}>{`-${article.promo} %`}</Badge>
           }

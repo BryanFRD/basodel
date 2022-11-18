@@ -49,7 +49,7 @@ const UserContextProvider = (props) => {
         return false;
       }, error => {
         return error.response.data.error;
-      })
+      });
   }
   
   /**

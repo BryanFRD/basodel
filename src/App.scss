@@ -309,6 +309,28 @@ body {
   }
 }
 
+.mask- {
+  &light {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: $light, $alpha: 0.75);
+    width: 100%;
+    height: 100%;
+  }
+  
+  &dark {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: $dark, $alpha: 0.75);
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .chat {
   &-light {
     &.message-receiver .chat-message {
