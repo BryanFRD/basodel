@@ -35,7 +35,7 @@ const ShopArticleModal = ({setModal, modal}) => {
       success: t('confirmation.shop.success'),
       error: t('confirmation.shop.error'),
     }, {
-      className: `${theme.bgClassLighter} ${theme.text}`
+      className: `${theme.bgClassLighter} ${theme.text} toast`
     })
     
     DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}})

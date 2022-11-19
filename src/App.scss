@@ -26,6 +26,10 @@ body {
   }
 }
 
+.toast {
+  z-index: 50000;
+}
+
 .pixelated-image {
   image-rendering: pixelated;
   aspect-ratio: 1 / 1;

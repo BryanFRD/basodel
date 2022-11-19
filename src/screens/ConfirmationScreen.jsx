@@ -27,7 +27,7 @@ const ConfirmationScreen = () => {
       success: t('confirmation.email.success'),
       error: t('confirmation.email.error')
     }, {
-      className: `${theme.bgClassLighter} ${theme.text}`
+      className: `${theme.bgClassLighter} ${theme.text} toast`,
     });
     
     navigate('/');
