@@ -45,8 +45,8 @@ const ShopScreen = () => {
   return (
     <div className='shop-container'>
       <ShopNavBar setSearch={setSearch} search={search}/>
-      <div className={`shop-categories ${theme.customScrollbarLighter}`}>
-        <Container fluid className={`d-flex m-3 m-lg-5 flex-column gap-5 ${theme.text} w-auto`}>
+      <div className={`shop-categories d-flex flex-column ${theme.customScrollbarLighter}`}>
+        <Container fluid className={`d-flex m-3 m-lg-5 flex-column flex-grow-1 gap-5 ${theme.text} w-auto`}>
           {(categories.filtered.length > 0) ? 
           categories?.filtered?.map((category) => (
             <ShopCategory key={category.id} category={category}>
