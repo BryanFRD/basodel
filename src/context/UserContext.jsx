@@ -42,8 +42,6 @@ const UserContextProvider = (props) => {
       
     return await DataManager.create('usercredential', {model})
       .then(value => {
-        toast.success(t(value.message));
-        
         // ! L'afpa bloque les emails envoyés
         console.log(`Confirmation: ${value.confirmation}`);
         return false;

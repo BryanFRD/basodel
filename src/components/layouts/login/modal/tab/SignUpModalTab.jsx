@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Validator from '../../../../../validators/Validator.validator';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const SignUpModalTab = ({setShow}) => {
   const { theme } = useContext(ThemeContext)
@@ -32,8 +33,13 @@ const SignUpModalTab = ({setShow}) => {
     
     setHasError(error);
     
-    if(!error)
+    if(!error){
       setShow(false);
+      toast.success(t('message.emailSent'),
+        {
+          className: `${theme.bgClassLighter} ${theme.text}`,
+        });
+    }
   }
   
   const handleInputChange = (event) => {

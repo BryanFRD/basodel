@@ -24,7 +24,7 @@ const ShopArticleModal = ({setModal, modal}) => {
     const canBeBought = !(remainingSilver < 0 || remainingGold < 0);
     
     return {requiredSilver, requiredGold, remainingSilver, remainingGold, canBeBought}
-  }, [user, modal])
+  }, [user, modal]);
   
   const handleBuy = () => {
     if(!money.canBeBought)
@@ -35,7 +35,7 @@ const ShopArticleModal = ({setModal, modal}) => {
       success: t('confirmation.shop.success'),
       error: t('confirmation.shop.error'),
     }, {
-      className: `${theme.bgClassLighter} ${theme.text} toast`
+      className: `${theme.bgClassLighter} ${theme.text}`
     })
     
     DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}})

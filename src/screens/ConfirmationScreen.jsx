@@ -27,11 +27,11 @@ const ConfirmationScreen = () => {
       success: t('confirmation.email.success'),
       error: t('confirmation.email.error')
     }, {
-      className: `${theme.bgClassLighter} ${theme.text} toast`,
+      className: `${theme.bgClassLighter} ${theme.text}`,
     });
     
     navigate('/');
-  }, [navigate, t, token]);
+  }, [navigate, t, token, theme]);
   
   return (
     <Container fluid className={`d-flex justify-content-center align-items-center ${theme.bgClass} ${theme.text}`}>

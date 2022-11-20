@@ -21,11 +21,16 @@ const ShopScreen = () => {
   const [modal, setModal] = useState({show: false});
   
   useEffect(() => {
-    DataManager.graphQL('query', 'getCategories', `id, title, articles {id, title, silver, gold, promo, image {src, alt}}`, 'Category', true)
-      .then((value) => {
-        setCategories(({raw: value.data, filtered: value.data}));
-        setSearch('');
-      });
+    DataManager.graphQL(
+      'query',
+      'getCategories',
+      `id, title, articles {id, title, silver, gold, promo, image {src, alt}}`,
+      'Category',
+      true)
+        .then((value) => {
+          setCategories(({raw: value.data, filtered: value.data}));
+          setSearch('');
+        });
   }, []);
   
   useEffect(() => {
@@ -54,13 +59,12 @@ const ShopScreen = () => {
                 ?.map(article => (
                   <ShopArticle key={article.id} article={article} onClick={() => setModal({show: true, article})}/>
                 ))
-                // ?.sort((a, b) => t(a.props.article.title, {ns: 'items'}).localeCompare(t(b.props.article.title, {ns: 'items'})))
               }
             </ShopCategory>
           ))
           :
           <h4 className='text-center'>{t('shop.category.nothing')}</h4>
-        }
+          }
         </Container>
         <Footer/>
       </div>
