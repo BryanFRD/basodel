@@ -35,10 +35,7 @@ const SignUpModalTab = ({setShow}) => {
     
     if(!error){
       setShow(false);
-      toast.success(t('message.emailSent'),
-        {
-          className: `${theme.bgClassLighter} ${theme.text}`,
-        });
+      toast.success(t('message.emailSent'));
     }
   }
   

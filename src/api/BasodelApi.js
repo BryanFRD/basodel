@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import Config from '../config/Config';
 
 export let handleLogout;
@@ -29,7 +28,7 @@ export const refreshToken = async () => {
           return;
         
         return {...response.data};
-      }, error => {        
+      }, error => {
         if(handleLogout)
           handleLogout();
         

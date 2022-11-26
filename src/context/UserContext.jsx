@@ -43,7 +43,7 @@ const UserContextProvider = (props) => {
         console.log(`Confirmation: ${value.confirmation}`);
         return false;
       }, error => {
-        return error.response.data.error;
+        return error?.response?.data?.error ?? 'error.signup';
       });
   }
   

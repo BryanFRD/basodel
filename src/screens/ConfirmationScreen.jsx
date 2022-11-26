@@ -26,15 +26,13 @@ const ConfirmationScreen = () => {
       loading: t('confirmation.email.loading'),
       success: t('confirmation.email.success'),
       error: t('confirmation.email.error')
-    }, {
-      className: `${theme.bgClassLighter} ${theme.text}`,
     });
     
     navigate('/');
   }, [navigate, t, token, theme]);
   
   return (
-    <Container fluid className={`d-flex justify-content-center align-items-center ${theme.bgClass} ${theme.text}`}>
+    <Container fluid className={`d-flex justify-content-center align-items-center h-100 ${theme.bgClass} ${theme.text}`}>
       <h3>{t('confirmation.title')}</h3>
     </Container>
   )
