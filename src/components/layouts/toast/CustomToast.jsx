@@ -3,12 +3,11 @@ import { Toaster } from 'react-hot-toast';
 import { ThemeContext } from '../../../context/ThemeContext';
 
 const CustomToast = () => {
-  const { theme } = useContext(ThemeContext);
   // const { toasts, handlers } = useToaster();
   // const { startPause, endPause } = handlers;
   
   return (
-    <Toaster position='bottom-right'  containerClassName={` hot-toast`}/>
+    <Toaster position='bottom-right' containerClassName={` hot-toast`}/>
     // <div
     //   onMouseEnter={startPause}
     //   onMouseLeave={endPause}
