@@ -1,13 +1,10 @@
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
-import toast from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
 import { DataManager } from '../helpers/DataManager.helper';
 
 export const UserContext = React.createContext();
 
 const UserContextProvider = (props) => {
-  const { t } = useTranslation();
   const [user, setUser] = useState();
   
   useEffect(() => {

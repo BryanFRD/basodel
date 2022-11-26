@@ -1,18 +1,14 @@
 import React from 'react';
-import { Container, Tabs } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const AccountScreen = () => {
+  const {t} = useTranslation();
+  
   return (
-    <div>
-      <div>
-        <Tabs defaultActiveKey='overview' justify fill className={`text-link`}>
-          test1
-        </Tabs>
-      </div>
-      <Container>
-        test2
-      </Container>
-    </div>
+    <Container fluid className='h-100 d-flex justify-content-center align-items-center'>
+      <h1>{t('generic.comingSoon')}</h1>
+    </Container>
   );
 };
 
