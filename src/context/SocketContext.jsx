@@ -4,7 +4,7 @@ import Config from '../config/Config';
 import { UserContext } from './UserContext';
 
 export const SocketContext = React.createContext();
-const socket = io(Config.API.URL, {auth: {}, withCredentials: true});
+const socket = io(Config.API.URL, {withCredentials: true});
 
 const SocketContextProvider = (props) => {
   const {user} = useContext(UserContext);
