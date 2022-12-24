@@ -12,37 +12,41 @@ import { ThemeContext } from '../context/ThemeContext';
 import { DataManager } from '../helpers/DataManager.helper';
 import { Category } from '../models';
 import './ShopScreen.scss';
+import { gql } from '../helpers/GraphQL.helper';
 
 const ShopScreen = () => {
   const { theme } = useContext(ThemeContext);
-  const [categories, setCategories] = useState({raw: {}, filtered: []});
+  const [categories, setCategories] = useState({default: [], filtered: []});
   const [search, setSearch] = useState('');
   const {t} = useTranslation(['translation', 'items']);
   const [modal, setModal] = useState({show: false});
   
   useEffect(() => {
-    DataManager.graphQL(
-      'query',
-      'getCategories',
-      `id, title, articles {id, title, silver, gold, promo, image {src, alt}}`,
-      'Category',
-      true)
-        .then((value) => {
-          setCategories(({raw: value.data, filtered: value.data}));
-          setSearch('');
-        });
+    DataManager.graphQL(gql`query getCategories {
+      getCategories {
+        id title articles {
+          id title silver gold promo image {
+            src alt
+          }
+        }
+      }
+    }`)
+      .then(value => {
+        setCategories(({default: value.getCategories, filtered: value.getCategories}));
+        setSearch('');
+      });
   }, []);
   
   useEffect(() => {
     setCategories(prevValue => {
       return {
         ...prevValue,
-        filtered: Object.entries(prevValue.raw).map(([key, value]) => {
-          const articles = [...value.articles]
+        filtered: Object.entries(prevValue?.default?.values()).map(category => {
+          const articles = [...category.articles]
           ?.filter(article => !search || t(article.title).toLowerCase().includes(search.toLowerCase()))
           ?.sort((a, b) => t(a.title, {ns: 'items'}).toLowerCase().localeCompare(t(b.title, {ns: 'items'}).toLowerCase()));
           
-          return new Category({...value, articles});
+          return new Category({...category, articles});
         }).filter(category => category.articles.length > 0)
     }});
   }, [t, search]);

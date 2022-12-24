@@ -4,16 +4,9 @@ import * as models from '../models';
 
 export class DataManager {
   
-  static graphQL = async (queryType, field, data, modelName, raw = false) => {
-    return BasodelAPI.post('graphql', {query: `${queryType} {${field} {${data}}}`})
-      .then(response => {
-        if(response?.data?.data[field]){
-          return {...response.data, data: this.getModel(modelName, response.data.data[field], raw)};
-        }
-        return {error: response.data};
-      }, error => {
-        return Promise.reject(error);
-      });
+  static graphQL = async (query, variables = []) => {
+    return BasodelAPI.post('graphql', {query, variables})
+      .then(({data: {data}}) => data, error => Promise.reject(error));
   }
   
   /**
