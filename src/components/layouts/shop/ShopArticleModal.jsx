@@ -36,10 +36,7 @@ const ShopArticleModal = ({setModal, modal}) => {
           loading: t('confirmation.shop.loading'),
           success: t('confirmation.shop.success'),
           error: t('confirmation.shop.error'),
-        });
-    
-    DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}})
-      .finally(reloadUser);
+        }).finally(reloadUser);
     
     setModal(prevValue => ({...prevValue, show: false}));
   }
