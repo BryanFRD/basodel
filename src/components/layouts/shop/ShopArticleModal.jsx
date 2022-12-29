@@ -30,11 +30,13 @@ const ShopArticleModal = ({setModal, modal}) => {
     if(!money.canBeBought)
       return;
     
-    toast.promise(DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}}), {
-      loading: t('confirmation.shop.loading'),
-      success: t('confirmation.shop.success'),
-      error: t('confirmation.shop.error'),
-    })
+    toast.promise(DataManager.create('UserArticle', {
+        model: {userAccountId: user.id, articleId: modal.article.id}}), 
+        {
+          loading: t('confirmation.shop.loading'),
+          success: t('confirmation.shop.success'),
+          error: t('confirmation.shop.error'),
+        });
     
     DataManager.create('UserArticle', {model: {userAccountId: user.id, articleId: modal.article.id}})
       .finally(reloadUser);
