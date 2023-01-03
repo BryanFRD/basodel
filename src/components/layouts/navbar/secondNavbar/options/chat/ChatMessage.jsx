@@ -17,9 +17,13 @@ const ChatMessage = ({message}) => {
   
   const handleBlockUser = () => {
     if(blockedUser.blocked){
-      DataManager.delete('blockedUser', {userAccountId: user.id, blockedUserId: message.userAccountId}).finally(reloadUser);
+      DataManager.delete('blockedUser', {
+        userAccountId: user.id, blockedUserId: message.userAccountId
+      }).finally(reloadUser);
     } else {
-      DataManager.create('blockedUser', {model: {userAccountId: user.id, blockedUserId: message.userAccountId}}).finally(reloadUser);
+      DataManager.create('blockedUser', {
+        model: {userAccountId: user.id, blockedUserId: message.userAccountId}
+      }).finally(reloadUser);
     }
   }
   
