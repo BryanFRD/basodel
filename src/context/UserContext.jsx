@@ -71,17 +71,8 @@ const UserContextProvider = (props) => {
       });
   }
   
-  /**
-   * 
-   * @returns false or error
-   */
   const handleLogout = async () => {
-    setUser(undefined);
-    
-    Cookies.set('authToken', '');
-    Cookies.set('accessToken', '');
-    
-    return false;
+    DataManager.delete('auth').finally(setUser(undefined));
   }
   
   const forgotPassword = async (param) => {
