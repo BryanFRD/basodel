@@ -13,7 +13,7 @@ const ChatMessage = ({message}) => {
     const index = user?.getBlockedUserIndex(message.userAccountId);
     
     return {index, blocked: index && index !== -1}
-  }, [user, message.userAccountId]);
+  }, [user, message]);
   
   const handleBlockUser = () => {
     if(blockedUser.blocked){
