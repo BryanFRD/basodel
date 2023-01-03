@@ -31,7 +31,7 @@
     "auth": {
       "create": {
         "login": "Aucun identifiant/email trouvé ou le compte n'a pas été validé !",
-        "notFound": "Aucun identifiant/email trouvé ou le compte n'a pas été confirmer !",
+        "notFound": "Aucun identifiant/email trouvé ou le compte n'a pas été validé !",
         "authentication": "Mot de passe incorrect !",
         "password": "Mot de passe incorrect !"
       },
