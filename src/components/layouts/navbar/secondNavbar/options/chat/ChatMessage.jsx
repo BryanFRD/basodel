@@ -16,7 +16,6 @@ const ChatMessage = ({message}) => {
   }, [user, message]);
   
   const handleBlockUser = () => {
-    console.log('blockedUser:', blockedUser);
     if(blockedUser.blocked){
       DataManager.delete('blockedUser', {
         userAccountId: user.id, blockedUserId: message.userAccountId
