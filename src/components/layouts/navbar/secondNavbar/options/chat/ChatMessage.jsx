@@ -11,11 +11,13 @@ const ChatMessage = ({message}) => {
   const { user, reloadUser } = useContext(UserContext);
   const blockedUser = useMemo(() => {
     const index = user?.getBlockedUserIndex(message.userAccountId);
+    console.log('message:', !index && index !== -1);
     
-    return {index, blocked: index && index !== -1}
+    return {index, blocked: index !== user && index !== -1}
   }, [user, message]);
   
   const handleBlockUser = () => {
+    console.log('blockedUser:', blockedUser);
     if(blockedUser.blocked){
       DataManager.delete('blockedUser', {
         userAccountId: user.id, blockedUserId: message.userAccountId
