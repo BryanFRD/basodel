@@ -41,10 +41,10 @@ const ShopScreen = () => {
     setCategories(prevValue => {
       return {
         ...prevValue,
-        filtered: Object.entries(prevValue?.default?.values()).map(category => {
+        filtered: prevValue?.default?.map(category => {
           const articles = [...category.articles]
-          ?.filter(article => !search || t(article.title).toLowerCase().includes(search.toLowerCase()))
-          ?.sort((a, b) => t(a.title, {ns: 'items'}).toLowerCase().localeCompare(t(b.title, {ns: 'items'}).toLowerCase()));
+            ?.filter(article => !search || t(t(article.title, {ns: 'items'})).toLowerCase().includes(search.toLowerCase()))
+            ?.sort((a, b) => t(a.title, {ns: 'items'}).toLowerCase().localeCompare(t(b.title, {ns: 'items'}).toLowerCase()));
           
           return new Category({...category, articles});
         }).filter(category => category.articles.length > 0)
